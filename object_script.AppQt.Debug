@@ -1,0 +1,14 @@
+INPUT(
+./debug\dialog.o
+./debug\main.o
+./debug\mainwindow.o
+./debug\map.o
+./debug\property.o
+./debug\video.o
+./debug\qrc_resource.o
+./debug\qrc_qml.o
+./debug\moc_dialog.o
+./debug\moc_mainwindow.o
+./debug\moc_map.o
+./debug\moc_video.o
+);
