@@ -3,8 +3,10 @@
 #include <QMessageBox>
 #include "connection.h"
 #include <QFile>
+
 int main(int argc, char *argv[])
 {
+
     QApplication a(argc, argv);
 
     Connection c;

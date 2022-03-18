@@ -2,6 +2,7 @@
 #define SELLER_H
 #include <QString>
 #include <QSqlQueryModel>
+#include <QTableView>
 class Seller
 {
 public:
@@ -24,6 +25,17 @@ public:
     bool supprimer(int);
     bool modifier(int);
     QSqlQueryModel* read_id();
+    QSqlQueryModel * sort_name();
+    QSqlQueryModel * sort_id();
+    QSqlQueryModel * sort_adress();
+    QSqlQueryModel * find_id(int);
+    QSqlQueryModel * find_name(QString);
+    QSqlQueryModel * find_adress(QString);
+    void cleartable (QTableView *table);
+    void search_id(QTableView *table, int x);
+    void search_name(QTableView *table, QString x);
+    void search_adress(QTableView *table, QString x);
+    QSqlQueryModel* read_id_buy();
 private:
     int id_sel;
     QString lastname_sel;

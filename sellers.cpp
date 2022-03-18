@@ -2,6 +2,7 @@
 #include <QSqlQuery>
 #include <QtDebug>
 #include <QObject>
+#include <QTableView>
 Seller::Seller()
 {
 id_sel=0; lastname_sel=" "; name_sel=" "; adress_sel=" "; num_sel=0; mail_sel=" ";
@@ -21,6 +22,9 @@ void Seller::setname_sel(QString name_sel){this->name_sel=name_sel;}
 void Seller::setadress_sel(QString adress_sel){this->adress_sel=adress_sel;}
 void Seller::setnum_sel(int num_sel){this->num_sel=num_sel;}
 void Seller::setmail_sel(QString mail_sel){this->mail_sel=mail_sel;}
+
+
+
 bool Seller::ajouter()
 {
 
@@ -44,8 +48,9 @@ bool Seller::ajouter()
 bool Seller::supprimer(int id_sel)
 {
     QSqlQuery query;
+    QString res = QString::number(id_sel);
           query.prepare(" Delete from SELLERS where id_sel=:id_sel ");
-          query.bindValue(0, id_sel);
+          query.bindValue(":id_sel", res);
 
           return query.exec();
 }
@@ -85,4 +90,111 @@ return query.exec();
  model->setQuery("select ID_SEL from SELLERS");
  model->setHeaderData(0,Qt::Horizontal,QObject::tr("ID_SEL"));
  return model;
+ }
+ QSqlQueryModel * Seller::sort_name()
+ {
+     QSqlQueryModel * model= new QSqlQueryModel();
+         model->setQuery("select * from SELLERS order by NAME_SEL");
+         return model;
+ }
+ QSqlQueryModel * Seller::sort_id()
+ {
+     QSqlQueryModel * model= new QSqlQueryModel();
+         model->setQuery("select * from SELLERS order by ID_SEL");
+         return model;
+ }
+ QSqlQueryModel * Seller::sort_adress()
+ {
+     QSqlQueryModel * model= new QSqlQueryModel();
+         model->setQuery("select * from SELLERS order by ADRESS_SEL");
+         return model;
+ }
+ QSqlQueryModel * Seller::find_id(int code)
+ {
+     QSqlQuery query ;
+     QSqlQueryModel* model=new QSqlQueryModel();
+     query.prepare("select * from SELLERS where ID_SEL =:code");
+     query.bindValue(":code",code);
+     query.exec();
+     model->setQuery(query);
+ return model;
+ }
+ QSqlQueryModel * Seller::find_name(QString name)
+ {
+     QSqlQuery query ;
+     QSqlQueryModel* model=new QSqlQueryModel();
+     query.prepare("select * from SELLERS where NAME_SEL =:name");
+     query.bindValue(":name",name);
+     query.exec();
+     model->setQuery(query);
+ return model;
+ }
+ QSqlQueryModel * Seller::find_adress(QString adress)
+ {
+     QSqlQuery query ;
+     QSqlQueryModel* model=new QSqlQueryModel();
+     query.prepare("select * from SELLERS where ADRESS_SEL =:adress");
+     query.bindValue(":adress",adress);
+     query.exec();
+     model->setQuery(query);
+ return model;
+ }
+ void Seller::cleartable(QTableView *table){
+     QSqlQueryModel *model=new QSqlQueryModel();
+     model->clear();
+     table->setModel(model);
+ }
+ void Seller::search_id(QTableView *table, int x)
+    {
+       QSqlQueryModel *model=new QSqlQueryModel();
+       QSqlQuery *query =new QSqlQuery;
+       query->prepare("select * from SELLERS where regexp_like(id_sel,:id_sel);");
+       query->bindValue(":id_sel",x);
+
+       if(x==0)
+       {
+           query->prepare("select * from SELLERS;");
+       }
+       query->exec();
+       model->setQuery(*query);
+       table->setModel(model);
+       table->show();
+    }
+ void Seller::search_name(QTableView *table, QString x)
+    {
+       QSqlQueryModel *model=new QSqlQueryModel();
+       QSqlQuery *query =new QSqlQuery;
+       query->prepare("select * from SELLERS where regexp_like(name_sel,:name_sel);");
+       query->bindValue(":name_sel",x);
+
+       if(x==0)
+       {
+           query->prepare("select * from SELLERS;");
+       }
+       query->exec();
+       model->setQuery(*query);
+       table->setModel(model);
+       table->show();
+    }
+ void Seller::search_adress(QTableView *table, QString x)
+    {
+       QSqlQueryModel *model=new QSqlQueryModel();
+       QSqlQuery *query =new QSqlQuery;
+       query->prepare("select * from SELLERS where regexp_like(adress_sel,:adress_sel);");
+       query->bindValue(":adress_sel",x);
+
+       if(x==0)
+       {
+           query->prepare("select * from SELLERS;");
+       }
+       query->exec();
+       model->setQuery(*query);
+       table->setModel(model);
+       table->show();
+    }
+ QSqlQueryModel* Seller::read_id_buy()
+ {
+   QSqlQueryModel* model= new QSqlQueryModel();
+   model->setQuery("select id_buy from buyers;");
+   return model;
  }

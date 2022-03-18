@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui sql
+QT       +=sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,12 +29,18 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     connection.cpp \
+    notification.cpp \
     sellers.cpp
+
+
 
 HEADERS += \
         mainwindow.h \
     connection.h \
+    notification.h \
     sellers.h
+
+
 
 FORMS += \
         mainwindow.ui
@@ -42,3 +49,11 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES +=
+
+RESOURCES +=
+
+
+
+

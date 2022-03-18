@@ -337,7 +337,19 @@ rgb(255, 255, 255)</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color:rgb(255, 255, 255)</string>
+        <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}</string>
        </property>
        <property name="text">
         <string>Add</string>
@@ -353,7 +365,19 @@ rgb(255, 255, 255)</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">color:rgb(255, 255, 255)</string>
+        <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}</string>
        </property>
        <property name="text">
         <string>connection</string>
@@ -412,7 +436,7 @@ rgb(255, 255, 255)</string>
         <x>0</x>
         <y>0</y>
         <width>871</width>
-        <height>161</height>
+        <height>191</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -485,7 +509,19 @@ QTableView::item:focus{selection-background-color: yellow;}
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255)</string>
+       <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}</string>
       </property>
       <property name="text">
        <string>Modify</string>
@@ -501,13 +537,25 @@ QTableView::item:focus{selection-background-color: yellow;}
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255)</string>
+       <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}</string>
       </property>
       <property name="text">
        <string>Delete </string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="Sort_by_id">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -517,56 +565,103 @@ QTableView::item:focus{selection-background-color: yellow;}
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:
-rgb(255, 255, 255)</string>
+       <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}</string>
       </property>
       <property name="text">
        <string>sort by id</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="Sort_by_name">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>164</x>
         <y>200</y>
-        <width>75</width>
+        <width>91</width>
         <height>23</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255)</string>
+       <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}</string>
       </property>
       <property name="text">
        <string>sort by name</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QPushButton" name="Sort_by_adress">
       <property name="geometry">
        <rect>
-        <x>320</x>
+        <x>304</x>
         <y>200</y>
-        <width>75</width>
+        <width>91</width>
         <height>23</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255)</string>
+       <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}</string>
       </property>
       <property name="text">
-       <string>sort by num</string>
+       <string>sort by adress</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_7">
+     <widget class="QPushButton" name="search_id">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>280</y>
+        <x>310</x>
+        <y>260</y>
         <width>75</width>
         <height>23</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255)</string>
+       <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}</string>
       </property>
       <property name="text">
        <string>search</string>
@@ -575,14 +670,26 @@ rgb(255, 255, 255)</string>
      <widget class="QPushButton" name="pb_read">
       <property name="geometry">
        <rect>
-        <x>790</x>
-        <y>160</y>
+        <x>430</x>
+        <y>200</y>
         <width>75</width>
         <height>23</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">color:rgb(255, 255, 255)</string>
+       <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}</string>
       </property>
       <property name="text">
        <string>read</string>
@@ -866,6 +973,9 @@ rgb(255, 255, 255)</string>
         <height>22</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255)</string>
+      </property>
      </widget>
      <widget class="QLabel" name="label_16">
       <property name="geometry">
@@ -890,14 +1000,260 @@ rgb(255, 255, 255)</string>
        <string>ID_SEL </string>
       </property>
      </widget>
+     <widget class="QPushButton" name="search_name">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>300</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}</string>
+      </property>
+      <property name="text">
+       <string>search</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="search_adress">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>350</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}</string>
+      </property>
+      <property name="text">
+       <string>search</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="search_id_2">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>260</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255)</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="search_name_2">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>300</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255)</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="search_adress_2">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>350</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255)</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>260</y>
+        <width>61</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel
+{
+	background-color: transparent;
+	color: #fff;
+	font-size: 14pt;
+	border-color: #000000;
+
+}</string>
+      </property>
+      <property name="text">
+       <string>ID_SEL</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>300</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel
+{
+	background-color: transparent;
+	color: #fff;
+	font-size: 14pt;
+	border-color: #000000;
+
+}</string>
+      </property>
+      <property name="text">
+       <string>NAME_SEL</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>350</y>
+        <width>111</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel
+{
+	background-color: transparent;
+	color: #fff;
+	font-size: 14pt;
+	border-color: #000000;
+
+}</string>
+      </property>
+      <property name="text">
+       <string>ADRESS_SEL</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Todolist">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>440</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}</string>
+      </property>
+      <property name="text">
+       <string>To Do List</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_2">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>400</y>
+        <width>62</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255)</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_3">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>440</y>
+        <width>62</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(255, 255, 255)</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="generatepdf">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>350</y>
+        <width>91</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}</string>
+      </property>
+      <property name="text">
+       <string>Generate PDF</string>
+      </property>
+     </widget>
      <zorder>label_8</zorder>
      <zorder>tab_seller</zorder>
      <zorder>pb_modif</zorder>
      <zorder>pb_supp</zorder>
-     <zorder>pushButton_4</zorder>
-     <zorder>pushButton_5</zorder>
-     <zorder>pushButton_6</zorder>
-     <zorder>pushButton_7</zorder>
+     <zorder>Sort_by_id</zorder>
+     <zorder>Sort_by_name</zorder>
+     <zorder>Sort_by_adress</zorder>
+     <zorder>search_id</zorder>
      <zorder>pb_read</zorder>
      <zorder>label_10</zorder>
      <zorder>id_supp</zorder>
@@ -915,6 +1271,18 @@ rgb(255, 255, 255)</string>
      <zorder>mail_modif</zorder>
      <zorder>comboBox</zorder>
      <zorder>label_16</zorder>
+     <zorder>search_name</zorder>
+     <zorder>search_adress</zorder>
+     <zorder>search_id_2</zorder>
+     <zorder>search_name_2</zorder>
+     <zorder>search_adress_2</zorder>
+     <zorder>label_17</zorder>
+     <zorder>label_18</zorder>
+     <zorder>label_19</zorder>
+     <zorder>Todolist</zorder>
+     <zorder>comboBox_2</zorder>
+     <zorder>comboBox_3</zorder>
+     <zorder>generatepdf</zorder>
     </widget>
    </widget>
    <widget class="QTextEdit" name="textEdit">
