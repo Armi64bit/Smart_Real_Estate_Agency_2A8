@@ -115,3 +115,111 @@ QSqlQueryModel * buyer::read_agent()
 
 return model;
 }
+QSqlQueryModel * buyer::sort_name(){
+    QSqlQueryModel * model= new QSqlQueryModel();
+        model->setQuery("select * from BUYERS order by NAME_BUY");
+        return model;
+}
+QSqlQueryModel * buyer::sort_adress(){
+    QSqlQueryModel * model= new QSqlQueryModel();
+        model->setQuery("select * from BUYERS order by ADRESS_BUY");
+        return model;
+}
+QSqlQueryModel * buyer::sort_request(){
+    QSqlQueryModel * model= new QSqlQueryModel();
+        model->setQuery("select * from BUYERS order by REQUEST_BUY");
+        return model;
+}
+QSqlQueryModel * buyer::sort_id(){
+    QSqlQueryModel * model= new QSqlQueryModel();
+        model->setQuery("select * from BUYERS order by ID_BUY");
+        return model;
+}
+QSqlQueryModel * buyer::find_id(int code)
+{
+    QSqlQuery query ;
+    QSqlQueryModel* model=new QSqlQueryModel();
+   query.prepare("select * from buyers where ID_BUY =:code");
+    query.bindValue(":code",code);
+    query.exec();
+    model->setQuery(query);
+return model;
+}
+QSqlQueryModel * buyer::find_name(QString name)
+{
+    QSqlQuery query ;
+    QSqlQueryModel* model=new QSqlQueryModel();
+   query.prepare("select * from buyers where NAME_BUY =:name");
+    query.bindValue(":name",name);
+    query.exec();
+    model->setQuery(query);
+return model;
+}
+QSqlQueryModel * buyer::find_request(QString req)
+{
+    QSqlQuery query ;
+    QSqlQueryModel* model=new QSqlQueryModel();
+   query.prepare("select * from buyers where REQUEST_BUY =:req");
+    query.bindValue(":req",req);
+    query.exec();
+    model->setQuery(query);
+return model;
+}
+void buyer::cleartable(QTableView *table){
+    QSqlQueryModel *model=new QSqlQueryModel();
+    model->clear();
+    table->setModel(model);
+}
+void buyer::finda_id(QTableView *table, int x){
+    QSqlQueryModel *model=new QSqlQueryModel();
+          QSqlQuery *query =new QSqlQuery;
+          query->prepare("select * from buyers where regexp_like(id_buy,:id_buy);");
+          query->bindValue(":id_buy",x);
+
+          if(x==0)
+          {
+              query->prepare("select * from buyers;");
+          }
+          query->exec();
+          model->setQuery(*query);
+          table->setModel(model);
+          table->show();
+
+}
+void buyer::finda_name(QTableView *table, QString x){
+    QSqlQueryModel *model=new QSqlQueryModel();
+          QSqlQuery *query =new QSqlQuery;
+          query->prepare("select * from buyers where regexp_like(name_buy,:name_buy);");
+          query->bindValue(":name_buy",x);
+
+          if(x==0)
+          {
+              query->prepare("select * from buyers;");
+          }
+          query->exec();
+          model->setQuery(*query);
+          table->setModel(model);
+          table->show();
+
+}
+void buyer::finda_request(QTableView *table, QString x){
+    QSqlQueryModel *model=new QSqlQueryModel();
+          QSqlQuery *query =new QSqlQuery;
+          query->prepare("select * from buyers where regexp_like(request_buy,:request_buy);");
+          query->bindValue(":request_buy",x);
+
+          if(x==0)
+          {
+              query->prepare("select * from buyers;");
+          }
+          query->exec();
+          model->setQuery(*query);
+          table->setModel(model);
+          table->show();
+
+}
+QSqlQueryModel * buyer::recomondation()
+{   QSqlQueryModel *model=new QSqlQueryModel();
+         model->setQuery("SELECT name_sel FROM sellers GROUP BY name_sel ORDER BY COUNT(name_sel) DESC ");
+return model;
+}

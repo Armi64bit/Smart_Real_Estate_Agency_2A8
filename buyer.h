@@ -7,6 +7,7 @@
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
 #include <QtDebug>
+#include <QTableView>
 class buyer
 {
 public:
@@ -34,6 +35,19 @@ public:
   bool update(int);  //authentification
   bool read_info(int);
    QSqlQueryModel * read_agent();
+   QSqlQueryModel * sort_name();
+   QSqlQueryModel * sort_adress();
+   QSqlQueryModel * sort_request();
+   QSqlQueryModel * sort_id();
+   QSqlQueryModel * find_id(int);
+   QSqlQueryModel * find_name(QString);
+   QSqlQueryModel * find_request(QString);
+   QSqlQueryModel * recomondation();
+   void cleartable (QTableView *table);
+   void finda_id(QTableView *table, int x);
+   void finda_name(QTableView *table, QString x);
+   void finda_request(QTableView *table, QString x);
+
 private:
   int id_buy,num_buy,id_agent;
    QString lastname_buy, name_buy, adress_buy,request_buy,mail_buy;

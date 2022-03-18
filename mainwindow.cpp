@@ -6,6 +6,13 @@
 #include<QComboBox>
 #include<QSqlQuery>
 #include"buyer.h"
+#include "email.h"
+#include <QTextStream>
+#include <QTextDocument>
+#include <QtPrintSupport/QPrintDialog>
+#include <QtPrintSupport/QPrinter>
+#include <QtWidgets>
+#include<QFileDialog>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -16,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tab_produit->setModel(b.read());
     ui->comboBox->setModel(b.read_id());
     ui->comboBox_2->setModel(b.read_agent());
+    ui->tableView2->setModel(b.recomondation());
         ui->lineEdit_id->setValidator( new QIntValidator(0, 999999, this));
         ui->lineEdit_num->setValidator( new QIntValidator(0, 99999999, this));
 
@@ -204,4 +212,155 @@ if(query.exec())
    ui->update_mail->setText(query.value(6).toString());
     }
 }
+}
+
+void MainWindow::on_tri_stock_clicked()
+{
+    ui->tab_produit->setModel(b.sort_name());
+    QMessageBox::information(nullptr, QObject::tr("Ok"),
+                QObject::tr("tri effectu.\n"
+                            "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+
+void MainWindow::on_trier_clicked()
+{
+     ui->tab_produit->setModel(b.sort_request());
+    QMessageBox::information(nullptr, QObject::tr("Ok"),
+                QObject::tr("tri effectu.\n"
+                            "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+
+void MainWindow::on_trier_2_clicked()
+{
+    ui->tab_produit->setModel(b.sort_adress());
+    QMessageBox::information(nullptr, QObject::tr("Ok"),
+                QObject::tr("tri effectu.\n"
+                            "Click Cancel to exit."), QMessageBox::Cancel);
+
+}
+
+void MainWindow::on_rechercher_2_clicked()
+{
+    int code=ui->chercher_id->text().toInt();
+                 ui->tab_produit->setModel(b.find_id(code));
+                 QMessageBox::information(nullptr,QObject::tr("OK"),
+                                           QObject::tr("recherche effectue.\n"
+                                                       "clic cancel to exit."),QMessageBox::Cancel);
+}
+
+void MainWindow::on_rechercher_3_clicked()
+{
+    QString name=ui->chercher_name->text();
+                 ui->tab_produit->setModel(b.find_name(name));
+                 QMessageBox::information(nullptr,QObject::tr("OK"),
+                                           QObject::tr("recherche effectue.\n"
+                                                       "clic cancel to exit."),QMessageBox::Cancel);
+}
+
+void MainWindow::on_rechercher_4_clicked()
+{
+    QString req=ui->chercher_request->text();
+                 ui->tab_produit->setModel(b.find_request(req));
+                 QMessageBox::information(nullptr,QObject::tr("OK"),
+                                           QObject::tr("recherche effectue.\n"
+                                                       "clic cancel to exit."),QMessageBox::Cancel);
+}
+
+
+
+void MainWindow::on_sort_id_clicked()
+{
+    ui->tab_produit->setModel(b.sort_id());
+    QMessageBox::information(nullptr, QObject::tr("Ok"),
+                QObject::tr("tri effectu.\n"
+                            "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_chercher_id_textChanged(const QString &arg1)
+{
+b.cleartable(ui->tab_produit);
+int id_buy=ui->chercher_id->text().toInt();
+b.finda_id(ui->tab_produit, id_buy);
+}
+
+void MainWindow::on_chercher_name_textChanged(const QString &arg1)
+{
+    b.cleartable(ui->tab_produit);
+    QString name_buy=ui->chercher_name->text();
+    b.finda_name(ui->tab_produit, name_buy);
+}
+
+void MainWindow::on_chercher_request_textChanged(const QString &arg1)
+{
+    b.cleartable(ui->tab_produit);
+    QString request_buy=ui->chercher_request->text();
+    b.finda_request(ui->tab_produit, request_buy);
+}
+
+void MainWindow::on_mailling_clicked()
+{
+    email email;
+    email.setModal(true);
+    email.exec();
+}
+
+void MainWindow::on_inserer_photo_clicked()
+{
+    QPdfWriter pdf("C:/Users/21629/Desktop/buyers/Liste.pdf");
+
+                 QPainter painter(&pdf);
+
+                 int i = 4000;
+                 painter.setPen(Qt::black);
+                 painter.setFont(QFont("Arial", 30));
+                 painter.drawPixmap(QRect(100,400,2000,2000),QPixmap("C:/Users/21629/Desktop/aziz/logo.png"));
+                 painter.drawText(3000,1500,"LIST OF BUYERS");
+                 painter.setPen(Qt::blue);
+                 painter.setFont(QFont("Arial", 50));
+                 painter.drawRect(2700,200,6300,2600);
+                 painter.drawRect(0,3000,9600,500);
+                 painter.setPen(Qt::black);
+                 painter.setFont(QFont("Arial", 9));
+                 painter.drawText(300,3300,"id_Buy");
+                 painter.drawText(1600,3300,"lastname");
+                 painter.drawText(2900,3300,"name");
+                 painter.drawText(4200,3300,"adress");
+                 painter.drawText(5500,3300,"request");
+                 painter.drawText(6800,3300,"Num");
+                 painter.drawText(8100,3300,"mail");
+                 QSqlQuery query;
+                 query.prepare("<SELECT CAST( GETDATE() AS Date ) ");
+                 time_t tt;
+                 struct tm* ti;
+                 time(&tt);
+                 ti=localtime(&tt);
+                 asctime(ti);
+                 painter.drawText(500,300, asctime(ti));
+                 query.prepare("select * from BUYERS");
+                 query.exec();
+                 while (query.next())
+                 {
+                     painter.drawText(300,i,query.value(0).toString());
+                     painter.drawText(1600,i,query.value(1).toString());
+                     painter.drawText(2900,i,query.value(2).toString());
+                     painter.drawText(4200,i,query.value(3).toString());
+                     painter.drawText(5500,i,query.value(4).toString());
+                     painter.drawText(6800,i,query.value(5).toString());
+                     painter.drawText(8100,i,query.value(6).toString());
+                     i = i +500;
+                 }
+
+                 int reponse = QMessageBox::question(this, "PDF generated", "read pdf ?", QMessageBox::Yes |  QMessageBox::No);
+                 if (reponse == QMessageBox::Yes)
+                 {
+                     QDesktopServices::openUrl(QUrl::fromLocalFile("C:/Users/21629/Desktop/buyers/Liste.pdf"));
+
+                     painter.end();
+                 }
+                 if (reponse == QMessageBox::No)
+                 {
+                     painter.end();
+                 }
 }

@@ -4,9 +4,16 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql axcontainer printsupport
+QT       += core gui
+QT       += sql
+QT       += core gui multimedia multimediawidgets
+QT += printsupport
+QT       += core gui network
+QT += core
+        QT += network
+greaterThan(QT_MAJOR_VERSION, 4): QT +=  widgets
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Atelier_Connexion
 TEMPLATE = app
@@ -27,15 +34,20 @@ CONFIG += c++11
 SOURCES += \
     buyer.cpp \
     connection.cpp \
+    email.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    smtp.cpp
 
 HEADERS += \
     buyer.h \
     connection.h \
-        mainwindow.h
+    email.h \
+        mainwindow.h \
+    smtp.h
 
 FORMS += \
+        email.ui \
         mainwindow.ui
 
 # Default rules for deployment.
