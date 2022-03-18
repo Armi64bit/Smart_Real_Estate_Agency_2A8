@@ -256,3 +256,47 @@ void MainWindow::on_pushButton_7_clicked()
                                    QObject::tr("delete not done .\n"
                                                "clic cancel to exit."),QMessageBox::Cancel);}
 }
+// tri cin
+
+
+void MainWindow::on_pushButton_15_clicked()
+{
+    ui->tabagent-> setModel(a.sort_cin_ag());
+        QMessageBox::information(nullptr, QObject::tr("Ok"),
+                    QObject::tr("tri effectu.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_pushButton_16_clicked()
+{
+    ui->tabagent-> setModel(a.sort_name_ag());
+        QMessageBox::information(nullptr, QObject::tr("Ok"),
+                    QObject::tr("tri effectu.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void MainWindow::on_pushButton_17_clicked()
+{
+    ui->tabagent-> setModel(a.sort_function_ag());
+        QMessageBox::information(nullptr, QObject::tr("Ok"),
+                    QObject::tr("tri effectu.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+}
+// recherche name
+
+
+void MainWindow::on_lineEdit_cherche_textChanged(const QString &arg1)
+{
+
+    a.cleartable(ui->tabagent);
+    QString name_ag=ui->lineEdit_cherche->text();
+    a.rechercher_name(ui->tabagent,name_ag);
+}
+
+void MainWindow::on_lineEdit_cherche_cin_textChanged(const QString &arg1)
+{
+
+    a.cleartable(ui->tabagent);
+    int  cin_ag=ui->lineEdit_cherche_cin->text().toUInt();
+    a.rechercher_cin(ui->tabagent,cin_ag);
+}

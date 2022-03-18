@@ -7,6 +7,7 @@
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
 #include <QtDebug>
+#include <QTableView>
 class agent
 {
 public:
@@ -35,38 +36,19 @@ public:
      void setfunction_ag(QString function_ag ){this->function_ag=function_ag;}
      void setlogin_ag(QString login_ag ){this->login_ag=login_ag;}
      void setpassword_ag(QString password_ag ){this->password_ag=password_ag;}
-   /* //setter
-    void setcin_ag(int n);
-    void setlastname_ag(QString cin_ag);
-    void setname_ag (QString lastname_ag);
-    void setnum_ag(int num_ag);
-    void setmail_ag(QString mail_ag );
-    void setadress_ag(QString adress_ag);
-    void setfunction_ag(QString function_ag);
-    void setlogin_ag(QString login_ag);
-    void setpassword_ag(QString password_ag);
-    //Getter
-
-   int  getcin_ag();
-   QString getlastname_ag();
-   QString getname_ag ();
-   int  getnum_ag();
-   QString getmail_ag();
-   QString getadress();
-   QString getfunction_ag();
-   QString getlogin_ag();
-   QString getpassword_ag();*/
-
-  //bool addAgent ();
 
 
-  bool ajouter();
-  bool supprimer(int);
-  QSqlQueryModel * afficher();
-bool modifier(int);
+ bool ajouter();
+ bool supprimer(int);
+ QSqlQueryModel * afficher();
+ bool modifier(int);
  QSqlQueryModel * afficher_id();
-
-
+ QSqlQueryModel * sort_cin_ag();
+ QSqlQueryModel * sort_name_ag();
+ QSqlQueryModel * sort_function_ag();
+ void cleartable(QTableView * table );
+ void rechercher_name(QTableView *table, QString x);
+  void rechercher_cin(QTableView *table, int  x);
   private:
    QString lastname_ag,name_ag,mail_ag,adress_ag,function_ag,login_ag,password_ag;
    int cin_ag,num_ag;

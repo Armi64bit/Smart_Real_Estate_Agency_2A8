@@ -42,6 +42,20 @@ private slots:
 
     void on_comboBox_currentIndexChanged(int index);
 
+    void on_label_38_linkActivated(const QString &link);
+
+    void on_pushButton_15_clicked();
+
+    void on_pushButton_16_clicked();
+
+    void on_pushButton_17_clicked();
+
+    void on_pushButton_18_clicked();
+
+    void on_lineEdit_cherche_textChanged(const QString &arg1);
+
+    void on_lineEdit_cherche_cin_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     agent a;

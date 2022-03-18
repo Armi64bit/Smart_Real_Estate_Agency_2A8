@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1092</width>
+    <height>774</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,13 +25,107 @@
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>781</width>
-      <height>561</height>
+      <width>1061</width>
+      <height>711</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
+    <widget class="QWidget" name="page_5">
+     <widget class="QLineEdit" name="lineEdit_cin_5">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>240</y>
+        <width>241</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color :rgb(255, 255, 255)</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_cin_6">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>160</y>
+        <width>241</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color :rgb(255, 255, 255)</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>160</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+	color: #fff;
+	font-size: 14pt;
+	border-color: #000000;</string>
+      </property>
+      <property name="text">
+       <string>LogIn</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_26">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>240</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+	color: #fff;
+	font-size: 14pt;
+	border-color: #000000;</string>
+      </property>
+      <property name="text">
+       <string>Password</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>330</y>
+        <width>171</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+	color: #000;
+	font-size: 14pt;
+	border-radius: 4px;
+	padding: 10px;
+</string>
+      </property>
+      <property name="text">
+       <string>Connect</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../add.png</normaloff>../add.png</iconset>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="page">
      <widget class="QPushButton" name="pushButton">
       <property name="geometry">
@@ -595,8 +689,8 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
        <rect>
         <x>-10</x>
         <y>0</y>
-        <width>761</width>
-        <height>541</height>
+        <width>1081</width>
+        <height>721</height>
        </rect>
       </property>
       <property name="title">
@@ -606,7 +700,7 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>490</y>
+         <y>660</y>
          <width>211</width>
          <height>51</height>
         </rect>
@@ -633,8 +727,8 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
         <rect>
          <x>10</x>
          <y>20</y>
-         <width>731</width>
-         <height>471</height>
+         <width>1071</width>
+         <height>641</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -652,15 +746,15 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
 	border-color: #000000;</string>
         </property>
         <attribute name="title">
-         <string>ADD</string>
+         <string> VIEW</string>
         </attribute>
         <widget class="QTableView" name="tabagent">
          <property name="geometry">
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>731</width>
-           <height>171</height>
+           <width>1051</width>
+           <height>211</height>
           </rect>
          </property>
          <property name="styleSheet">
@@ -728,8 +822,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLabel" name="label_25">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>400</y>
+           <x>10</x>
+           <y>570</y>
            <width>111</width>
            <height>31</height>
           </rect>
@@ -747,8 +841,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLineEdit" name="lineEdit_password_2">
          <property name="geometry">
           <rect>
-           <x>430</x>
-           <y>330</y>
+           <x>410</x>
+           <y>510</y>
            <width>151</width>
            <height>41</height>
           </rect>
@@ -760,8 +854,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLabel" name="label_23">
          <property name="geometry">
           <rect>
-           <x>310</x>
-           <y>180</y>
+           <x>290</x>
+           <y>360</y>
            <width>111</width>
            <height>31</height>
           </rect>
@@ -779,8 +873,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLabel" name="label_19">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>190</y>
+           <x>0</x>
+           <y>360</y>
            <width>111</width>
            <height>31</height>
           </rect>
@@ -798,8 +892,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLineEdit" name="lineEdit_mail_2">
          <property name="geometry">
           <rect>
-           <x>140</x>
-           <y>390</y>
+           <x>130</x>
+           <y>560</y>
            <width>151</width>
            <height>41</height>
           </rect>
@@ -811,8 +905,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLineEdit" name="lineEdit_adress_2">
          <property name="geometry">
           <rect>
-           <x>430</x>
-           <y>180</y>
+           <x>410</x>
+           <y>350</y>
            <width>151</width>
            <height>41</height>
           </rect>
@@ -824,8 +918,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLabel" name="label_21">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>300</y>
+           <x>0</x>
+           <y>470</y>
            <width>111</width>
            <height>31</height>
           </rect>
@@ -843,8 +937,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLabel" name="label_24">
          <property name="geometry">
           <rect>
-           <x>310</x>
-           <y>230</y>
+           <x>290</x>
+           <y>410</y>
            <width>111</width>
            <height>31</height>
           </rect>
@@ -862,8 +956,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLineEdit" name="lineEdit_lastname_2">
          <property name="geometry">
           <rect>
-           <x>140</x>
-           <y>240</y>
+           <x>130</x>
+           <y>410</y>
            <width>151</width>
            <height>41</height>
           </rect>
@@ -875,8 +969,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLabel" name="label_20">
          <property name="geometry">
           <rect>
-           <x>310</x>
-           <y>280</y>
+           <x>290</x>
+           <y>460</y>
            <width>111</width>
            <height>31</height>
           </rect>
@@ -894,8 +988,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLineEdit" name="lineEdit_login_2">
          <property name="geometry">
           <rect>
-           <x>430</x>
-           <y>280</y>
+           <x>410</x>
+           <y>460</y>
            <width>151</width>
            <height>41</height>
           </rect>
@@ -907,8 +1001,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLineEdit" name="lineEdit_name_2">
          <property name="geometry">
           <rect>
-           <x>140</x>
-           <y>290</y>
+           <x>130</x>
+           <y>460</y>
            <width>151</width>
            <height>41</height>
           </rect>
@@ -920,8 +1014,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLineEdit" name="lineEdit_number_2">
          <property name="geometry">
           <rect>
-           <x>140</x>
-           <y>340</y>
+           <x>130</x>
+           <y>510</y>
            <width>151</width>
            <height>41</height>
           </rect>
@@ -933,8 +1027,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLineEdit" name="lineEdit_function_2">
          <property name="geometry">
           <rect>
-           <x>430</x>
-           <y>230</y>
+           <x>410</x>
+           <y>400</y>
            <width>151</width>
            <height>41</height>
           </rect>
@@ -942,12 +1036,15 @@ QTableView::item:focus{selection-background-color: yellow;}
          <property name="styleSheet">
           <string notr="true">color :rgb(255, 255, 255)</string>
          </property>
+         <property name="text">
+          <string/>
+         </property>
         </widget>
         <widget class="QLabel" name="label_17">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>350</y>
+           <x>10</x>
+           <y>520</y>
            <width>111</width>
            <height>31</height>
           </rect>
@@ -965,8 +1062,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLabel" name="label_18">
          <property name="geometry">
           <rect>
-           <x>10</x>
-           <y>240</y>
+           <x>0</x>
+           <y>410</y>
            <width>111</width>
            <height>31</height>
           </rect>
@@ -984,8 +1081,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLineEdit" name="lineEdit_cin_3">
          <property name="geometry">
           <rect>
-           <x>140</x>
-           <y>180</y>
+           <x>130</x>
+           <y>350</y>
            <width>151</width>
            <height>41</height>
           </rect>
@@ -997,8 +1094,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QLabel" name="label_22">
          <property name="geometry">
           <rect>
-           <x>310</x>
-           <y>330</y>
+           <x>290</x>
+           <y>510</y>
            <width>111</width>
            <height>31</height>
           </rect>
@@ -1016,8 +1113,8 @@ QTableView::item:focus{selection-background-color: yellow;}
         <widget class="QPushButton" name="pushButton_6">
          <property name="geometry">
           <rect>
-           <x>590</x>
-           <y>270</y>
+           <x>600</x>
+           <y>540</y>
            <width>131</width>
            <height>61</height>
           </rect>
@@ -1045,8 +1142,8 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
         <widget class="QComboBox" name="comboBox">
          <property name="geometry">
           <rect>
-           <x>430</x>
-           <y>390</y>
+           <x>400</x>
+           <y>560</y>
            <width>161</width>
            <height>41</height>
           </rect>
@@ -1058,8 +1155,8 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
         <widget class="QLabel" name="label">
          <property name="geometry">
           <rect>
-           <x>330</x>
-           <y>390</y>
+           <x>300</x>
+           <y>560</y>
            <width>111</width>
            <height>41</height>
           </rect>
@@ -1072,6 +1169,133 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
          </property>
          <property name="text">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;CIN_ag&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_15">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>220</y>
+           <width>151</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+	color: #000;
+	font-size: 14pt;
+	border-radius: 4px;
+	padding: 10px;</string>
+         </property>
+         <property name="text">
+          <string>Tri  CIN</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_16">
+         <property name="geometry">
+          <rect>
+           <x>170</x>
+           <y>220</y>
+           <width>151</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+	color: #000;
+	font-size: 14pt;
+	border-radius: 4px;
+	padding: 10px;</string>
+         </property>
+         <property name="text">
+          <string> tri Name</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_17">
+         <property name="geometry">
+          <rect>
+           <x>330</x>
+           <y>220</y>
+           <width>151</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">
+background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+	color: #000;
+	font-size: 14pt;
+	border-radius: 4px;
+	padding: 10px;</string>
+         </property>
+         <property name="text">
+          <string> tri function</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_cherche">
+         <property name="geometry">
+          <rect>
+           <x>850</x>
+           <y>270</y>
+           <width>191</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color :rgb(255, 255, 255)</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_38">
+         <property name="geometry">
+          <rect>
+           <x>620</x>
+           <y>270</y>
+           <width>221</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: transparent;
+	color: #fff;
+	font-size: 14pt;
+	border-color: #000000;</string>
+         </property>
+         <property name="text">
+          <string>Recherche name</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_39">
+         <property name="geometry">
+          <rect>
+           <x>610</x>
+           <y>330</y>
+           <width>221</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: transparent;
+	color: #fff;
+	font-size: 14pt;
+	border-color: #000000;</string>
+         </property>
+         <property name="text">
+          <string>Recherche cin</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_cherche_cin">
+         <property name="geometry">
+          <rect>
+           <x>850</x>
+           <y>340</y>
+           <width>191</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color :rgb(255, 255, 255)</string>
          </property>
         </widget>
        </widget>
@@ -1221,7 +1445,7 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1092</width>
      <height>26</height>
     </rect>
    </property>
