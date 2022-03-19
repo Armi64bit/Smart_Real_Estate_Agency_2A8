@@ -1,9 +1,11 @@
 #include "subscriptions.h"
+#include "mainwindow.h"
 #include "connection.h"
 #include <QString>
 #include <QSqlQuery>
 #include <QtDebug>
 #include <QObject>
+#include <QTableView>
 
 subscriptions::subscriptions()
 {
@@ -125,9 +127,9 @@ QSqlQueryModel* subscriptions::read()
           model->setHeaderData(1, Qt::Horizontal, QObject::tr("Type"));
           model->setHeaderData(2, Qt::Horizontal, QObject::tr("Duration"));
           model->setHeaderData(3, Qt::Horizontal, QObject::tr("Price"));
-          model->setHeaderData(3, Qt::Horizontal, QObject::tr("id_Buyer"));
-          model->setHeaderData(3, Qt::Horizontal, QObject::tr("Start_date"));
-          model->setHeaderData(3, Qt::Horizontal, QObject::tr("End_date"));
+          model->setHeaderData(4, Qt::Horizontal, QObject::tr("id_Buyer"));
+          model->setHeaderData(5, Qt::Horizontal, QObject::tr("Start_date"));
+          model->setHeaderData(6, Qt::Horizontal, QObject::tr("End_date"));
     return model;
 }
 
@@ -154,14 +156,15 @@ bool subscriptions::update(int num_sub)
     return query.exec();
 }
 
+//affichage
 QSqlQueryModel* subscriptions::read_id()
 {
      QSqlQueryModel *model=new QSqlQueryModel();
      model->setQuery("select NUM_SUB from subscriptions");
-     model->setHeaderData(0,Qt::Horizontal,QObject::tr("NUM_SUB"));
      return model;
 }
 
+//id buyer
 QSqlQueryModel* subscriptions::read_buyer()
 {
      QSqlQueryModel *model=new QSqlQueryModel();
@@ -169,3 +172,114 @@ QSqlQueryModel* subscriptions::read_buyer()
      return model;
 }
 
+//tris
+QSqlQueryModel * subscriptions::sort_id()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+        model->setQuery("select * from SUBSCRIPTIONS order by num_sub");
+        return model;
+}
+QSqlQueryModel * subscriptions::sort_type()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+        model->setQuery("select * from SUBSCRIPTIONS order by upper(type_sub)");
+        return model;
+}
+QSqlQueryModel * subscriptions::sort_price()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+        model->setQuery("select * from SUBSCRIPTIONS order by price_sub");
+        return model;
+}
+
+//recherches
+void subscriptions::cleartable(QTableView *table)
+{
+    QSqlQueryModel *model=new QSqlQueryModel();
+    model->clear();
+    table->setModel(model);
+}
+
+QSqlQueryModel* subscriptions::find_num(int code)
+{
+    QSqlQuery query ;
+       QSqlQueryModel* model=new QSqlQueryModel();
+       query.prepare("select * from SUBSCRIPTIONS where num_sub =:code");
+       query.bindValue(":code",code);
+       query.exec();
+       model->setQuery(query);
+    return model;
+}
+
+QSqlQueryModel* subscriptions::find_type(QString code2)
+{
+    QSqlQuery query ;
+       QSqlQueryModel* model=new QSqlQueryModel();
+    //   QString code22;
+       query.prepare("select * from SUBSCRIPTIONS where type_sub =:code2");
+       query.bindValue(":code2",code2);
+       query.exec();
+       model->setQuery(query);
+    return model;
+}
+
+QSqlQueryModel* subscriptions::find_startDate(QString code3)
+{
+    QSqlQuery query ;
+       QSqlQueryModel* model=new QSqlQueryModel();
+       query.prepare("select * from SUBSCRIPTIONS where s_date =:code3");
+       query.bindValue(":code3",code3);
+       query.exec();
+       model->setQuery(query);
+    return model;
+}
+
+//Recherche avancée
+void subscriptions::findNum(QTableView *table, int x)
+{
+      QSqlQueryModel *model=new QSqlQueryModel();
+      QSqlQuery *query =new QSqlQuery;
+      query->prepare("select * from SUBSCRIPTIONS where regexp_like(num_sub,:num_sub);");
+      query->bindValue(":num_sub",x);
+
+      if(x==0)
+      {
+          query->prepare("select * from SUBSCRIPTIONS;");
+      }
+      query->exec();
+      model->setQuery(*query);
+      table->setModel(model);
+      table->show();
+}
+void subscriptions::findType(QTableView *table, QString x)
+{
+      QSqlQueryModel *model=new QSqlQueryModel();
+      QSqlQuery *query =new QSqlQuery;
+      query->prepare("select * from SUBSCRIPTIONS where regexp_like(type_sub,:type_sub);");
+      query->bindValue(":type_sub",x);
+
+      if(x==0)
+      {
+          query->prepare("select * from SUBSCRIPTIONS;");
+      }
+      query->exec();
+      model->setQuery(*query);
+      table->setModel(model);
+      table->show();
+}
+void subscriptions::findStartDate(QTableView *table, QString x)
+{
+      QSqlQueryModel *model=new QSqlQueryModel();
+      QSqlQuery *query =new QSqlQuery;
+      query->prepare("select * from SUBSCRIPTIONS where regexp_like(s_date,:s_date);");
+      query->bindValue(":s_date",x);
+
+      if(x==0)
+      {
+          query->prepare("select * from SUBSCRIPTIONS;");
+      }
+      query->exec();
+      model->setQuery(*query);
+      table->setModel(model);
+      table->show();
+}

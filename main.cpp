@@ -4,10 +4,24 @@
 #include "subscriptions.h"
 #include <QFile>
 #include <QApplication>
+#include <QtWidgets/QMainWindow>
+#include <QtCharts/QChartView>
+#include <QtCharts/QBarSeries>
+#include <QtCharts/QBarSet>
+#include <QtCharts/QLegend>
+#include <QtCharts/QBarCategoryAxis>
+#include <QtCharts/QHorizontalStackedBarSeries>
+#include <QtCharts/QLineSeries>
+#include <QtCharts/QCategoryAxis>
+#include <QtCharts/QPieSeries>
+#include <QtCharts/QPieSlice>
 
-//CONNEXION
+
+QT_CHARTS_USE_NAMESPACE
+
 int main(int argc, char *argv[])
 {
+    //connection
     QApplication a(argc, argv);
 
     connection c;
@@ -26,6 +40,7 @@ int main(int argc, char *argv[])
                                 "Click Cancel to exit."), QMessageBox::Cancel);
 
 
+//fin connexion
 
     return a.exec();
 }

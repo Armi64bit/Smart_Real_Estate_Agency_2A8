@@ -2,6 +2,8 @@
 #define SUBSCRIPTIONS_H
 #include <QString>
 #include <QSqlQueryModel>
+#include "mainwindow.h"
+#include <QTableView>
 
 class subscriptions
 {
@@ -28,10 +30,20 @@ public:
     bool update(int);
     QSqlQueryModel* read_id();
     QSqlQueryModel* read_buyer();
+    QSqlQueryModel * sort_id();
+    QSqlQueryModel * sort_type();
+    QSqlQueryModel * sort_price();
+    void cleartable(QTableView*);
+    QSqlQueryModel * find_num(int);
+    QSqlQueryModel * find_type(QString);
+    QSqlQueryModel * find_startDate(QString);
+    void findNum(QTableView *table, int x);
+    void findType(QTableView *table, QString x);
+    void findStartDate(QTableView *table, QString x);
 
 private:
-    int num_sub,idBuy;
-    QString type_sub, duration_sub,s_date,e_date;
+    int num_sub,idBuy,code;
+    QString type_sub, duration_sub,s_date,e_date,code2,code3;
     float price_sub;
 
 

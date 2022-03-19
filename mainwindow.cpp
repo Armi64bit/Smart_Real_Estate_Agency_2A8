@@ -12,8 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     subscriptions Sub;
     ui->setupUi(this);
-    ui->le_num_2->setValidator(new QIntValidator(100, 9999, this));
-    ui->le_price->setValidator(new QIntValidator(100, 99999, this));
+    ui->le_num_2->setValidator(new QIntValidator(0, 9999, this));
     ui->tab_subscriptions->setModel(Sub.read());
     ui->comboBox->setModel(Sub.read_id());
     ui->comboBox_2->setModel(Sub.read_buyer());
@@ -21,18 +20,23 @@ MainWindow::MainWindow(QWidget *parent)
     QRegularExpression rx("\\b[1-9 A-Z]+[A-Z 1-9]\\b",
     QRegularExpression::CaseInsensitiveOption);
     ui->le_type->setValidator(new QRegularExpressionValidator(rx, this));
-
+    ui->le_type_modif->setValidator(new QRegularExpressionValidator(rx, this));
     QRegularExpression rx1("\\b[1-9 A-Z]+[A-Z 1-9]\\b",
     QRegularExpression::CaseInsensitiveOption);
     ui->le_durt->setValidator(new QRegularExpressionValidator(rx1, this));
-
+    ui->le_duration_modif->setValidator(new QRegularExpressionValidator(rx1, this));
     QRegularExpression rx2("\\b[0-9]+/[0-9]+/[0-9]+/[0-9]\\b",
     QRegularExpression::CaseInsensitiveOption);
     ui->le_sdate->setValidator(new QRegularExpressionValidator(rx2, this));
-
+    ui->le_sdate_modif->setValidator(new QRegularExpressionValidator(rx2, this));
     QRegularExpression rx3("\\b[0-9]+/[0-9]+/[0-9]+/[0-9]\\b",
     QRegularExpression::CaseInsensitiveOption);
     ui->le_edate->setValidator(new QRegularExpressionValidator(rx3, this));
+    ui->le_edate_modif->setValidator(new QRegularExpressionValidator(rx3, this));
+    QRegularExpression rx4("\\b[0-9]+.+[0-9]\\b",
+    QRegularExpression::CaseInsensitiveOption);
+    ui->le_price->setValidator(new QRegularExpressionValidator(rx4, this));
+    ui->le_price_modif->setValidator(new QRegularExpressionValidator(rx4, this));
 
 }
 
@@ -50,7 +54,7 @@ void MainWindow::on_pb_add_clicked()
     float price_sub=ui->le_price->text().toFloat();
     QString s_date=ui->le_sdate->text();
     QString e_date=ui->le_edate->text();
-int idBuy= ui->comboBox_2->currentText().toInt();
+    int idBuy= ui->comboBox_2->currentText().toInt();
 
     subscriptions Sub(num_sub,type_sub,durat_sub,price_sub,idBuy,s_date,e_date);
     bool tester=Sub.add();
@@ -132,4 +136,101 @@ void MainWindow::on_pd_update_clicked()
                  msgBox.exec();
 }
 
+void MainWindow::on_pb_read_clicked()
+{
+    subscriptions Sub1;
+    ui->tab_subscriptions->setModel(Sub1.read());
+}
 
+//tris
+void MainWindow::on_sortById_clicked()
+{
+    subscriptions Sub1;
+    bool test=Sub1.sort_id();
+    //verif:
+     QMessageBox msgBox;
+    if(test)
+    {
+        msgBox.setText("Successfully sorted.");
+        ui->tab_subscriptions->setModel(Sub1.sort_id());
+    }
+    else
+        msgBox.setText("Failed to sort.");
+    msgBox.exec();
+}
+
+void MainWindow::on_sortByType_clicked()
+{
+    subscriptions Sub1;
+    bool test=Sub1.sort_type();
+    //verif:
+     QMessageBox msgBox;
+    if(test)
+    {
+        msgBox.setText("Successfully sorted.");
+        ui->tab_subscriptions->setModel(Sub1.sort_type());
+    }
+    else
+        msgBox.setText("Failed to sort.");
+    msgBox.exec();
+}
+
+void MainWindow::on_sortByPrice_clicked()
+{
+    subscriptions Sub1;
+    bool test=Sub1.sort_price();
+    //verif:
+     QMessageBox msgBox;
+    if(test)
+    {
+        msgBox.setText("Successfully sorted.");
+        ui->tab_subscriptions->setModel(Sub1.sort_price());
+    }
+    else
+        msgBox.setText("Failed to sort.");
+    msgBox.exec();
+}
+
+void MainWindow::on_numtosearch_textChanged(const QString &arg1)
+{
+    subscriptions Sub1;
+    Sub1.cleartable(ui->tab_subscriptions);
+    int num_sub=ui->numtosearch->text().toInt();
+    Sub1.findNum(ui->tab_subscriptions, num_sub);
+}
+
+void MainWindow::on_typetosearch_textChanged(const QString &arg1)
+{
+    subscriptions Sub1;
+    Sub1.cleartable(ui->tab_subscriptions);
+    QString type_sub=ui->typetosearch->text();
+    Sub1.findType(ui->tab_subscriptions, type_sub);
+}
+
+void MainWindow::on_startdatetosearch_textChanged(const QString &arg1)
+{
+    subscriptions Sub1;
+    Sub1.cleartable(ui->tab_subscriptions);
+    QString s_date_sub=ui->startdatetosearch->text();
+    Sub1.findStartDate(ui->tab_subscriptions, s_date_sub);
+}
+
+void MainWindow::on_searchnum_clicked()
+{
+   /* subscriptions Sub1;
+    int num=ui->numtosearch->text().toInt();
+                         ui->tab_subscriptions->setModel(Sub1.find_num(num));
+                         QMessageBox::information(nullptr,QObject::tr("OK"),
+                                                   QObject::tr("recherche effectue.\n"
+                                                               "clic cancel to exit."),QMessageBox::Cancel);*/
+}
+
+void MainWindow::on_searchType_clicked()
+{
+
+}
+
+void MainWindow::on_searchStartDate_clicked()
+{
+
+}
