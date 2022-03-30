@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 #include "subscriptions.h"
+#include "qcustomplot.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,6 +17,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    void setupPlot();
 
 private slots:
     void on_pb_add_clicked();
@@ -48,11 +51,17 @@ private slots:
 
     void on_pb_read_clicked();
 
-    void on_searchnum_clicked();
 
-    void on_searchType_clicked();
 
-    void on_searchStartDate_clicked();
+    void horzScrollBarChanged(int value);
+      void vertScrollBarChanged(int value);
+      void xAxisChanged(QCPRange range);
+      void yAxisChanged(QCPRange range);
+
+      void on_tabWidget_currentChanged(int index);
+
+      void on_pbExport_clicked();
+
 
 private:
     Ui::MainWindow *ui;

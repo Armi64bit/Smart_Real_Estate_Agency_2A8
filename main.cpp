@@ -15,7 +15,7 @@
 #include <QtCharts/QCategoryAxis>
 #include <QtCharts/QPieSeries>
 #include <QtCharts/QPieSlice>
-
+#include"ihmgraphique.h"
 
 QT_CHARTS_USE_NAMESPACE
 

@@ -1,7 +1,8 @@
 QT       += core gui multimedia multimediawidgets sql location \
     quick
+QT += widgets charts
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quickwidgets network qml
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport #quickwidgets network qml
 TARGET = ProjetQt
 TEMPLATE = app
 
@@ -20,17 +21,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     connection.cpp \
+    exporttoexcelfile.cpp \
     main.cpp \
     mainwindow.cpp \
-    subscriptions.cpp
+    qcustomplot.cpp \
+    subscriptions.cpp \
+    texthistory.cpp
 
 HEADERS += \
     connection.h \
+    exporttoexcelfile.h \
     mainwindow.h \
-    subscriptions.h
+    qcustomplot.h \
+    subscriptions.h \
+    texthistory.h
 
 FORMS += \
     mainwindow.ui
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

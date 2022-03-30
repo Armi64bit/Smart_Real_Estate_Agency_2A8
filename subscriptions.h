@@ -40,8 +40,14 @@ public:
     void findNum(QTableView *table, int x);
     void findType(QTableView *table, QString x);
     void findStartDate(QTableView *table, QString x);
+    float read_price();
+    QString read_sdate();
+void statistique(QVector<double>* ticks,QVector<QString> *labels);
+
+
 
 private:
+
     int num_sub,idBuy,code;
     QString type_sub, duration_sub,s_date,e_date,code2,code3;
     float price_sub;

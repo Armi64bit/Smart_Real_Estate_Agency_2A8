@@ -5,6 +5,10 @@
 #include <QApplication>
 #include <QMessageBox>
 #include <QIntValidator>
+#include "qcustomplot.h"
+#include"exporttoexcelfile.h"
+#include <iostream>
+#include <QProgressBar>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -37,6 +41,8 @@ MainWindow::MainWindow(QWidget *parent)
     QRegularExpression::CaseInsensitiveOption);
     ui->le_price->setValidator(new QRegularExpressionValidator(rx4, this));
     ui->le_price_modif->setValidator(new QRegularExpressionValidator(rx4, this));
+
+
 
 }
 
@@ -215,22 +221,99 @@ void MainWindow::on_startdatetosearch_textChanged(const QString &arg1)
     Sub1.findStartDate(ui->tab_subscriptions, s_date_sub);
 }
 
-void MainWindow::on_searchnum_clicked()
+
+
+void MainWindow::on_tabWidget_currentChanged(int index)
 {
-   /* subscriptions Sub1;
-    int num=ui->numtosearch->text().toInt();
-                         ui->tab_subscriptions->setModel(Sub1.find_num(num));
-                         QMessageBox::information(nullptr,QObject::tr("OK"),
-                                                   QObject::tr("recherche effectue.\n"
-                                                               "clic cancel to exit."),QMessageBox::Cancel);*/
+subscriptions Sub1;
+        // background //
+                  QLinearGradient gradient(0, 0, 0, 400);
+                  gradient.setColorAt(0, QColor(90, 90, 90));
+                  gradient.setColorAt(0.38, QColor(105, 105, 105));
+                  gradient.setColorAt(1, QColor(70, 70, 70));
+                  ui->plot->setBackground(QBrush(gradient));
+
+                  QCPBars *amande = new QCPBars(ui->plot->xAxis, ui->plot->yAxis);
+                  amande->setAntialiased(false);
+                  amande->setStackingGap(1);
+                   //couleurs
+                  amande->setName("Repartition des types selon prix ");
+                  amande->setPen(QPen(QColor(0, 168, 140).lighter(130)));
+                  amande->setBrush(QColor(0, 168, 140));
+
+                   //axe des abscisses
+                  QVector<double> ticks;
+                  QVector<QString> labels;
+                  Sub1.statistique(&ticks,&labels);
+
+                  QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
+                  textTicker->addTicks(ticks, labels);
+                  ui->plot->xAxis->setTicker(textTicker);
+                  ui->plot->xAxis->setTickLabelRotation(60);
+                  ui->plot->xAxis->setSubTicks(false);
+                  ui->plot->xAxis->setTickLength(0, 4);
+                  ui->plot->xAxis->setRange(0, 8);
+                  ui->plot->xAxis->setBasePen(QPen(Qt::white));
+                  ui->plot->xAxis->setTickPen(QPen(Qt::white));
+                  ui->plot->xAxis->grid()->setVisible(true);
+                  ui->plot->xAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+                  ui->plot->xAxis->setTickLabelColor(Qt::white);
+                  ui->plot->xAxis->setLabelColor(Qt::white);
+
+                  // axe des ordonnées
+                  ui->plot->yAxis->setRange(0,500);
+                  ui->plot->yAxis->setPadding(5);
+                  ui->plot->yAxis->setLabel("Statistiques");
+                  ui->plot->yAxis->setBasePen(QPen(Qt::white));
+                  ui->plot->yAxis->setTickPen(QPen(Qt::white));
+                  ui->plot->yAxis->setSubTickPen(QPen(Qt::white));
+                  ui->plot->yAxis->grid()->setSubGridVisible(true);
+                  ui->plot->yAxis->setTickLabelColor(Qt::white);
+                  ui->plot->yAxis->setLabelColor(Qt::white);
+                  ui->plot->yAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::SolidLine));
+                  ui->plot->yAxis->grid()->setSubGridPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
+
+                  // ajout des données  //
+
+                  QVector<double> PlaceData;
+                  //
+
+                  QSqlQuery q1("select SUM(price_sub) from SUBSCRIPTIONS where regexp_like(type_sub,'plumbing');");
+                  while (q1.next()) {
+                                int  nbr_fautee = q1.value(0).toInt();
+                                PlaceData<< nbr_fautee;
+                                QSqlQuery q2("select SUM(price_sub) from SUBSCRIPTIONS where regexp_like(type_sub,'electricity');");
+                                while (q2.next()) {
+                                              int  nbr_fautee = q2.value(0).toInt();
+                                              PlaceData<< nbr_fautee;
+                                              QSqlQuery q3("select SUM(price_sub) from SUBSCRIPTIONS where regexp_like(type_sub,'air conditioning');");
+                                              while (q3.next()) {
+                                                            int  nbr_fautee = q3.value(0).toInt();
+                                                            PlaceData<< nbr_fautee;
+                                                              }
+                                                }
+                                  }
+                  amande->setData(ticks, PlaceData);
+
+                  ui->plot->legend->setVisible(true);
+                  ui->plot->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignTop|Qt::AlignHCenter);
+                  ui->plot->legend->setBrush(QColor(255, 255, 255, 100));
+                  ui->plot->legend->setBorderPen(Qt::NoPen);
+                  QFont legendFont = font();
+                  legendFont.setPointSize(5);
+                  ui->plot->legend->setFont(legendFont);
+                  ui->plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+
+
+
 }
 
-void MainWindow::on_searchType_clicked()
+void MainWindow::on_pbExport_clicked()
 {
 
 }
 
-void MainWindow::on_searchStartDate_clicked()
-{
 
-}
+
+
+

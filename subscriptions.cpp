@@ -6,7 +6,10 @@
 #include <QtDebug>
 #include <QObject>
 #include <QTableView>
+#include <iostream>
+#include <fstream>
 
+using namespace std;
 subscriptions::subscriptions()
 {
     num_sub=0;
@@ -283,3 +286,40 @@ void subscriptions::findStartDate(QTableView *table, QString x)
       table->setModel(model);
       table->show();
 }
+
+float subscriptions::read_price()
+{
+    float x;
+     QSqlQueryModel *model=new QSqlQueryModel();
+     QSqlQuery *query =new QSqlQuery;
+     query->prepare("select price_sub from SUBSCRIPTIONS where (num_sub=45) ;");
+     query->bindValue(":price_sub",x);
+     return x;
+}
+
+QString subscriptions::read_sdate()
+{
+    QString x;
+     QSqlQueryModel *model=new QSqlQueryModel();
+     QSqlQuery *query =new QSqlQuery;
+     query->prepare("select s_date from SUBSCRIPTIONS where num_sub=5) ;");
+     query->bindValue(":s_date",x);
+     return x;
+
+}
+
+void subscriptions::statistique(QVector<double>* ticks,QVector<QString> *labels)
+{
+    QSqlQuery q;
+    int i=0;
+    q.exec("SELECT upper(type_sub) FROM subscriptions group BY upper(type_sub) order by (upper(type_sub)) asc;");
+    while (q.next())
+    {
+        QString identifiant = q.value(0).toString();
+        i++;
+        *ticks<<i;
+        *labels <<identifiant;
+    }
+}
+
+
