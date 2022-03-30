@@ -76,6 +76,34 @@ private slots:
 
     void on_update_2_clicked();
 
+    void on_tab_produit_clicked(const QModelIndex &index);
+
+    void on_pushButton_5_clicked();
+
+    void on_tab_produit_doubleClicked(const QModelIndex &index);
+
+    void on_tab_produit_activated(const QModelIndex &index);
+
+    void on_comboBox_currentIndexChanged(int index);
+
+    void on_idbox_currentIndexChanged(int index);
+
+    void on_tri_stock_clicked();
+
+    void on_rechercher_2_clicked();
+
+    void on_rechercher_5_clicked();
+
+    void on_trier_clicked();
+
+    void on_trier_2_clicked();
+
+    void on_rechercher_3_clicked();
+
+    void on_chercher_3_textChanged(const QString &arg1);
+
+    void on_chercher_2_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
     PARTNERS p;

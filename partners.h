@@ -3,6 +3,7 @@
 #include <QSqlQuery>
 #include <QSqlQueryModel>
 #include <QString>
+#include <Qtableview.h>
 
 
 class PARTNERS
@@ -14,6 +15,13 @@ private:
 public:
     PARTNERS();
     PARTNERS(int,int,QString,QString,QString,QString);
+    QSqlQueryModel * sort_name_ag();
+QSqlQueryModel * sort_id();
+QSqlQueryModel * sort_lg();
+void rechercher_name(QTableView *table, QString x);
+void rechercher_id(QTableView *table, int x);
+
+void cleartable(QTableView * table );
 
     //getters
     QString getname(){return  NAME_PAR;}
@@ -37,10 +45,12 @@ public:
     QSqlQueryModel * display();
     bool del(int);
 QSqlQueryModel*  read_id();
-QSqlQueryModel * read1();
+QSqlQueryModel * read1(int);
 bool dell(int);
 QSqlQueryModel * read();
 bool update(int );
+QSqlQueryModel * sort_name();
+void rechercher(QTableView *table, int x);
 
 };
 

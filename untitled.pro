@@ -36,4 +36,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     396542.jpg \
-    Toolery.qss
+    Incrypt.qss
