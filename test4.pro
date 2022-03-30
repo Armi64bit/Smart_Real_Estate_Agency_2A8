@@ -20,15 +20,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     agent.cpp \
     connection.cpp \
+    login.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     agent.h \
     connection.h \
+    login.h \
     mainwindow.h
 
 FORMS += \
+    login.ui \
     mainwindow.ui
 
 # Default rules for deployment.

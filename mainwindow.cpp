@@ -3,7 +3,7 @@
 #include<QMessageBox>
 #include <QtSql/QSqlQuery>
 #include"agent.h"
-
+#include "login.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -60,7 +60,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-     ui->stackedWidget->setCurrentIndex(1);
+     ui->stackedWidget->setCurrentIndex(2);
 
 
 }
@@ -71,29 +71,29 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_4_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(3);
 
 }
 
 void MainWindow::on_pushButton_8_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(3);
+    ui->stackedWidget->setCurrentIndex(4);
 
 }
 
 void MainWindow::on_pushButton_11_clicked()
 {
-     ui->stackedWidget->setCurrentIndex(0);
+     ui->stackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::on_pushButton_12_clicked()
 {
-      ui->stackedWidget->setCurrentIndex(0);
+      ui->stackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::on_pushButton_13_clicked()
 {
-      ui->stackedWidget->setCurrentIndex(0);
+      ui->stackedWidget->setCurrentIndex(1);
 }
 
 
@@ -240,7 +240,8 @@ void MainWindow::on_comboBox_currentIndexChanged(int id)
 // supp2
 void MainWindow::on_pushButton_7_clicked()
 {
-    agent a ;
+    ui->stackedWidget->setCurrentIndex(1);
+    /*agent a ;
         int cin_ag=ui->lineEdit_cin_3->text().toInt();
 
      if( a.supprimer(cin_ag)) {
@@ -254,7 +255,7 @@ void MainWindow::on_pushButton_7_clicked()
             {ui->tabagent->setModel(a.afficher());
         QMessageBox::critical(nullptr,QObject::tr("NOT OK"),
                                    QObject::tr("delete not done .\n"
-                                               "clic cancel to exit."),QMessageBox::Cancel);}
+                                               "clic cancel to exit."),QMessageBox::Cancel);}*/
 }
 // tri cin
 
@@ -299,4 +300,25 @@ void MainWindow::on_lineEdit_cherche_cin_textChanged(const QString &arg1)
     a.cleartable(ui->tabagent);
     int  cin_ag=ui->lineEdit_cherche_cin->text().toUInt();
     a.rechercher_cin(ui->tabagent,cin_ag);
+}
+
+
+void MainWindow::on_pushButton_connect_clicked()
+{
+   login login2 ;
+   login2.setModal(true);
+    login2.exec();
+
+}
+
+void MainWindow::on_pushButton_9_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButton_10_clicked()
+{ this->close();
+    login login2;
+    login2.setModal(true);
+    login2.exec();
 }

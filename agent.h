@@ -49,8 +49,9 @@ public:
  void cleartable(QTableView * table );
  void rechercher_name(QTableView *table, QString x);
   void rechercher_cin(QTableView *table, int  x);
+  QString login_ag,password_ag;
   private:
-   QString lastname_ag,name_ag,mail_ag,adress_ag,function_ag,login_ag,password_ag;
+   QString lastname_ag,name_ag,mail_ag,adress_ag,function_ag;
    int cin_ag,num_ag;
 
 

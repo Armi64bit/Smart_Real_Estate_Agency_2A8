@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 #include <agent.h>
 #include <QMainWindow>
+#include "login.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,6 +15,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
 
 private slots:
     void on_stackedWidget_currentChanged(int arg1);
@@ -56,8 +58,14 @@ private slots:
 
     void on_lineEdit_cherche_cin_textChanged(const QString &arg1);
 
+    void on_pushButton_connect_clicked();
+
+    void on_pushButton_9_clicked();
+
+    void on_pushButton_10_clicked();
+
 private:
-    Ui::MainWindow *ui;
+ Ui::MainWindow *ui;
     agent a;
 };
 #endif // MAINWINDOW_H

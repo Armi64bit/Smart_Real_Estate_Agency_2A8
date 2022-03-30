@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.11.0, 2022-03-18T22:09:43. -->
+<!-- Written by QtCreator 4.11.0, 2022-03-26T22:14:35. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -287,8 +287,9 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:Z:/qt projet/projet/test4/test4/test4.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">Z:/qt projet/projet/test4/test4/test4.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">test42</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:Z:/qt projet/projet/agnet/test4/test4.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">Z:/qt projet/projet/agnet/test4/test4.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
