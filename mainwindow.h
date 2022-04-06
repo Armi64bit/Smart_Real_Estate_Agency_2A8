@@ -112,6 +112,14 @@ private slots:
 
     void on_tri_stock_5_clicked();
 
+    void on_ig_clicked();
+
+    void on_fb_clicked();
+
+    void on_linkedin_clicked();
+
+    void on_mail_clicked();
+
 private:
     Ui::MainWindow *ui;
     PARTNERS p;

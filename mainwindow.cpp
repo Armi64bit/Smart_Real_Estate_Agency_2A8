@@ -11,6 +11,7 @@
 #include <QDesktopServices>
 #include "excel.h"
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -420,13 +421,13 @@ void MainWindow::on_tri_stock_2_clicked()
     int i = 4000;
 
                            painter.setPen(Qt::black);
-                         painter.setFont(QFont("Arial", 30));
+                         painter.setFont(QFont("Roboto", 30));
                          painter.drawPixmap(QRect(100,400,2000,2000),QPixmap("C:/Users/GHOFRANE/Desktop/Sellers/logo.png"));
                          painter.drawText(3000,1500,"Contract");
 
 
                          painter.setPen(Qt::darkBlue);
-                                             painter.setFont(QFont("Arial", 13));
+                                             painter.setFont(QFont("Roboto", 13));
                                              painter.drawText(300,2300,"Between The Undersigned:");
 
                                                                                       QSqlQuery query;
@@ -443,7 +444,7 @@ void MainWindow::on_tri_stock_2_clicked()
                                                                                                           while (query.next())
                                                                                                           {
                                                                                                               painter.setPen(Qt::black);
-                                                                                                              painter.setFont(QFont("Arial", 11));
+                                                                                                              painter.setFont(QFont("Roboto", 11));
 
                                                                                                               painter.drawText(3000,2300,query.value(1).toString());
 
@@ -454,7 +455,7 @@ void MainWindow::on_tri_stock_2_clicked()
                                                                                                           while (query.next())
                                                                                                           {
                                                                                                               painter.setPen(Qt::black);
-                                                                                                              painter.setFont(QFont("Arial", 11));
+                                                                                                              painter.setFont(QFont("Roboto", 11));
 
                                                                                                               painter.drawText(6900,2300,query.value(2).toString());
 
@@ -464,7 +465,7 @@ void MainWindow::on_tri_stock_2_clicked()
                                                                                                           painter.drawText(300,3400, "EMPLOYEE REPRESENTATIONS AND WARRANTIES:");
 
                                                                                                           painter.setPen(Qt::black);
-                                                                                                                              painter.setFont(QFont("Arial", 13));
+                                                                                                                              painter.setFont(QFont("Roboto", 13));
                                                                                                                               painter.drawText(300,3700,"There is no employment contract or any other contractual obligation to which ");
                                                                                                                               painter.drawText(300,4000,"the Employee is subject, which prevents the Employee from entering into this ");
 painter.drawText(300,4300, "Contract or from performing fully the Employee's duties under this Contract.");
@@ -508,11 +509,11 @@ painter.drawText(300,10300, "presentation of receipts of such expenses.");
 
 
                                                                                                           painter.setPen(Qt::black);
-                                                                                                                              painter.setFont(QFont("Arial", 15));
+                                                                                                                              painter.setFont(QFont("Roboto", 15));
                                                                                                                               painter.drawText(300,12000,"Partner's Signature");
 
                                                                                                                               painter.setPen(Qt::black);
-                                                                                                                              painter.setFont(QFont("Arial", 15));
+                                                                                                                              painter.setFont(QFont("Roboto", 15));
                                                                                                                               painter.drawText(6800,12000,"Adminstration's Signature");
 
 
@@ -568,13 +569,13 @@ void MainWindow::on_tri_stock_4_clicked()
     int i = 4000;
 
                            painter.setPen(Qt::black);
-                         painter.setFont(QFont("Arial", 30));
+                         painter.setFont(QFont("Roboto", 30));
                          painter.drawPixmap(QRect(100,400,2000,2000),QPixmap("C:/Users/GHOFRANE/Desktop/Sellers/logo.png"));
                          painter.drawText(3000,1500,"Contrat");
 
 
                          painter.setPen(Qt::darkBlue);
-                                             painter.setFont(QFont("Arial", 13));
+                                             painter.setFont(QFont("Roboto", 13));
                                              painter.drawText(300,2300,"Entre les soussignés :");
 
                                                                                       QSqlQuery query;
@@ -591,7 +592,7 @@ void MainWindow::on_tri_stock_4_clicked()
                                                                                                           while (query.next())
                                                                                                           {
                                                                                                               painter.setPen(Qt::black);
-                                                                                                              painter.setFont(QFont("Arial", 11));
+                                                                                                              painter.setFont(QFont("Roboto", 11));
 
                                                                                                               painter.drawText(3000,2300,query.value(1).toString());
 
@@ -602,7 +603,7 @@ void MainWindow::on_tri_stock_4_clicked()
                                                                                                           while (query.next())
                                                                                                           {
                                                                                                               painter.setPen(Qt::black);
-                                                                                                              painter.setFont(QFont("Arial", 11));
+                                                                                                              painter.setFont(QFont("Roboto", 11));
 
                                                                                                               painter.drawText(6900,2300,query.value(2).toString());
 
@@ -612,7 +613,7 @@ void MainWindow::on_tri_stock_4_clicked()
                                                                                                           painter.drawText(300,3400, "DÉCLARATIONS ET GARANTIES DES EMPLOYÉS :");
 
                                                                                                           painter.setPen(Qt::black);
-                                                                                                                              painter.setFont(QFont("Arial", 13));
+                                                                                                                              painter.setFont(QFont("Roboto", 13));
                                                                                                                               painter.drawText(300,3700,"Il n’y a pas de contrat de travail ou d’autre obligation contractuelle à laquelle");
                                                                                                                               painter.drawText(300,4000,"l’Employé est sujet, ce qui empêche l’Employé d’entrer dans ce ");
 painter.drawText(300,4300, "Contrat ou de l’exécution complète des obligations de l’employé en vertu du présent contrat.");
@@ -656,11 +657,11 @@ painter.drawText(300,10300, "la présentation des recettes de ces dépenses.");
 
 
                                                                                                           painter.setPen(Qt::black);
-                                                                                                                              painter.setFont(QFont("Arial", 15));
+                                                                                                                              painter.setFont(QFont("Roboto", 15));
                                                                                                                               painter.drawText(300,12000,"Signature du partenaire");
 
                                                                                                                               painter.setPen(Qt::black);
-                                                                                                                              painter.setFont(QFont("Arial", 15));
+                                                                                                                              painter.setFont(QFont("Roboto", 15));
                                                                                                                               painter.drawText(6500,12000,"Signature de l’administration");
 
 
@@ -688,13 +689,13 @@ void MainWindow::on_tri_stock_5_clicked()
     int i = 4000;
 
                            painter.setPen(Qt::black);
-                         painter.setFont(QFont("Arial", 30));
+                         painter.setFont(QFont("Roboto", 30));
                          painter.drawPixmap(QRect(100,400,2000,2000),QPixmap("C:/Users/GHOFRANE/Desktop/Sellers/logo.png"));
                          painter.drawText(3000,1500,"Contrato");
 
 
                          painter.setPen(Qt::darkBlue);
-                                             painter.setFont(QFont("Arial", 13));
+                                             painter.setFont(QFont("Roboto", 13));
                                              painter.drawText(300,2300,"Entre los abajo firmantes:");
 
                                                                                       QSqlQuery query;
@@ -711,7 +712,7 @@ void MainWindow::on_tri_stock_5_clicked()
                                                                                                           while (query.next())
                                                                                                           {
                                                                                                               painter.setPen(Qt::black);
-                                                                                                              painter.setFont(QFont("Arial", 11));
+                                                                                                              painter.setFont(QFont("Roboto", 11));
 
                                                                                                               painter.drawText(3000,2300,query.value(1).toString());
 
@@ -722,7 +723,7 @@ void MainWindow::on_tri_stock_5_clicked()
                                                                                                           while (query.next())
                                                                                                           {
                                                                                                               painter.setPen(Qt::black);
-                                                                                                              painter.setFont(QFont("Arial", 11));
+                                                                                                              painter.setFont(QFont("Roboto", 11));
 
                                                                                                               painter.drawText(6900,2300,query.value(2).toString());
 
@@ -732,7 +733,7 @@ void MainWindow::on_tri_stock_5_clicked()
                                                                                                           painter.drawText(300,3400, "REPRESENTACIONES Y GARANTÍAS DE LOS EMPLEADOS:");
 
                                                                                                           painter.setPen(Qt::black);
-                                                                                                                              painter.setFont(QFont("Arial", 13));
+                                                                                                                              painter.setFont(QFont("Roboto", 13));
                                                                                                                               painter.drawText(300,3700,"No existe ningún contrato de trabajo ni ninguna otra obligación contractual a la que ");
                                                                                                                               painter.drawText(300,4000,"el Empleado está sujeto, lo que impide que el Empleado entre en esto ");
 painter.drawText(300,4300, "Contrato o del cumplimiento completo de las obligaciones del Empleado en virtud de este Contrato.");
@@ -776,11 +777,11 @@ painter.drawText(300,10400, "presentación de recibos de dichos gastos.");
 
 
                                                                                                           painter.setPen(Qt::black);
-                                                                                                                              painter.setFont(QFont("Arial", 15));
+                                                                                                                              painter.setFont(QFont("Roboto", 15));
                                                                                                                               painter.drawText(300,12000,"Firma del socio");
 
                                                                                                                               painter.setPen(Qt::black);
-                                                                                                                              painter.setFont(QFont("Arial", 15));
+                                                                                                                              painter.setFont(QFont("Roboto", 15));
                                                                                                                               painter.drawText(6800,12000,"Firma de la administración");
 
 
@@ -794,4 +795,23 @@ painter.drawText(300,10400, "presentación de recibos de dichos gastos.");
     {
         painter.end();
     }
+}
+
+void MainWindow::on_ig_clicked()
+{
+     QDesktopServices::openUrl(QUrl("https://www.instagram.com/armiisnotred/", QUrl::TolerantMode));
+
+
+
+}
+
+void MainWindow::on_fb_clicked()
+{
+        QDesktopServices::openUrl(QUrl("https://www.facebook.com", QUrl::TolerantMode));
+}
+
+void MainWindow::on_linkedin_clicked()
+{
+     QDesktopServices::openUrl(QUrl("https://www.linkedin.com", QUrl::TolerantMode));
+
 }

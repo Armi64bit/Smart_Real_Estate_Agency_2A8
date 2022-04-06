@@ -104,7 +104,9 @@ public:
     QPushButton *ig;
     QPushButton *fb;
     QPushButton *linkedin;
-    QPushButton *mail;
+    QLabel *label_20;
+    QLabel *label_24;
+    QLabel *label_27;
     QWidget *page_5;
     QLabel *label_4;
     QPushButton *pushButton_12;
@@ -908,7 +910,7 @@ public:
         tab_3->setObjectName(QStringLiteral("tab_3"));
         ig = new QPushButton(tab_3);
         ig->setObjectName(QStringLiteral("ig"));
-        ig->setGeometry(QRect(50, 230, 181, 71));
+        ig->setGeometry(QRect(40, 350, 181, 71));
         ig->setStyleSheet(QLatin1String("QPushButton\n"
 "{background-color: rgb(200,133,0);\n"
 "color : white;\n"
@@ -924,7 +926,7 @@ public:
 "}"));
         fb = new QPushButton(tab_3);
         fb->setObjectName(QStringLiteral("fb"));
-        fb->setGeometry(QRect(280, 230, 181, 71));
+        fb->setGeometry(QRect(280, 350, 181, 71));
         fb->setStyleSheet(QLatin1String("QPushButton\n"
 "{background-color: rgb(200,133,0);\n"
 "color : white;\n"
@@ -940,7 +942,7 @@ public:
 "}"));
         linkedin = new QPushButton(tab_3);
         linkedin->setObjectName(QStringLiteral("linkedin"));
-        linkedin->setGeometry(QRect(500, 230, 181, 71));
+        linkedin->setGeometry(QRect(520, 350, 181, 71));
         linkedin->setStyleSheet(QLatin1String("QPushButton\n"
 "{background-color: rgb(200,133,0);\n"
 "color : white;\n"
@@ -954,22 +956,21 @@ public:
 "border: 2px solid rgb(200,146,0);\n"
 "background-color : rgb(200,149,47);\n"
 "}"));
-        mail = new QPushButton(tab_3);
-        mail->setObjectName(QStringLiteral("mail"));
-        mail->setGeometry(QRect(270, 90, 181, 71));
-        mail->setStyleSheet(QLatin1String("QPushButton\n"
-"{background-color: rgb(200,133,0);\n"
-"color : white;\n"
-"font: 10pt Arial;\n"
-"            border-radius: 4px;\n"
-"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
-"border: 2px solid rgb(200,133,0);\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"border: 2px solid rgb(200,146,0);\n"
-"background-color : rgb(200,149,47);\n"
-"}"));
+        label_20 = new QLabel(tab_3);
+        label_20->setObjectName(QStringLiteral("label_20"));
+        label_20->setGeometry(QRect(30, 110, 211, 211));
+        label_20->setPixmap(QPixmap(QString::fromUtf8("ig.png")));
+        label_20->setScaledContents(true);
+        label_24 = new QLabel(tab_3);
+        label_24->setObjectName(QStringLiteral("label_24"));
+        label_24->setGeometry(QRect(270, 110, 211, 211));
+        label_24->setPixmap(QPixmap(QString::fromUtf8("fb.png")));
+        label_24->setScaledContents(true);
+        label_27 = new QLabel(tab_3);
+        label_27->setObjectName(QStringLiteral("label_27"));
+        label_27->setGeometry(QRect(520, 120, 191, 191));
+        label_27->setPixmap(QPixmap(QString::fromUtf8("linkedin.png")));
+        label_27->setScaledContents(true);
         tabWidget->addTab(tab_3, QString());
         stackedWidget_2->addWidget(page_4);
         page_5 = new QWidget();
@@ -1372,7 +1373,9 @@ public:
         ig->setText(QApplication::translate("MainWindow", "ig", Q_NULLPTR));
         fb->setText(QApplication::translate("MainWindow", "fb", Q_NULLPTR));
         linkedin->setText(QApplication::translate("MainWindow", "linkedin", Q_NULLPTR));
-        mail->setText(QApplication::translate("MainWindow", "mail", Q_NULLPTR));
+        label_20->setText(QString());
+        label_24->setText(QString());
+        label_27->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("MainWindow", "media", Q_NULLPTR));
         label_4->setText(QApplication::translate("MainWindow", "Partners", Q_NULLPTR));
         pushButton_12->setText(QApplication::translate("MainWindow", "Logout", Q_NULLPTR));
