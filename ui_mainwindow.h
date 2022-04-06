@@ -174,6 +174,9 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(972, 646);
+        QIcon icon;
+        icon.addFile(QStringLiteral("logo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        MainWindow->setWindowIcon(icon);
         MainWindow->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
@@ -1306,7 +1309,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(1);
         stackedWidget_2->setCurrentIndex(0);
         tabWidget->setCurrentIndex(2);
         stackedWidget_3->setCurrentIndex(0);
