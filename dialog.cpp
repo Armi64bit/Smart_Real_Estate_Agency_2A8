@@ -16,5 +16,5 @@ void Dialog::setProperty(Property P)
 {
     ui->lineEdit_ID->setText(P.get_ID());
     ui->lineEdit_type_prop->setText(P.get_Type());
-    ui->lineEdit_price_prop->setText(P.get_Price());
+
 }

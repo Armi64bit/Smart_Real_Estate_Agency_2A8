@@ -1,4 +1,6 @@
 #include "property.h"
+#include <QPushButton>
+
 #include <QMessageBox>
 #include <QtSql>
 Property::Property()
@@ -10,7 +12,7 @@ longitude=0;
 latitude=0;
 
 }
-Property::Property(QString ID,QString type,QVariant longitude,QVariant latitude,QString Price,QVariant ID_BUY,QVariant ID_SEL)
+Property::Property(QString ID,QString type,QVariant longitude,QVariant latitude,QVariant Price,QVariant ID_BUY,QVariant ID_SEL,QString Video,QString Description)
 {
     this->ID=ID;
     this->Type=type;
@@ -20,18 +22,28 @@ Property::Property(QString ID,QString type,QVariant longitude,QVariant latitude,
     this->Price=Price;
     this->ID_BUY=ID_BUY;
     this->ID_SEL=ID_SEL;
+    this->Video=Video ;
+    this->Description=Description;
 }
 void Property::setID(QString n){ID=n;}
 void Property::setType(QString n){Type=n;}
-void Property::setPrice(QString n){Price=n;}
+void Property::setPrice(QVariant n){Price=n;}
 void Property::setDescription(QString n){Price=n;}
 void Property::setLng(QVariant n){longitude=n;}
 void Property::setLat(QVariant n){latitude=n;}
 bool Property::addProperty(Property P)
 {
 
+
      QSqlQuery query;
-     query.prepare("INSERT INTO PROPERTIES (ID_PROP,TYPE_PROP,LOCALISATION_LNG,LOCALISATION_LAT,PRICE_PROP,ID_BUY,ID_SEL) VALUES (?,?,?,?,?,?,?)");
+     QString map="map";
+      qDebug()<<"not added";
+
+
+
+
+
+     query.prepare("INSERT INTO PROPERTIES (ID_PROP,TYPE_PROP,LOCALISATION_LNG,LOCALISATION_LAT,PRICE_PROP,ID_BUY,ID_SEL,MAP,VIDEO,DESCRIPTION) VALUES (?,?,?,?,?,?,?,?,?,?)");
      query.addBindValue(P.ID);
      query.addBindValue(P.Type);
     // query.addBindValue(Description);
@@ -41,6 +53,10 @@ bool Property::addProperty(Property P)
        query.addBindValue(P.Price);
       query.addBindValue(P.ID_BUY);
       query.addBindValue(P.ID_SEL);
+      query.addBindValue(map);
+      query.addBindValue(P.Video);
+      query.addBindValue(P.Description);
+
      if(!query.exec())
      {
          qDebug()<<"not added";
@@ -72,6 +88,8 @@ QSqlQueryModel * Property::read()
          model->setHeaderData(4,Qt::Horizontal,QObject::tr("PRICE_PROP"));
          model->setHeaderData(5,Qt::Horizontal,QObject::tr("ID_BUY"));
          model->setHeaderData(6,Qt::Horizontal,QObject::tr("ID_SEL"));
+          model->setHeaderData(7,Qt::Horizontal,QObject::tr("Map localisation"));
+           model->setHeaderData(8,Qt::Horizontal,QObject::tr("Video"));
 
 return model;
 }
@@ -97,6 +115,57 @@ bool Property::delete_Property(int id_prop)
 return query.exec();
 
 }
+
+//////////////////tri et recherche
+ QSqlQueryModel * Property::sort_ID(){
+QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("select * from PROPERTIES order by ID_PROP");
+    return model;
+}
+QSqlQueryModel * Property::sort_type(){
+    QSqlQueryModel * model= new QSqlQueryModel();
+        model->setQuery("select * from PROPERTIES order by lower(TYPE_PROP) ");
+        return model;
+}
+
+QSqlQueryModel * Property::sort_Price(){
+    QSqlQueryModel * model= new QSqlQueryModel();
+        model->setQuery("select * from PROPERTIES ORDER BY PRICE_PROP ASC");
+        return model;
+}
+///recherche
+QSqlQueryModel * Property::find_id(int code)
+{
+    QSqlQuery query ;
+    QSqlQueryModel* model=new QSqlQueryModel();
+   query.prepare("select * from PROPERTIES where ID_PROP =:code");
+    query.bindValue(":code",code);
+    query.exec();
+    model->setQuery(query);
+return model;
+}
+QSqlQueryModel * Property::find_type(QString code)
+{
+    QSqlQuery query ;
+    QSqlQueryModel* model=new QSqlQueryModel();
+   query.prepare("select * from PROPERTIES where TYPE_PROP =:code");
+    query.bindValue(":code",code);
+    query.exec();
+    model->setQuery(query);
+return model;
+}
+QSqlQueryModel * Property::find_price(int code)
+{
+    QSqlQuery query ;
+    QSqlQueryModel* model=new QSqlQueryModel();
+   query.prepare("select * from PROPERTIES where PRICE_PROP =:code");
+    query.bindValue(":code",code);
+    query.exec();
+    model->setQuery(query);
+return model;
+}
+
+
 QString Property::get_ID(){return ID;}
-QString Property::get_Price(){return Price;}
+QVariant Property::get_Price(){return Price;}
 QString Property::get_Type(){return Type ;}

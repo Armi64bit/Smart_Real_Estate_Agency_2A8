@@ -1,4 +1,4 @@
-QT       += core gui multimedia multimediawidgets sql location \
+QT       += core gui multimedia multimediawidgets sql location serialport \
     quick
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quickwidgets network qml
@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    arduino.cpp \
     dialog.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -25,6 +26,7 @@ SOURCES += \
     video.cpp
 
 HEADERS += \
+    arduino.h \
     dialog.h \
     mainwindow.h \
     map.h \
@@ -34,8 +36,7 @@ HEADERS += \
 FORMS += \
     dialog.ui \
     mainwindow.ui \
-    map.ui \
-    video.ui
+    map.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

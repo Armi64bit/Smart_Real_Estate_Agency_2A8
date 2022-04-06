@@ -15,18 +15,33 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_video
 {
 public:
+    QAction *actionPlay;
+    QPushButton *pushButton;
 
     void setupUi(QDialog *video)
     {
         if (video->objectName().isEmpty())
             video->setObjectName(QStringLiteral("video"));
-        video->resize(400, 300);
+        video->resize(658, 467);
+        actionPlay = new QAction(video);
+        actionPlay->setObjectName(QStringLiteral("actionPlay"));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/new/prefix1/audio_02.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        actionPlay->setIcon(icon);
+        pushButton = new QPushButton(video);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(340, 200, 75, 23));
+        pushButton->setStyleSheet(QLatin1String("QPushButton\n"
+"{\n"
+"url(:/new/prefix1/audio_02.jpg)\n"
+"}"));
 
         retranslateUi(video);
 
@@ -36,6 +51,8 @@ public:
     void retranslateUi(QDialog *video)
     {
         video->setWindowTitle(QApplication::translate("video", "Dialog", Q_NULLPTR));
+        actionPlay->setText(QApplication::translate("video", "Play", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("video", "PushButton", Q_NULLPTR));
     } // retranslateUi
 
 };

@@ -25,7 +25,7 @@ Window {
         anchors.fill: parent
         plugin: mapPlugin
         center: QtPositioning.coordinate(lat,lng)
-        zoomLevel: 14
+        zoomLevel: 15
         Component.onCompleted:addMarker(lat,lng)
     }
 

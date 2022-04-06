@@ -12,27 +12,34 @@ class Property
 public:
     void setID(QString n);
     void setType(QString n);
-    void setPrice(QString n);
+    void setPrice(QVariant n);
     void setDescription(QString n);
     void setLng(QVariant lng);
     void setLat(QVariant lat);
     QString get_ID();
     QString get_Type();
-    QString get_Price();
+    QVariant get_Price();
     QVariant get_longitude();
     QVariant get_latitude();
 
     Property();
-    Property(QString ID,QString Type,QVariant longitude,QVariant latitude,QString Price,QVariant ID_BUY,QVariant ID_SEL);
+    Property(QString ID,QString Type,QVariant longitude,QVariant latitude,QVariant Price,QVariant ID_BUY,QVariant ID_SEL,QString Video,QString Description);
     bool addProperty(Property P);
     bool delete_Property(int id_prop);
     bool update(Property P);
     QSqlQueryModel * read();
  QSqlQueryModel * read_buyer();
  QSqlQueryModel * read_seller();
+ QSqlQueryModel * sort_type();
+ QSqlQueryModel * find_id(int code);
+ QSqlQueryModel * sort_ID();
+     QSqlQueryModel * sort_Price();
+     QSqlQueryModel * find_type(QString code);
+     QSqlQueryModel * find_price(int code);
+
 private:
-    QString ID,Type,Price,Description;
-    QVariant longitude,latitude,ID_BUY,ID_SEL;
+    QString ID,Type,Description,Video;
+    QVariant longitude,latitude,ID_BUY,ID_SEL,Price;
 };
 
 #endif // PROPERTY_H

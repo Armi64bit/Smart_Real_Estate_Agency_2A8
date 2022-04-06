@@ -210,6 +210,7 @@ Makefile: AppQt.pro C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/win32-g++/qmake.conf 
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/qt_config.prf \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/win32-g++/qmake.conf \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/exclusive_builds.prf \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/toolchain.prf \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/default_pre.prf \
@@ -245,6 +246,7 @@ Makefile: AppQt.pro C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/win32-g++/qmake.conf 
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Network.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Sql.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Positioning.prl \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5SerialPort.prl \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -o Makefile AppQt.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -396,6 +398,7 @@ C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/qt_functions.prf:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/qt_config.prf:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/win32-g++/qmake.conf:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/exclusive_builds.prf:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/toolchain.prf:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/features/default_pre.prf:
@@ -431,6 +434,7 @@ C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Qml.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Network.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Sql.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Positioning.prl:
+C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5SerialPort.prl:
 C:/Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile AppQt.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
