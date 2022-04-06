@@ -17,12 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     connection.cpp \
+    excel.cpp \
     main.cpp \
     mainwindow.cpp \
     partners.cpp
 
 HEADERS += \
     connection.h \
+    excel.h \
     mainwindow.h \
     partners.h
 

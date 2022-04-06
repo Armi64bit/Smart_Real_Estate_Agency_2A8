@@ -96,10 +96,15 @@ public:
     QLineEdit *subnum_up;
     QLabel *label_32;
     QComboBox *idbox;
+    QPushButton *tri_stock_2;
+    QPushButton *tri_stock_3;
+    QPushButton *tri_stock_4;
+    QPushButton *tri_stock_5;
     QWidget *tab_3;
-    QTableView *search_view;
-    QPushButton *rechercher_5;
-    QLineEdit *search_id;
+    QPushButton *ig;
+    QPushButton *fb;
+    QPushButton *linkedin;
+    QPushButton *mail;
     QWidget *page_5;
     QLabel *label_4;
     QPushButton *pushButton_12;
@@ -251,7 +256,7 @@ public:
         label_10->setObjectName(QStringLiteral("label_10"));
         label_10->setGeometry(QRect(360, 160, 401, 281));
         label_10->setStyleSheet(QStringLiteral("background{rgb(57, 255, 156)}"));
-        label_10->setPixmap(QPixmap(QString::fromUtf8("../../../../script/QT/logo.png")));
+        label_10->setPixmap(QPixmap(QString::fromUtf8("../QT/logo.png")));
         label_10->setScaledContents(true);
         graphicsView_2 = new QGraphicsView(page_2);
         graphicsView_2->setObjectName(QStringLiteral("graphicsView_2"));
@@ -429,7 +434,7 @@ public:
         label_18->setObjectName(QStringLiteral("label_18"));
         label_18->setGeometry(QRect(10, -20, 671, 411));
         label_18->setTextFormat(Qt::PlainText);
-        label_18->setPixmap(QPixmap(QString::fromUtf8("../../../../Downloads/246926994_587057979173736_3602103953791256294_n.png")));
+        label_18->setPixmap(QPixmap(QString::fromUtf8("../../Downloads/246926994_587057979173736_3602103953791256294_n.png")));
         add = new QPushButton(tab);
         add->setObjectName(QStringLiteral("add"));
         add->setGeometry(QRect(400, 260, 80, 41));
@@ -802,6 +807,70 @@ public:
         idbox->setStyleSheet(QLatin1String("color: rgb(255, 255, 255);\n"
 "  selection-background-color: #D0D0D0;\n"
 "  selection-color: #000000;"));
+        tri_stock_2 = new QPushButton(tab_2);
+        tri_stock_2->setObjectName(QStringLiteral("tri_stock_2"));
+        tri_stock_2->setGeometry(QRect(30, 360, 61, 28));
+        tri_stock_2->setStyleSheet(QLatin1String("QPushButton\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
+        tri_stock_3 = new QPushButton(tab_2);
+        tri_stock_3->setObjectName(QStringLiteral("tri_stock_3"));
+        tri_stock_3->setGeometry(QRect(380, 420, 71, 28));
+        tri_stock_3->setStyleSheet(QLatin1String("QPushButton\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
+        tri_stock_4 = new QPushButton(tab_2);
+        tri_stock_4->setObjectName(QStringLiteral("tri_stock_4"));
+        tri_stock_4->setGeometry(QRect(110, 360, 61, 28));
+        tri_stock_4->setStyleSheet(QLatin1String("QPushButton\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
+        tri_stock_5 = new QPushButton(tab_2);
+        tri_stock_5->setObjectName(QStringLiteral("tri_stock_5"));
+        tri_stock_5->setGeometry(QRect(190, 360, 61, 28));
+        tri_stock_5->setStyleSheet(QLatin1String("QPushButton\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
         tabWidget->addTab(tab_2, QString());
         label_25->raise();
         lineEdit_10->raise();
@@ -831,58 +900,16 @@ public:
         idbox->raise();
         label_31->raise();
         label_29->raise();
+        tri_stock_2->raise();
+        tri_stock_3->raise();
+        tri_stock_4->raise();
+        tri_stock_5->raise();
         tab_3 = new QWidget();
         tab_3->setObjectName(QStringLiteral("tab_3"));
-        search_view = new QTableView(tab_3);
-        search_view->setObjectName(QStringLiteral("search_view"));
-        search_view->setGeometry(QRect(10, 30, 761, 191));
-        search_view->setStyleSheet(QLatin1String("QHeaderView::section{\n"
-"    background-color:rgb(90,90,90);\n"
-"      color:rgb(200,200,200);\n"
-"    border:1px solid rgb(60,60,60);\n"
-"    border-bottom:1px solid rgb(70,70,70);\n"
-"    height:27px;\n"
-"    min-width:55px;\n"
-"}\n"
-"QHeaderView::section:hover\n"
-"{\n"
-"    background-color:rgb(80,80,80);\n"
-"\n"
-"}\n"
-"QTableView\n"
-"{\n"
-"	background: rgb(55,55,55);\n"
-"}\n"
-"QTableView{\n"
-"    selection-background-color:rgb(255,0,0);\n"
-"    background-color:rgb(50,50,50);\n"
-"    border:1px solid rgb(70,70,70);\n"
-"    color:rgb(200,200,200)\n"
-"}\n"
-"\n"
-"QTableView::item\n"
-"{\n"
-"       border:1px solid rgb(65,65,65);\n"
-"	color:rgb(200,200,200);\n"
-"\n"
-"}\n"
-"QTableView::item:hover\n"
-"{\n"
-"    background-color: rgb(30,30,30);\n"
-"    font: 75 9pt \"Microsoft YaHei\";\n"
-"    color:rgb(31,163,246);\n"
-"}\n"
-"QTableView::item::selected\n"
-"{\n"
-"    background-color: rgb(30,30,30);\n"
-"    font: 75 9pt \"Microsoft YaHei\";\n"
-"    color:rgb(31,163,246);\n"
-"}\n"
-""));
-        rechercher_5 = new QPushButton(tab_3);
-        rechercher_5->setObjectName(QStringLiteral("rechercher_5"));
-        rechercher_5->setGeometry(QRect(420, 290, 93, 28));
-        rechercher_5->setStyleSheet(QLatin1String("QPushButton\n"
+        ig = new QPushButton(tab_3);
+        ig->setObjectName(QStringLiteral("ig"));
+        ig->setGeometry(QRect(50, 230, 181, 71));
+        ig->setStyleSheet(QLatin1String("QPushButton\n"
 "{background-color: rgb(200,133,0);\n"
 "color : white;\n"
 "font: 10pt Arial;\n"
@@ -895,10 +922,54 @@ public:
 "border: 2px solid rgb(200,146,0);\n"
 "background-color : rgb(200,149,47);\n"
 "}"));
-        search_id = new QLineEdit(tab_3);
-        search_id->setObjectName(QStringLiteral("search_id"));
-        search_id->setGeometry(QRect(300, 290, 111, 22));
-        search_id->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
+        fb = new QPushButton(tab_3);
+        fb->setObjectName(QStringLiteral("fb"));
+        fb->setGeometry(QRect(280, 230, 181, 71));
+        fb->setStyleSheet(QLatin1String("QPushButton\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
+        linkedin = new QPushButton(tab_3);
+        linkedin->setObjectName(QStringLiteral("linkedin"));
+        linkedin->setGeometry(QRect(500, 230, 181, 71));
+        linkedin->setStyleSheet(QLatin1String("QPushButton\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
+        mail = new QPushButton(tab_3);
+        mail->setObjectName(QStringLiteral("mail"));
+        mail->setGeometry(QRect(270, 90, 181, 71));
+        mail->setStyleSheet(QLatin1String("QPushButton\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
         tabWidget->addTab(tab_3, QString());
         stackedWidget_2->addWidget(page_4);
         page_5 = new QWidget();
@@ -912,81 +983,35 @@ public:
         pushButton_12->setGeometry(QRect(430, 20, 80, 25));
         pushButton_12->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_12->setStyleSheet(QLatin1String("QPushButton\n"
-"{\n"
-"	background-color: #BBA14F;\n"
-"	color: #fff;\n"
-"	font-size: 13px;\n"
-"	font-weight: bold;\n"
-"	border-top-right-radius: 15px;\n"
-"	border-top-left-radius: 0px;\n"
-"	border-bottom-right-radius: 0px;\n"
-"	border-bottom-left-radius: 15px;\n"
-"	padding: 10px;\n"
-"\n"
-"}\n"
-"QPushButton::disabled\n"
-"{\n"
-"	\n"
-"	background-color: rgb(245, 210, 104);\n"
-"\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
 "}\n"
 "\n"
-"\n"
-"QPushButton::hover\n"
-"{\n"
-"	;\n"
-"	background-color: rgb(153, 131, 65);\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton::pressed\n"
-"{\n"
-"	\n"
-"	background-color: rgb(84, 72, 35);\n"
-"\n"
-"}\n"
-""));
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
         pushButton_25 = new QPushButton(page_3);
         pushButton_25->setObjectName(QStringLiteral("pushButton_25"));
-        pushButton_25->setGeometry(QRect(280, 20, 71, 31));
+        pushButton_25->setGeometry(QRect(260, 20, 71, 31));
         pushButton_25->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_25->setStyleSheet(QLatin1String("QPushButton\n"
-"{\n"
-"	background-color: #BBA14F;\n"
-"	color: #fff;\n"
-"	font-size: 13px;\n"
-"	font-weight: bold;\n"
-"	border-top-right-radius: 15px;\n"
-"	border-top-left-radius: 0px;\n"
-"	border-bottom-right-radius: 0px;\n"
-"	border-bottom-left-radius: 15px;\n"
-"	padding: 10px;\n"
-"\n"
-"}\n"
-"QPushButton::disabled\n"
-"{\n"
-"	\n"
-"	background-color: rgb(245, 210, 104);\n"
-"\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
 "}\n"
 "\n"
-"\n"
-"QPushButton::hover\n"
-"{\n"
-"	;\n"
-"	background-color: rgb(153, 131, 65);\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton::pressed\n"
-"{\n"
-"	\n"
-"	background-color: rgb(84, 72, 35);\n"
-"\n"
-"}\n"
-""));
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
         pushButton_25->setCheckable(false);
         stackedWidget->addWidget(page_3);
         page_6 = new QWidget();
@@ -1161,242 +1186,104 @@ public:
         pushButton_2->setGeometry(QRect(10, 120, 111, 51));
         pushButton_2->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_2->setStyleSheet(QLatin1String("QPushButton\n"
-"{\n"
-"	background-color: #BBA14F;\n"
-"	color: #fff;\n"
-"	font-size: 13px;\n"
-"	font-weight: bold;\n"
-"	border-top-right-radius: 15px;\n"
-"	border-top-left-radius: 0px;\n"
-"	border-bottom-right-radius: 0px;\n"
-"	border-bottom-left-radius: 15px;\n"
-"	padding: 10px;\n"
-"\n"
-"}\n"
-"QPushButton::disabled\n"
-"{\n"
-"	\n"
-"	background-color: rgb(245, 210, 104);\n"
-"\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
 "}\n"
 "\n"
-"\n"
-"QPushButton::hover\n"
-"{\n"
-"	;\n"
-"	background-color: rgb(153, 131, 65);\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton::pressed\n"
-"{\n"
-"	\n"
-"	background-color: rgb(84, 72, 35);\n"
-"\n"
-"}\n"
-""));
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
         pushButton_2->setCheckable(false);
         pushButton_10 = new QPushButton(centralwidget);
         pushButton_10->setObjectName(QStringLiteral("pushButton_10"));
         pushButton_10->setGeometry(QRect(10, 400, 111, 51));
         pushButton_10->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_10->setStyleSheet(QLatin1String("QPushButton\n"
-"{\n"
-"	background-color: #BBA14F;\n"
-"	color: #fff;\n"
-"	font-size: 13px;\n"
-"	font-weight: bold;\n"
-"	border-top-right-radius: 15px;\n"
-"	border-top-left-radius: 0px;\n"
-"	border-bottom-right-radius: 0px;\n"
-"	border-bottom-left-radius: 15px;\n"
-"	padding: 10px;\n"
-"\n"
-"}\n"
-"QPushButton::disabled\n"
-"{\n"
-"	\n"
-"	background-color: rgb(245, 210, 104);\n"
-"\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
 "}\n"
 "\n"
-"\n"
-"QPushButton::hover\n"
-"{\n"
-"	;\n"
-"	background-color: rgb(153, 131, 65);\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton::pressed\n"
-"{\n"
-"	\n"
-"	background-color: rgb(84, 72, 35);\n"
-"\n"
-"}\n"
-""));
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
         pushButton_11 = new QPushButton(centralwidget);
         pushButton_11->setObjectName(QStringLiteral("pushButton_11"));
         pushButton_11->setGeometry(QRect(10, 180, 111, 51));
         pushButton_11->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_11->setStyleSheet(QLatin1String("QPushButton\n"
-"{\n"
-"	background-color: #BBA14F;\n"
-"	color: #fff;\n"
-"	font-size: 13px;\n"
-"	font-weight: bold;\n"
-"	border-top-right-radius: 15px;\n"
-"	border-top-left-radius: 0px;\n"
-"	border-bottom-right-radius: 0px;\n"
-"	border-bottom-left-radius: 15px;\n"
-"	padding: 10px;\n"
-"\n"
-"}\n"
-"QPushButton::disabled\n"
-"{\n"
-"	\n"
-"	background-color: rgb(245, 210, 104);\n"
-"\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
 "}\n"
 "\n"
-"\n"
-"QPushButton::hover\n"
-"{\n"
-"	;\n"
-"	background-color: rgb(153, 131, 65);\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton::pressed\n"
-"{\n"
-"	\n"
-"	background-color: rgb(84, 72, 35);\n"
-"\n"
-"}\n"
-""));
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
         pushButton_3 = new QPushButton(centralwidget);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         pushButton_3->setGeometry(QRect(10, 240, 111, 51));
         pushButton_3->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_3->setStyleSheet(QLatin1String("QPushButton\n"
-"{\n"
-"	background-color: #BBA14F;\n"
-"	color: #fff;\n"
-"	font-size: 13px;\n"
-"	font-weight: bold;\n"
-"	border-top-right-radius: 15px;\n"
-"	border-top-left-radius: 0px;\n"
-"	border-bottom-right-radius: 0px;\n"
-"	border-bottom-left-radius: 15px;\n"
-"	padding: 10px;\n"
-"\n"
-"}\n"
-"QPushButton::disabled\n"
-"{\n"
-"	\n"
-"	background-color: rgb(245, 210, 104);\n"
-"\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
 "}\n"
 "\n"
-"\n"
-"QPushButton::hover\n"
-"{\n"
-"	;\n"
-"	background-color: rgb(153, 131, 65);\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton::pressed\n"
-"{\n"
-"	\n"
-"	background-color: rgb(84, 72, 35);\n"
-"\n"
-"}\n"
-""));
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
         pushButton_6 = new QPushButton(centralwidget);
         pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
         pushButton_6->setGeometry(QRect(10, 300, 111, 41));
         pushButton_6->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_6->setStyleSheet(QLatin1String("QPushButton\n"
-"{\n"
-"	background-color: #BBA14F;\n"
-"	color: #fff;\n"
-"	font-size: 13px;\n"
-"	font-weight: bold;\n"
-"	border-top-right-radius: 15px;\n"
-"	border-top-left-radius: 0px;\n"
-"	border-bottom-right-radius: 0px;\n"
-"	border-bottom-left-radius: 15px;\n"
-"	padding: 10px;\n"
-"\n"
-"}\n"
-"QPushButton::disabled\n"
-"{\n"
-"	\n"
-"	background-color: rgb(245, 210, 104);\n"
-"\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
 "}\n"
 "\n"
-"\n"
-"QPushButton::hover\n"
-"{\n"
-"	;\n"
-"	background-color: rgb(153, 131, 65);\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton::pressed\n"
-"{\n"
-"	\n"
-"	background-color: rgb(84, 72, 35);\n"
-"\n"
-"}\n"
-""));
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
         pushButton_9 = new QPushButton(centralwidget);
         pushButton_9->setObjectName(QStringLiteral("pushButton_9"));
         pushButton_9->setGeometry(QRect(10, 350, 111, 41));
         pushButton_9->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_9->setStyleSheet(QLatin1String("QPushButton\n"
-"{\n"
-"	background-color: #BBA14F;\n"
-"	color: #fff;\n"
-"	font-size: 13px;\n"
-"	font-weight: bold;\n"
-"	border-top-right-radius: 15px;\n"
-"	border-top-left-radius: 0px;\n"
-"	border-bottom-right-radius: 0px;\n"
-"	border-bottom-left-radius: 15px;\n"
-"	padding: 10px;\n"
-"\n"
-"}\n"
-"QPushButton::disabled\n"
-"{\n"
-"	\n"
-"	background-color: rgb(245, 210, 104);\n"
-"\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
 "}\n"
 "\n"
-"\n"
-"QPushButton::hover\n"
-"{\n"
-"	;\n"
-"	background-color: rgb(153, 131, 65);\n"
-"\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton::pressed\n"
-"{\n"
-"	\n"
-"	background-color: rgb(84, 72, 35);\n"
-"\n"
-"}\n"
-""));
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
         graphicsView->setGeometry(QRect(0, -10, 981, 651));
@@ -1420,7 +1307,7 @@ public:
 
         stackedWidget->setCurrentIndex(2);
         stackedWidget_2->setCurrentIndex(0);
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(2);
         stackedWidget_3->setCurrentIndex(0);
         stackedWidget_4->setCurrentIndex(0);
         stackedWidget_5->setCurrentIndex(0);
@@ -1477,9 +1364,16 @@ public:
         pushButton_5->setText(QApplication::translate("MainWindow", "load by id", Q_NULLPTR));
         subnum_up->setText(QString());
         label_32->setText(QApplication::translate("MainWindow", "sub num", Q_NULLPTR));
+        tri_stock_2->setText(QApplication::translate("MainWindow", "pdf eng", Q_NULLPTR));
+        tri_stock_3->setText(QApplication::translate("MainWindow", "excel", Q_NULLPTR));
+        tri_stock_4->setText(QApplication::translate("MainWindow", "pdf fr", Q_NULLPTR));
+        tri_stock_5->setText(QApplication::translate("MainWindow", "pdf esp", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Read", Q_NULLPTR));
-        rechercher_5->setText(QApplication::translate("MainWindow", "Search", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("MainWindow", "Page", Q_NULLPTR));
+        ig->setText(QApplication::translate("MainWindow", "ig", Q_NULLPTR));
+        fb->setText(QApplication::translate("MainWindow", "fb", Q_NULLPTR));
+        linkedin->setText(QApplication::translate("MainWindow", "linkedin", Q_NULLPTR));
+        mail->setText(QApplication::translate("MainWindow", "mail", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("MainWindow", "media", Q_NULLPTR));
         label_4->setText(QApplication::translate("MainWindow", "Partners", Q_NULLPTR));
         pushButton_12->setText(QApplication::translate("MainWindow", "Logout", Q_NULLPTR));
         pushButton_25->setText(QApplication::translate("MainWindow", "Home", Q_NULLPTR));
@@ -1519,38 +1413,3 @@ namespace Ui {
 QT_END_NAMESPACE
 
 #endif // UI_MAINWINDOW_H
-/*
-w", "Home", Q_NULLPTR));
-        pushButton_17->setText(QApplication::translate("MainWindow", "PushButton", Q_NULLPTR));
-        pushButton_18->setText(QApplication::translate("MainWindow", "Logout", Q_NULLPTR));
-        pushButton_27->setText(QApplication::translate("MainWindow", "Home", Q_NULLPTR));
-        label_6->setText(QApplication::translate("MainWindow", "Sellers", Q_NULLPTR));
-        pushButton_19->setText(QApplication::translate("MainWindow", "PushButton", Q_NULLPTR));
-        pushButton_20->setText(QApplication::translate("MainWindow", "Logout", Q_NULLPTR));
-        pushButton_28->setText(QApplication::translate("MainWindow", "Home", Q_NULLPTR));
-        label_7->setText(QApplication::translate("MainWindow", "Propreties", Q_NULLPTR));
-        pushButton_21->setText(QApplication::translate("MainWindow", "PushButton", Q_NULLPTR));
-        pushButton_22->setText(QApplication::translate("MainWindow", "Logout", Q_NULLPTR));
-        pushButton_29->setText(QApplication::translate("MainWindow", "Home", Q_NULLPTR));
-        label_8->setText(QApplication::translate("MainWindow", "Subsriptions", Q_NULLPTR));
-        pushButton_23->setText(QApplication::translate("MainWindow", "PushButton", Q_NULLPTR));
-        pushButton_24->setText(QApplication::translate("MainWindow", "Logout", Q_NULLPTR));
-        pushButton_30->setText(QApplication::translate("MainWindow", "Home", Q_NULLPTR));
-        label_9->setText(QApplication::translate("MainWindow", "Agents", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("MainWindow", "Buyers", Q_NULLPTR));
-        pushButton_10->setText(QApplication::translate("MainWindow", "Subscriptions", Q_NULLPTR));
-        pushButton_11->setText(QApplication::translate("MainWindow", "Sellers", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("MainWindow", "Propreties", Q_NULLPTR));
-        pushButton_6->setText(QApplication::translate("MainWindow", "Agents", Q_NULLPTR));
-        pushButton_9->setText(QApplication::translate("MainWindow", "Partners", Q_NULLPTR));
-    } // retranslateUi
-
-}; */
-
-namespace Ui {
-  //  class MainWindow: public Ui_MainWindow {};
-} // namespace Ui
-
-QT_END_NAMESPACE
-
-//#endif // UI_MAINWINDOW_H

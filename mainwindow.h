@@ -104,6 +104,14 @@ private slots:
 
     void on_chercher_2_textChanged(const QString &arg1);
 
+    void on_tri_stock_2_clicked();
+
+    void on_tri_stock_3_clicked();
+
+    void on_tri_stock_4_clicked();
+
+    void on_tri_stock_5_clicked();
+
 private:
     Ui::MainWindow *ui;
     PARTNERS p;

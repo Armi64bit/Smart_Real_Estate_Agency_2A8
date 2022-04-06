@@ -6,12 +6,18 @@
 #include <QMessageBox>
 #include <connection.h>
 #include <QComboBox>
+#include <QFileDialog>
+#include <QPdfWriter>
+#include <QDesktopServices>
+#include "excel.h"
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     ui->tab_produit->setModel(p.read());
+    ui->tab_produit->verticalHeader()->hide();
     ui->idbox->setModel(p.read_id());
     ui->id_par->setValidator( new QIntValidator(0, 999999, this));
             ui->sub_num_par->setValidator( new QIntValidator(0, 99999999, this));
@@ -295,6 +301,7 @@ void MainWindow::on_update_2_clicked()
 
 void MainWindow::on_tab_produit_activated(const QModelIndex &index)
 {
+
     QString val=ui->tab_produit->model()->data(index).toString();
     Connection c;
     c.createconnect();
@@ -399,4 +406,392 @@ void MainWindow::on_chercher_2_textChanged(const QString &arg1)
         int name=ui->chercher_2->text().toInt();
         p.rechercher_id(ui->tab_produit, name);
 
+}
+
+
+void MainWindow::on_tri_stock_2_clicked()
+{
+    int ID_PAR=ui->idbox->currentText().toInt();
+
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),"/home/Desktop",QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    qDebug()<<dir;
+    QPdfWriter pdf(dir+"/PARTNERS.pdf");
+    QPainter painter(&pdf);
+    int i = 4000;
+
+                           painter.setPen(Qt::black);
+                         painter.setFont(QFont("Arial", 30));
+                         painter.drawPixmap(QRect(100,400,2000,2000),QPixmap("C:/Users/GHOFRANE/Desktop/Sellers/logo.png"));
+                         painter.drawText(3000,1500,"Contract");
+
+
+                         painter.setPen(Qt::darkBlue);
+                                             painter.setFont(QFont("Arial", 13));
+                                             painter.drawText(300,2300,"Between The Undersigned:");
+
+                                                                                      QSqlQuery query;
+                                                                                                          query.prepare("<SELECT CAST( GETDATE() AS Date ) ");
+                                                                                                          time_t tt;
+                                                                                                          struct tm* ti;
+                                                                                                          time(&tt);
+                                                                                                          ti=localtime(&tt);
+                                                                                                          asctime(ti);
+                                                                                                          painter.drawText(500,300, asctime(ti));
+                                                                                                          query.prepare("select * from PARTNERS where ID_PAR=:ID_PAR");
+                                                                                                          query.bindValue(":ID_PAR",ID_PAR);
+                                                                                                          query.exec();
+                                                                                                          while (query.next())
+                                                                                                          {
+                                                                                                              painter.setPen(Qt::black);
+                                                                                                              painter.setFont(QFont("Arial", 11));
+
+                                                                                                              painter.drawText(3000,2300,query.value(1).toString());
+
+                                                                                                          }painter.drawText(3700,2300,"and BYOND TRUST for the duration of ");
+                                                                                                          query.prepare("select * from PARTNERS where ID_PAR=:ID_PAR");
+                                                                                                          query.bindValue(":ID_PAR",ID_PAR);
+                                                                                                          query.exec();
+                                                                                                          while (query.next())
+                                                                                                          {
+                                                                                                              painter.setPen(Qt::black);
+                                                                                                              painter.setFont(QFont("Arial", 11));
+
+                                                                                                              painter.drawText(6900,2300,query.value(2).toString());
+
+                                                                                                          }
+                                                                                                          painter.drawText(300,3400, "EMPLOYEE REPRESENTATIONS AND WARRANTIES:");
+                                                                                                          painter.drawText(300,3400, "EMPLOYEE REPRESENTATIONS AND WARRANTIES:");
+                                                                                                          painter.drawText(300,3400, "EMPLOYEE REPRESENTATIONS AND WARRANTIES:");
+
+                                                                                                          painter.setPen(Qt::black);
+                                                                                                                              painter.setFont(QFont("Arial", 13));
+                                                                                                                              painter.drawText(300,3700,"There is no employment contract or any other contractual obligation to which ");
+                                                                                                                              painter.drawText(300,4000,"the Employee is subject, which prevents the Employee from entering into this ");
+painter.drawText(300,4300, "Contract or from performing fully the Employee's duties under this Contract.");
+
+painter.drawText(300,5000, "SEVERABILITY:");
+painter.drawText(300,5000, "SEVERABILITY:");
+painter.drawText(300,5000, "SEVERABILITY:");
+
+painter.drawText(300,5300, "If a court finds any provision of this Employment Contract invalid or unenforceable,");
+painter.drawText(300,5600, "the remainder of this Employment Contract shall be interpreted as best to affect ");
+painter.drawText(300,5900, "the intent of the parties. ");
+
+painter.drawText(300,6600, "ENTIRE AGREEMENT:");
+painter.drawText(300,6600, "ENTIRE AGREEMENT:");
+painter.drawText(300,6600, "ENTIRE AGREEMENT:");
+
+
+painter.drawText(300,6900, "This Employment Contract expresses the complete understanding of the parties with ");
+painter.drawText(300,7200, "respect to the subject matter and supersedes all prior proposals, agreements,");
+painter.drawText(300,7500, "representations, and understandings. This Employment Contract may not be amended");
+painter.drawText(300,7800, " except in a writing signed by both parties.");
+
+painter.drawText(300,8500, "EXPENSES:");
+painter.drawText(300,8500, "EXPENSES:");
+painter.drawText(300,8500, "EXPENSES:");
+
+
+
+
+
+
+painter.drawText(300,9200, "The Employee shall not be entitled to reimbursement for any expenses except those  ");
+painter.drawText(300,9500, "that have been previously approved in writing by the Company. Should the Company");
+painter.drawText(300,9800, "require travel by the Employee, the Company shall reimburse the Employee for ");
+painter.drawText(300,10100, "such travel expenses, along with reasonable lodging and meal expenses upon");
+painter.drawText(300,10300, "presentation of receipts of such expenses.");
+
+
+
+
+
+
+                                                                                                          painter.setPen(Qt::black);
+                                                                                                                              painter.setFont(QFont("Arial", 15));
+                                                                                                                              painter.drawText(300,12000,"Partner's Signature");
+
+                                                                                                                              painter.setPen(Qt::black);
+                                                                                                                              painter.setFont(QFont("Arial", 15));
+                                                                                                                              painter.drawText(6800,12000,"Adminstration's Signature");
+
+
+    int reponse = QMessageBox::question(this, "Génerer PDF", "PDF Enregistré.\nVous Voulez Affichez Le PDF ?", QMessageBox::Yes |  QMessageBox::No);
+    if (reponse == QMessageBox::Yes)
+    {
+        QDesktopServices::openUrl(QUrl::fromLocalFile(dir+"/PARTNERS.pdf"));
+        painter.end();
+    }
+    else
+    {
+        painter.end();
+    }
+}
+
+void MainWindow::on_tri_stock_3_clicked()
+{
+
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath (),
+                                                               tr("Excel Files (*.xls)"));
+               if (fileName.isEmpty())
+                   return;
+
+               ExportExcelObject obj(fileName, "mydata", ui->tab_produit);
+
+               obj.addField(0, "id", "char(20)");
+               obj.addField(1, "type", "char(20)");
+               obj.addField(2, "name", "char(20)");
+               obj.addField(3, "duration", "char(20)");
+               obj.addField(4, "language", "char(20)");
+               obj.addField(5, "subnum", "char(20)");
+
+
+               int retVal = obj.export2Excel();
+
+               if( retVal > 0)
+               {
+                   QMessageBox::information(this, tr("Done"),
+                                            QString(tr("exported!")).arg(retVal)
+                                            );
+               }
+}
+
+void MainWindow::on_tri_stock_4_clicked()
+{
+
+    int ID_PAR=ui->idbox->currentText().toInt();
+
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),"/home/Desktop",QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    qDebug()<<dir;
+    QPdfWriter pdf(dir+"/PARTNERS.pdf");
+    QPainter painter(&pdf);
+    int i = 4000;
+
+                           painter.setPen(Qt::black);
+                         painter.setFont(QFont("Arial", 30));
+                         painter.drawPixmap(QRect(100,400,2000,2000),QPixmap("C:/Users/GHOFRANE/Desktop/Sellers/logo.png"));
+                         painter.drawText(3000,1500,"Contrat");
+
+
+                         painter.setPen(Qt::darkBlue);
+                                             painter.setFont(QFont("Arial", 13));
+                                             painter.drawText(300,2300,"Entre les soussignés :");
+
+                                                                                      QSqlQuery query;
+                                                                                                          query.prepare("<SELECT CAST( GETDATE() AS Date ) ");
+                                                                                                          time_t tt;
+                                                                                                          struct tm* ti;
+                                                                                                          time(&tt);
+                                                                                                          ti=localtime(&tt);
+                                                                                                          asctime(ti);
+                                                                                                          painter.drawText(500,300, asctime(ti));
+                                                                                                          query.prepare("select * from PARTNERS where ID_PAR=:ID_PAR");
+                                                                                                          query.bindValue(":ID_PAR",ID_PAR);
+                                                                                                          query.exec();
+                                                                                                          while (query.next())
+                                                                                                          {
+                                                                                                              painter.setPen(Qt::black);
+                                                                                                              painter.setFont(QFont("Arial", 11));
+
+                                                                                                              painter.drawText(3000,2300,query.value(1).toString());
+
+                                                                                                          }painter.drawText(3700,2300,"et BYOND TRUST pour la durée de");
+                                                                                                          query.prepare("select * from PARTNERS where ID_PAR=:ID_PAR");
+                                                                                                          query.bindValue(":ID_PAR",ID_PAR);
+                                                                                                          query.exec();
+                                                                                                          while (query.next())
+                                                                                                          {
+                                                                                                              painter.setPen(Qt::black);
+                                                                                                              painter.setFont(QFont("Arial", 11));
+
+                                                                                                              painter.drawText(6900,2300,query.value(2).toString());
+
+                                                                                                          }
+                                                                                                          painter.drawText(300,3400, "DÉCLARATIONS ET GARANTIES DES EMPLOYÉS :");
+                                                                                                          painter.drawText(300,3400, "DÉCLARATIONS ET GARANTIES DES EMPLOYÉS :");
+                                                                                                          painter.drawText(300,3400, "DÉCLARATIONS ET GARANTIES DES EMPLOYÉS :");
+
+                                                                                                          painter.setPen(Qt::black);
+                                                                                                                              painter.setFont(QFont("Arial", 13));
+                                                                                                                              painter.drawText(300,3700,"Il n’y a pas de contrat de travail ou d’autre obligation contractuelle à laquelle");
+                                                                                                                              painter.drawText(300,4000,"l’Employé est sujet, ce qui empêche l’Employé d’entrer dans ce ");
+painter.drawText(300,4300, "Contrat ou de l’exécution complète des obligations de l’employé en vertu du présent contrat.");
+
+painter.drawText(300,5000, "DIVISIBILITÉ:");
+painter.drawText(300,5000, "DIVISIBILITÉ:");
+painter.drawText(300,5000, "DIVISIBILITÉ:");
+
+painter.drawText(300,5300, "Si un tribunal juge une disposition du présent contrat de travail invalide ou inapplicable,");
+painter.drawText(300,5600, "le reste du présent contrat de travail doit être interprété comme étant le meilleur moyen d’affecter");
+painter.drawText(300,5900, "l’intention des parties. ");
+
+painter.drawText(300,6600, "INTÉGRALITÉ DE L’ACCORD :");
+painter.drawText(300,6600, "INTÉGRALITÉ DE L’ACCORD :");
+painter.drawText(300,6600, "INTÉGRALITÉ DE L’ACCORD :");
+
+
+painter.drawText(300,6900, "Le présent contrat de travail exprime l’entière compréhension des parties avec");
+painter.drawText(300,7200, "respecte l’objet et remplace toutes les propositions, accords antérieurs,");
+painter.drawText(300,7500, "représentations et compréhensions. Le présent contrat de travail ne peut être modifié");
+painter.drawText(300,7800, " sauf dans un écrit signé par les deux parties.");
+
+painter.drawText(300,8500, "DÉPENSE:");
+painter.drawText(300,8500, "DÉPENSE:");
+painter.drawText(300,8500, "DÉPENSE:");
+
+
+
+
+
+
+painter.drawText(300,9200, "L’employé n’a pas droit au remboursement de toutes les dépenses, à l’exception de celles ");
+painter.drawText(300,9500, "qui ont déjà été approuvés par écrit par la Société. L’entreprise devrait-elle");
+painter.drawText(300,9800, "exiger un voyage de l’Employé, la Société remboursera à l’Employé pour ");
+painter.drawText(300,10100, "ces frais de déplacement, ainsi que les frais raisonnables d’hébergement et de repas");
+painter.drawText(300,10300, "la présentation des recettes de ces dépenses.");
+
+
+
+
+
+
+                                                                                                          painter.setPen(Qt::black);
+                                                                                                                              painter.setFont(QFont("Arial", 15));
+                                                                                                                              painter.drawText(300,12000,"Signature du partenaire");
+
+                                                                                                                              painter.setPen(Qt::black);
+                                                                                                                              painter.setFont(QFont("Arial", 15));
+                                                                                                                              painter.drawText(6500,12000,"Signature de l’administration");
+
+
+    int reponse = QMessageBox::question(this, "Génerer PDF", "PDF Enregistré.\nVous Voulez Affichez Le PDF ?", QMessageBox::Yes |  QMessageBox::No);
+    if (reponse == QMessageBox::Yes)
+    {
+        QDesktopServices::openUrl(QUrl::fromLocalFile(dir+"/PARTNERS.pdf"));
+        painter.end();
+    }
+    else
+    {
+        painter.end();
+    }
+}
+
+void MainWindow::on_tri_stock_5_clicked()
+{
+
+    int ID_PAR=ui->idbox->currentText().toInt();
+
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),"/home/Desktop",QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    qDebug()<<dir;
+    QPdfWriter pdf(dir+"/PARTNERS.pdf");
+    QPainter painter(&pdf);
+    int i = 4000;
+
+                           painter.setPen(Qt::black);
+                         painter.setFont(QFont("Arial", 30));
+                         painter.drawPixmap(QRect(100,400,2000,2000),QPixmap("C:/Users/GHOFRANE/Desktop/Sellers/logo.png"));
+                         painter.drawText(3000,1500,"Contrato");
+
+
+                         painter.setPen(Qt::darkBlue);
+                                             painter.setFont(QFont("Arial", 13));
+                                             painter.drawText(300,2300,"Entre los abajo firmantes:");
+
+                                                                                      QSqlQuery query;
+                                                                                                          query.prepare("<SELECT CAST( GETDATE() AS Date ) ");
+                                                                                                          time_t tt;
+                                                                                                          struct tm* ti;
+                                                                                                          time(&tt);
+                                                                                                          ti=localtime(&tt);
+                                                                                                          asctime(ti);
+                                                                                                          painter.drawText(500,300, asctime(ti));
+                                                                                                          query.prepare("select * from PARTNERS where ID_PAR=:ID_PAR");
+                                                                                                          query.bindValue(":ID_PAR",ID_PAR);
+                                                                                                          query.exec();
+                                                                                                          while (query.next())
+                                                                                                          {
+                                                                                                              painter.setPen(Qt::black);
+                                                                                                              painter.setFont(QFont("Arial", 11));
+
+                                                                                                              painter.drawText(3000,2300,query.value(1).toString());
+
+                                                                                                          }painter.drawText(3700,2300,"y BYOND TRUST por la duración de ");
+                                                                                                          query.prepare("select * from PARTNERS where ID_PAR=:ID_PAR");
+                                                                                                          query.bindValue(":ID_PAR",ID_PAR);
+                                                                                                          query.exec();
+                                                                                                          while (query.next())
+                                                                                                          {
+                                                                                                              painter.setPen(Qt::black);
+                                                                                                              painter.setFont(QFont("Arial", 11));
+
+                                                                                                              painter.drawText(6900,2300,query.value(2).toString());
+
+                                                                                                          }
+                                                                                                          painter.drawText(300,3400, "REPRESENTACIONES Y GARANTÍAS DE LOS EMPLEADOS:");
+                                                                                                          painter.drawText(300,3400, "REPRESENTACIONES Y GARANTÍAS DE LOS EMPLEADOS:");
+                                                                                                          painter.drawText(300,3400, "REPRESENTACIONES Y GARANTÍAS DE LOS EMPLEADOS:");
+
+                                                                                                          painter.setPen(Qt::black);
+                                                                                                                              painter.setFont(QFont("Arial", 13));
+                                                                                                                              painter.drawText(300,3700,"No existe ningún contrato de trabajo ni ninguna otra obligación contractual a la que ");
+                                                                                                                              painter.drawText(300,4000,"el Empleado está sujeto, lo que impide que el Empleado entre en esto ");
+painter.drawText(300,4300, "Contrato o del cumplimiento completo de las obligaciones del Empleado en virtud de este Contrato.");
+
+painter.drawText(300,5000, "DIVISIBILIDAD:");
+painter.drawText(300,5000, "DIVISIBILIDAD:");
+painter.drawText(300,5000, "DIVISIBILIDAD:");
+
+painter.drawText(300,5300, "Si un tribunal determina que alguna disposición de este Contrato de Trabajo es inválida o inaplicable,");
+painter.drawText(300,5600, "el resto de este Contrato de Trabajo se interpretará como el mejor para afectar ");
+painter.drawText(300,5900, "la intención de las partes. ");
+
+painter.drawText(300,6600, "ACUERDO COMPLETO:");
+painter.drawText(300,6600, "ACUERDO COMPLETO:");
+painter.drawText(300,6600, "ACUERDO COMPLETO:");
+
+
+painter.drawText(300,6900, "Este Contrato de Trabajo expresa el entendimiento completo de las partes con ");
+painter.drawText(300,7200, "respeta la materia y sustituye a todas las propuestas y acuerdos anteriores,");
+painter.drawText(300,7500, "representaciones y entendimientos. Este Contrato de Trabajo no puede ser modificado");
+painter.drawText(300,7800, " excepto en un escrito firmado por ambas partes.");
+
+painter.drawText(300,8500, "EXPENSAS:");
+painter.drawText(300,8500, "EXPENSAS:");
+painter.drawText(300,8500, "EXPENSAS:");
+
+
+
+
+
+
+painter.drawText(300,9200, "El Empleado no tendrá derecho al reembolso de ningún gasto, excepto aquellos  ");
+painter.drawText(300,9500, "que hayan sido previamente aprobados por escrito por la Compañía. ¿Debería la empresa");
+painter.drawText(300,9800, "Requerir viajes por parte del Empleado, la Compañía reembolsará al Empleado por ");
+painter.drawText(300,10100, "tales gastos de viaje, junto con gastos razonables de alojamiento y comida en");
+painter.drawText(300,10400, "presentación de recibos de dichos gastos.");
+
+
+
+
+
+
+                                                                                                          painter.setPen(Qt::black);
+                                                                                                                              painter.setFont(QFont("Arial", 15));
+                                                                                                                              painter.drawText(300,12000,"Firma del socio");
+
+                                                                                                                              painter.setPen(Qt::black);
+                                                                                                                              painter.setFont(QFont("Arial", 15));
+                                                                                                                              painter.drawText(6800,12000,"Firma de la administración");
+
+
+    int reponse = QMessageBox::question(this, "Génerer PDF", "PDF Enregistré.\nVous Voulez Affichez Le PDF ?", QMessageBox::Yes |  QMessageBox::No);
+    if (reponse == QMessageBox::Yes)
+    {
+        QDesktopServices::openUrl(QUrl::fromLocalFile(dir+"/PARTNERS.pdf"));
+        painter.end();
+    }
+    else
+    {
+        painter.end();
+    }
 }
