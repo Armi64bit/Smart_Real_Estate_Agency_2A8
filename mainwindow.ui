@@ -23,17 +23,20 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>0</y>
       <width>1061</width>
       <height>711</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page_8">
      <widget class="QPushButton" name="pushButton_7">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>110</x>
@@ -392,7 +395,7 @@
        <rect>
         <x>30</x>
         <y>10</y>
-        <width>721</width>
+        <width>1001</width>
         <height>521</height>
        </rect>
       </property>
@@ -478,8 +481,8 @@
       <widget class="QPushButton" name="pushButton_2">
        <property name="geometry">
         <rect>
-         <x>530</x>
-         <y>370</y>
+         <x>340</x>
+         <y>430</y>
          <width>171</width>
          <height>71</height>
         </rect>
@@ -533,8 +536,8 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
       <widget class="QLineEdit" name="lineEdit_adress">
        <property name="geometry">
         <rect>
-         <x>530</x>
-         <y>100</y>
+         <x>450</x>
+         <y>90</y>
          <width>151</width>
          <height>41</height>
         </rect>
@@ -572,7 +575,7 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
       <widget class="QLineEdit" name="lineEdit_login">
        <property name="geometry">
         <rect>
-         <x>530</x>
+         <x>440</x>
          <y>220</y>
          <width>151</width>
          <height>41</height>
@@ -585,8 +588,8 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
       <widget class="QLineEdit" name="lineEdit_function">
        <property name="geometry">
         <rect>
-         <x>530</x>
-         <y>160</y>
+         <x>450</x>
+         <y>150</y>
          <width>151</width>
          <height>41</height>
         </rect>
@@ -598,7 +601,7 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
       <widget class="QLineEdit" name="lineEdit_password">
        <property name="geometry">
         <rect>
-         <x>530</x>
+         <x>440</x>
          <y>280</y>
          <width>151</width>
          <height>41</height>
@@ -706,7 +709,7 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
       <widget class="QLabel" name="label_12">
        <property name="geometry">
         <rect>
-         <x>410</x>
+         <x>350</x>
          <y>100</y>
          <width>111</width>
          <height>31</height>
@@ -725,7 +728,7 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
       <widget class="QLabel" name="label_13">
        <property name="geometry">
         <rect>
-         <x>410</x>
+         <x>340</x>
          <y>160</y>
          <width>111</width>
          <height>31</height>
@@ -744,7 +747,7 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
       <widget class="QLabel" name="label_14">
        <property name="geometry">
         <rect>
-         <x>400</x>
+         <x>340</x>
          <y>220</y>
          <width>111</width>
          <height>31</height>
@@ -763,7 +766,7 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
       <widget class="QLabel" name="label_15">
        <property name="geometry">
         <rect>
-         <x>400</x>
+         <x>320</x>
          <y>280</y>
          <width>111</width>
          <height>31</height>
@@ -777,6 +780,48 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
        </property>
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Password&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="photo">
+       <property name="geometry">
+        <rect>
+         <x>720</x>
+         <y>330</y>
+         <width>171</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">
+background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+	color: #000;
+	font-size: 14pt;
+	border-radius: 4px;
+	padding: 10px;
+</string>
+       </property>
+       <property name="text">
+        <string>ADD Picture </string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../add.png</normaloff>../add.png</iconset>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lbl_image">
+       <property name="geometry">
+        <rect>
+         <x>730</x>
+         <y>120</y>
+         <width>141</width>
+         <height>151</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </widget>
@@ -1354,7 +1399,7 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
         <widget class="QLabel" name="label_38">
          <property name="geometry">
           <rect>
-           <x>620</x>
+           <x>610</x>
            <y>270</y>
            <width>221</width>
            <height>51</height>
@@ -1429,6 +1474,38 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
          </property>
          <property name="checkable">
           <bool>false</bool>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_40">
+         <property name="geometry">
+          <rect>
+           <x>610</x>
+           <y>390</y>
+           <width>221</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: transparent;
+	color: #fff;
+	font-size: 14pt;
+	border-color: #000000;</string>
+         </property>
+         <property name="text">
+          <string>Recherche function</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="lineEdit_cherche_function">
+         <property name="geometry">
+          <rect>
+           <x>850</x>
+           <y>400</y>
+           <width>191</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color :rgb(255, 255, 255)</string>
          </property>
         </widget>
        </widget>
@@ -1527,48 +1604,59 @@ background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 
 	color: #000000;
 	border-color: #000000;</string>
      </property>
-     <widget class="QGroupBox" name="groupBox_3">
+     <widget class="QPushButton" name="pushButton_13">
       <property name="geometry">
        <rect>
-        <x>-10</x>
-        <y>0</y>
-        <width>761</width>
-        <height>551</height>
+        <x>140</x>
+        <y>60</y>
+        <width>471</width>
+        <height>221</height>
        </rect>
       </property>
-      <property name="title">
-       <string>GroupBox</string>
+      <property name="styleSheet">
+       <string notr="true">
+background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+	color: #000;
+	font-size: 14pt;
+	border-radius: 4px;
+	padding: 10px;
+</string>
       </property>
-      <widget class="QLabel" name="label_5">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>70</y>
-         <width>56</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>chat</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="pushButton_13">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>490</y>
-         <width>121</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Previous page</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>../Previous page.png</normaloff>../Previous page.png</iconset>
-       </property>
-      </widget>
+      <property name="text">
+       <string>welcome to buyer magement  </string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../add.png</normaloff>../add.png</iconset>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="logout">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>510</y>
+        <width>121</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:repeat, x1:1, y1:0, x2:1, y2:1, stop:0 rgba(254, 171, 66, 255),stop:1 rgba(255, 153, 0, 255));
+	color: #000;
+	font-size: 14pt;
+	border-radius: 4px;
+	padding: 10px;
+</string>
+      </property>
+      <property name="text">
+       <string>Logout</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../logout.png</normaloff>../logout.png</iconset>
+      </property>
      </widget>
     </widget>
    </widget>

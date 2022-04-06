@@ -15,7 +15,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+Ui::MainWindow *Myui;
 
+void closebutton();
+
+void hmed();
 
 private slots:
     void on_stackedWidget_currentChanged(int arg1);
@@ -63,6 +67,14 @@ private slots:
     void on_pushButton_9_clicked();
 
     void on_pushButton_10_clicked();
+
+    void on_pushButton_14_clicked();
+
+    void on_logout_clicked();
+
+    void on_lineEdit_cherche_number_textChanged(const QString &arg1);
+
+    void on_photo_clicked();
 
 private:
  Ui::MainWindow *ui;

@@ -195,3 +195,23 @@ void agent::rechercher_cin(QTableView *table, int x)
       table->setModel(model);
       table->show();
    }
+void agent::rechercher_function(QTableView *table, QString x)
+{
+
+    QSqlQueryModel *model=new QSqlQueryModel();
+    QSqlQuery *query =new QSqlQuery;
+    query->prepare("select * from agents where regexp_like(function_ag,:function_ag);");
+    query->bindValue(":function_ag",x);
+
+    if(x==0)
+    {
+        query->prepare("select * from agents;");
+    }
+    query->exec();
+    model->setQuery(*query);
+    table->setModel(model);
+    table->show();
+
+
+
+}

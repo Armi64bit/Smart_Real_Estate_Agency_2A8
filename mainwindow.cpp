@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include<QMessageBox>
 #include <QtSql/QSqlQuery>
+#include<QFileDialog>
 #include"agent.h"
 #include "login.h"
 
@@ -16,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->comboBox->setModel(a.afficher_id());
     ui->lineEdit_cin->setValidator( new QIntValidator(10000000, 999999999, this));
             ui->lineEdit_number ->setValidator( new QIntValidator(10000000, 999999999, this));
-
+//ui->pushButton_7->setDisabled(true);
 
 
 
@@ -321,4 +322,67 @@ void MainWindow::on_pushButton_10_clicked()
     login login2;
     login2.setModal(true);
     login2.exec();
+
+
+
+}
+
+void MainWindow::closebutton()
+{
+
+    ui->pushButton_7->setDisabled(true);
+    ui->pushButton_19->setDisabled(true);
+    ui->pushButton_18->setDisabled(true);
+    ui->pushButton_20->setDisabled(true);
+    ui->pushButton_22->setDisabled(true);
+    ui->pushButton_21->setDisabled(true);
+}
+
+
+
+void MainWindow::on_pushButton_14_clicked()
+{
+     ui->stackedWidget->setCurrentIndex(4);
+}
+// logout
+void MainWindow::on_logout_clicked()
+{
+    this->close();
+        login login2;
+        login2.setModal(true);
+        login2.exec();
+
+}
+
+void MainWindow::hmed(){
+
+    ui->stackedWidget->setCurrentIndex(0);
+
+
+}
+// recherche funtion
+void MainWindow::on_lineEdit_cherche_number_textChanged(const QString &arg1)
+{
+    a.cleartable(ui->tabagent);
+    QString function_ag=ui->lineEdit_cherche_function->text();
+    a.rechercher_function(ui->tabagent,function_ag);
+}
+// add picture
+void MainWindow::on_photo_clicked()
+{
+    QString filename = QFileDialog::getSaveFileName(this,tr("choose"),"",tr("Image( *.jpeg *.jpg *.bmp *.gif)"));
+      if (QString::compare(filename,QString()) !=0)
+      {
+          QImage image;
+          bool valid = image.load(filename);
+          if(valid)
+          {
+              image=image.scaledToWidth(ui->lbl_image->width(), Qt::SmoothTransformation);
+                      ui->lbl_image->setPixmap(QPixmap::fromImage(image));
+          }
+          else
+          {
+              //ERROR HANDLING
+          }
+      }
 }
