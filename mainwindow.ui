@@ -576,6 +576,55 @@ QTableView::item:focus{selection-background-color: yellow;}
 
  QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
      background: none;
+ }
+ QScrollBar:horizental {
+     border: 3px solid #C8952F;
+     padding: 4px;
+     border-radius: 7px;
+     border-bottom-left-radius: 7px;
+     background: QLinearGradient( x1: 0, y1: 0, x2: 1, y2: 0,stop: 0 #fff, stop: 1 #eee,stop: 0.5 #ddd,stop: 1 #eee );
+     width: 45px;
+     margin: 48px 0 48px 0;
+ }
+
+ QScrollBar::handle:horizental {
+     background: #C8952F;
+     border: 3px solid #C8952F;
+     padding: 0px;
+     border-radius: 7px;
+     border-bottom-left-radius: 7px;
+     min-height: 40px;
+ }
+ QScrollBar::add-line:horizental {
+     background: #C8952F;
+     border: 3px solid #C8952F;
+     padding: 0px;
+     border-radius: 7px;
+     border-bottom-left-radius: 7px;
+     height: 40px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::sub-line:horizental {
+     background: #C8952F;
+     border: 3px solid #C8952F;
+     padding: 0px;
+     border-radius: 7px;
+     border-bottom-left-radius: 7px;
+     height: 40px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::up-arrow:horizental, QScrollBar::down-arrow:horizental{
+     border: 2px solid grey;
+     width: 3px;
+     height: 3px;
+     background: white;
+ }
+
+ QScrollBar::add-page:horizental, QScrollBar::sub-page:horizental {
+     background: none;
  }</string>
       </property>
      </widget>
@@ -1266,6 +1315,22 @@ background-color : rgb(200,149,47);
         <height>28</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}
+</string>
+      </property>
       <property name="text">
        <string>Export</string>
       </property>
@@ -1273,42 +1338,70 @@ background-color : rgb(200,149,47);
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
-      <string>Page</string>
+      <string>Statistics</string>
      </attribute>
      <widget class="QCustomPlot" name="plot" native="true">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>10</y>
+        <x>60</x>
+        <y>40</y>
         <width>961</width>
         <height>511</height>
        </rect>
       </property>
      </widget>
-     <widget class="QScrollBar" name="verticalScrollBar">
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>Text History</string>
+     </attribute>
+     <widget class="QPushButton" name="pb_history">
       <property name="geometry">
        <rect>
-        <x>1030</x>
-        <y>200</y>
-        <width>16</width>
-        <height>160</height>
+        <x>460</x>
+        <y>50</y>
+        <width>141</width>
+        <height>28</height>
        </rect>
       </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}
+
+
+</string>
+      </property>
+      <property name="text">
+       <string>Open TextFile</string>
       </property>
      </widget>
-     <widget class="QScrollBar" name="horizontalScrollBar">
+     <widget class="QTextBrowser" name="textBrowser">
       <property name="geometry">
        <rect>
-        <x>470</x>
-        <y>570</y>
-        <width>160</width>
-        <height>16</height>
+        <x>150</x>
+        <y>100</y>
+        <width>761</width>
+        <height>411</height>
        </rect>
       </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(250,250,250);
+color : red;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);</string>
       </property>
      </widget>
     </widget>

@@ -25,16 +25,14 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     qcustomplot.cpp \
-    subscriptions.cpp \
-    texthistory.cpp
+    subscriptions.cpp
 
 HEADERS += \
     connection.h \
     exporttoexcelfile.h \
     mainwindow.h \
     qcustomplot.h \
-    subscriptions.h \
-    texthistory.h
+    subscriptions.h
 
 FORMS += \
     mainwindow.ui

@@ -43,8 +43,8 @@ public:
     float read_price();
     QString read_sdate();
 void statistique(QVector<double>* ticks,QVector<QString> *labels);
-
-
+void historique(QString,QString,QString,QString,QString,QString,QString,QString);
+void historique2(QString);
 
 private:
 

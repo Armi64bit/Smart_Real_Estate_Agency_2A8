@@ -321,5 +321,24 @@ void subscriptions::statistique(QVector<double>* ticks,QVector<QString> *labels)
         *labels <<identifiant;
     }
 }
+void subscriptions::historique(QString x,QString val1,QString val2,QString val3,QString val4,QString val5,QString val6,QString val7)
+{
+QFile file("Historique.txt");
+if (file.open(QIODevice::Append | QIODevice::Text))
+{
+    QTextStream ecriture(&file);
+    ecriture<< x << "Number "+val1 << " Type "+val2 << " Duration "+val3 << " bn "+val4 << " Duration "+val5 << " Duration "+val6 << " Duration "+val7 << endl;
+    file.close();
+}
+}
 
-
+void subscriptions::historique2(QString message)
+{
+    QFile file("Historique.txt");
+    if (file.open(QIODevice::Append | QIODevice::Text))
+    {
+       QTextStream ecriture(&file);
+       ecriture << message << endl;
+       file.close();
+    }
+}

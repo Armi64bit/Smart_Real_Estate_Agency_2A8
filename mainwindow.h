@@ -63,6 +63,12 @@ private slots:
       void on_pbExport_clicked();
 
 
+      void on_pb_history_clicked();
+
+      void on_plot_customContextMenuRequested(const QPoint &pos);
+
+      void on_plot_windowIconChanged(const QIcon &icon);
+
 private:
     Ui::MainWindow *ui;
 };

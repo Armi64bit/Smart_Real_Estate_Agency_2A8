@@ -9,6 +9,7 @@
 #include"exporttoexcelfile.h"
 #include <iostream>
 #include <QProgressBar>
+#include <QFile>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -43,7 +44,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->le_price_modif->setValidator(new QRegularExpressionValidator(rx4, this));
 
 
-
 }
 
 MainWindow::~MainWindow()
@@ -54,6 +54,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pb_add_clicked()
 {
+   // subscriptions Sub;
     int num_sub=ui->le_num_2->text().toInt();
     QString type_sub=ui->le_type->text();
     QString durat_sub=ui->le_durt->text();
@@ -72,9 +73,15 @@ void MainWindow::on_pb_add_clicked()
         ui->tab_subscriptions->setModel(Sub.read());
         ui->comboBox->setModel(Sub.read_id());
         ui->comboBox_2->setModel(Sub.read_buyer());
-    }
+        //hist
+        Sub.historique("A subscription is added : ",ui->le_num_2->text(),ui->le_type->text(),ui->le_durt->text(),ui->le_price->text(),ui->comboBox_2->currentText(),ui->le_sdate->text(),ui->le_edate->text());
+
+}
     else
+       {
         msgBox.setText("Failed to add.");
+    Sub.historique2("Failed to add a subscription");
+    }
     msgBox.exec();
 }
 
@@ -90,9 +97,21 @@ void MainWindow::on_pb_delete_clicked()
         msgBox.setText("Successfully deleted.");
         ui->tab_subscriptions->setModel(Sub1.read());
         ui->comboBox->setModel(Sub1.read_id());
+        //hist
+        QFile file("Historique.txt");
+        if (file.open(QIODevice::Append | QIODevice::Text))
+        {
+            QTextStream ecriture(&file);
+            ecriture << "Subscription number "<< Sub1.getnum() << " is deleted" << endl;
+            file.close();
+        }
     }
     else
+       {
+
         msgBox.setText("Failed to delete.");
+    Sub1.historique2("Failed to delete a subscription");
+    }
     msgBox.exec();
 }
 
@@ -136,9 +155,13 @@ void MainWindow::on_pd_update_clicked()
                      msgBox.setText("Update successfully.");
                      ui->tab_subscriptions->setModel(Sub.read());
                      ui->comboBox->setModel(Sub.read_id());
+                     Sub.historique("A subscription is updated : ",ui->le_num_modif->text(),ui->le_type_modif->text(),ui->le_duration_modif->text(),ui->le_price_modif->text(),ui->le_idBuy_modif->text(),ui->le_sdate_modif->text(),ui->le_edate_modif->text());
                  }
                  else
+                 {
                      msgBox.setText("Error ; can't update.");
+                 Sub.historique2("Failed to update a subscription");
+                 }
                  msgBox.exec();
 }
 
@@ -146,6 +169,7 @@ void MainWindow::on_pb_read_clicked()
 {
     subscriptions Sub1;
     ui->tab_subscriptions->setModel(Sub1.read());
+    Sub1.historique2("List of subscriptions is displayed" );
 }
 
 //tris
@@ -159,9 +183,13 @@ void MainWindow::on_sortById_clicked()
     {
         msgBox.setText("Successfully sorted.");
         ui->tab_subscriptions->setModel(Sub1.sort_id());
+        Sub1.historique2("List of subscriptions is sorted by ID");
     }
     else
-        msgBox.setText("Failed to sort.");
+     {
+        msgBox.setText("Failed to sort the list of subscriptions.");
+        Sub1.historique2("Failed to sort the list of subscriptions");
+    }
     msgBox.exec();
 }
 
@@ -175,9 +203,13 @@ void MainWindow::on_sortByType_clicked()
     {
         msgBox.setText("Successfully sorted.");
         ui->tab_subscriptions->setModel(Sub1.sort_type());
+        Sub1.historique2("List of subscriptions is sorted by type");
     }
     else
-        msgBox.setText("Failed to sort.");
+    {
+        msgBox.setText("Failed to sort the list of subscriptions.");
+        Sub1.historique2("Failed to sort the list of subscriptions");
+    }
     msgBox.exec();
 }
 
@@ -191,9 +223,13 @@ void MainWindow::on_sortByPrice_clicked()
     {
         msgBox.setText("Successfully sorted.");
         ui->tab_subscriptions->setModel(Sub1.sort_price());
+        Sub1.historique2("List of subscriptions is sorted by price");
     }
     else
-        msgBox.setText("Failed to sort.");
+    {
+        msgBox.setText("Failed to sort the list of subscriptions.");
+        Sub1.historique2("Failed to sort the list of subscriptions");
+    }
     msgBox.exec();
 }
 
@@ -203,6 +239,13 @@ void MainWindow::on_numtosearch_textChanged(const QString &arg1)
     Sub1.cleartable(ui->tab_subscriptions);
     int num_sub=ui->numtosearch->text().toInt();
     Sub1.findNum(ui->tab_subscriptions, num_sub);
+    QFile file("Historique.txt");
+    if (file.open(QIODevice::Append | QIODevice::Text))
+    {
+        QTextStream ecriture(&file);
+        ecriture << "Search for subscription number "<< num_sub << endl;
+        file.close();
+    }
 }
 
 void MainWindow::on_typetosearch_textChanged(const QString &arg1)
@@ -211,6 +254,13 @@ void MainWindow::on_typetosearch_textChanged(const QString &arg1)
     Sub1.cleartable(ui->tab_subscriptions);
     QString type_sub=ui->typetosearch->text();
     Sub1.findType(ui->tab_subscriptions, type_sub);
+    QFile file("Historique.txt");
+    if (file.open(QIODevice::Append | QIODevice::Text))
+    {
+        QTextStream ecriture(&file);
+        ecriture << "Search for subscription with type : "<< type_sub << endl;
+        file.close();
+    }
 }
 
 void MainWindow::on_startdatetosearch_textChanged(const QString &arg1)
@@ -219,33 +269,40 @@ void MainWindow::on_startdatetosearch_textChanged(const QString &arg1)
     Sub1.cleartable(ui->tab_subscriptions);
     QString s_date_sub=ui->startdatetosearch->text();
     Sub1.findStartDate(ui->tab_subscriptions, s_date_sub);
+    QFile file("Historique.txt");
+    if (file.open(QIODevice::Append | QIODevice::Text))
+    {
+        QTextStream ecriture(&file);
+        ecriture << "Search for subscription with start date "<< s_date_sub << endl;
+        file.close();
+    }
 }
 
-
-
+//stats
 void MainWindow::on_tabWidget_currentChanged(int index)
 {
 subscriptions Sub1;
-        // background //
+                   // Background :
                   QLinearGradient gradient(0, 0, 0, 400);
                   gradient.setColorAt(0, QColor(90, 90, 90));
                   gradient.setColorAt(0.38, QColor(105, 105, 105));
                   gradient.setColorAt(1, QColor(70, 70, 70));
                   ui->plot->setBackground(QBrush(gradient));
 
+                   // Bars:
                   QCPBars *amande = new QCPBars(ui->plot->xAxis, ui->plot->yAxis);
                   amande->setAntialiased(false);
                   amande->setStackingGap(1);
-                   //couleurs
+
+                   // Couleurs:
                   amande->setName("Repartition des types selon prix ");
                   amande->setPen(QPen(QColor(0, 168, 140).lighter(130)));
                   amande->setBrush(QColor(0, 168, 140));
 
-                   //axe des abscisses
+                   // Axe des abscisses:
                   QVector<double> ticks;
                   QVector<QString> labels;
                   Sub1.statistique(&ticks,&labels);
-
                   QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
                   textTicker->addTicks(ticks, labels);
                   ui->plot->xAxis->setTicker(textTicker);
@@ -259,8 +316,7 @@ subscriptions Sub1;
                   ui->plot->xAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
                   ui->plot->xAxis->setTickLabelColor(Qt::white);
                   ui->plot->xAxis->setLabelColor(Qt::white);
-
-                  // axe des ordonnées
+                  // Axe des ordonnées:
                   ui->plot->yAxis->setRange(0,500);
                   ui->plot->yAxis->setPadding(5);
                   ui->plot->yAxis->setLabel("Statistiques");
@@ -273,47 +329,82 @@ subscriptions Sub1;
                   ui->plot->yAxis->grid()->setPen(QPen(QColor(130, 130, 130), 0, Qt::SolidLine));
                   ui->plot->yAxis->grid()->setSubGridPen(QPen(QColor(130, 130, 130), 0, Qt::DotLine));
 
-                  // ajout des données  //
-
+                  // Ajout des données:
                   QVector<double> PlaceData;
-                  //
-
-                  QSqlQuery q1("select SUM(price_sub) from SUBSCRIPTIONS where regexp_like(type_sub,'plumbing');");
+                  QSqlQuery q1("select SUM(price_sub) from SUBSCRIPTIONS where regexp_like(type_sub,'air conditioning');");
                   while (q1.next()) {
-                                int  nbr_fautee = q1.value(0).toInt();
-                                PlaceData<< nbr_fautee;
+                                int  n = q1.value(0).toFloat();
+                                PlaceData<< n;
                                 QSqlQuery q2("select SUM(price_sub) from SUBSCRIPTIONS where regexp_like(type_sub,'electricity');");
                                 while (q2.next()) {
-                                              int  nbr_fautee = q2.value(0).toInt();
-                                              PlaceData<< nbr_fautee;
-                                              QSqlQuery q3("select SUM(price_sub) from SUBSCRIPTIONS where regexp_like(type_sub,'air conditioning');");
+                                              int  n = q2.value(0).toFloat();
+                                              PlaceData<< n;
+                                              QSqlQuery q3("select SUM(price_sub) from SUBSCRIPTIONS where regexp_like(type_sub,'plumbing');");
                                               while (q3.next()) {
-                                                            int  nbr_fautee = q3.value(0).toInt();
-                                                            PlaceData<< nbr_fautee;
+                                                            int  n = q3.value(0).toFloat();
+                                                            PlaceData<< n;
                                                               }
                                                 }
                                   }
                   amande->setData(ticks, PlaceData);
-
+                  // Legende:
                   ui->plot->legend->setVisible(true);
                   ui->plot->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignTop|Qt::AlignHCenter);
                   ui->plot->legend->setBrush(QColor(255, 255, 255, 100));
                   ui->plot->legend->setBorderPen(Qt::NoPen);
                   QFont legendFont = font();
-                  legendFont.setPointSize(5);
+                  legendFont.setPointSize(10);
                   ui->plot->legend->setFont(legendFont);
+                   // Interact:
                   ui->plot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
 
-
+                  Sub1.historique2("Statistics is updated");
 
 }
 
 void MainWindow::on_pbExport_clicked()
 {
+    subscriptions Sub;
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Excel file"), qApp->applicationDirPath (),
+                                                            tr("Excel Files (*.xls)"));
+            if (fileName.isEmpty())
+                return ;
+        QProgressBar progressBar;
+            exportExcel  obj(fileName, "tabsub", ui->tab_subscriptions);
 
+            // ordre des colonnes et la colonne à exporter
+            obj.addField(0, "num", "char(20)") ;
+            obj.addField(1, "type", "char(20)");
+            obj.addField(2, "duration", "char(20)");
+            obj.addField(3, "price", "char(20)");
+            obj.addField(4, "idbuyer", "char(20)");
+            obj.addField(5, "startdate", "char(20)");
+            obj.addField(6, "enddate", "char(20)");
+
+            int retVal = obj.export2Excel();
+            if( retVal > 0)
+            {
+                QMessageBox::information(this, tr("Done"),
+                                         QString( tr("%1 enregistrements exportés!")).arg(retVal)
+                                         );
+                Sub.historique2("Export to Excel file");
+            }
 }
 
-
+void MainWindow::on_pb_history_clicked()
+{
+    subscriptions Sub1;
+    QFile file("Historique.txt");
+    Sub1.historique2("Show Text History");
+   if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        QMessageBox::information(0,"info",file.errorString());
+            QTextStream lecture(&file);
+            ui->textBrowser->setText(lecture.readAll());
+            QMessageBox::information(nullptr, QObject::tr("Text History is open"),
+                        QObject::tr("Text History is successfully displayed.\n"
+                                    "Click Cancel to exit."), QMessageBox::Cancel);
+            file.close();
+}
 
 
 
