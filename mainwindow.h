@@ -3,7 +3,9 @@
 #include <agent.h>
 #include <QMainWindow>
 #include "login.h"
-
+#include <QTcpSocket>
+#include <QVariant>
+#include <QMessageBox>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -76,8 +78,11 @@ private slots:
 
     void on_photo_clicked();
 
+    void on_chat_clicked();
+
 private:
  Ui::MainWindow *ui;
     agent a;
+    QTcpSocket*mSocket;
 };
 #endif // MAINWINDOW_H

@@ -5,13 +5,52 @@
 #include<QFileDialog>
 #include"agent.h"
 #include "login.h"
+#include <QTcpSocket>
+#include <QSqlQueryModel>
+#include <QSqlDatabase>
+#include <QSqlError>
+#include <QSqlQuery>
+#include <QMessageBox>
+#include "QIntValidator"
+#include <QDateEdit>
+#include <QPlainTextEdit>
 
+#include <QTextStream>
+#include <QPainter>
+#include <QTextStream>
+#include <QFileDialog>
+#include <QTextDocument>
+#include <QtPrintSupport/QPrinter>
+#include <QFileDialog>
+#include <QTextDocument>
+#include <strstream>
+#include <QSystemTrayIcon>
+#include <QRegExpValidator>
+#include <QDesktopServices>
+#include <QUrl>
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
+#include <QTcpSocket>
+#include <QQuickItem>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    mSocket=new QTcpSocket(this);
+        mSocket->connectToHost("localhost",2000);
+        if (mSocket->waitForConnected(3000))
+        {
+            ui->plainTextEdit->appendPlainText("se connecter correctement");
+        }
+        else
+        {
+            ui->plainTextEdit->appendPlainText("pas de connexion");
+        }
+        connect(mSocket,SIGNAL(readyRead()),this,SLOT(leer()));
+
+
     agent a ;
     ui->tabagent->setModel(a.afficher());
     ui->comboBox->setModel(a.afficher_id());
@@ -78,7 +117,7 @@ void MainWindow::on_pushButton_4_clicked()
 
 void MainWindow::on_pushButton_8_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(4);
+    ui->stackedWidget->setCurrentIndex(5);
 
 }
 
@@ -385,4 +424,13 @@ void MainWindow::on_photo_clicked()
               //ERROR HANDLING
           }
       }
+}
+// chat button
+void MainWindow::on_chat_clicked()
+{
+    mSocket->write(ui->lineEdit->text().toLatin1().data(),ui->lineEdit->text().size());
+
+       ui->plainTextEdit->appendPlainText(ui->lineEdit->text());
+
+       ui->lineEdit->clear();
 }

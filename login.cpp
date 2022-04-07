@@ -69,10 +69,10 @@ else if(!query.exec()) {
 
 
             this->hide();
-            // newmain variable pour acceder au mainWindow
+            // newmain variable pour acceder au mainWindow pour afficher MainWindow (newmain var type mainWindow)
           MainWindow * newmain = new MainWindow() ;
-          newmain->hmed();
-          newmain->show();
+          newmain->hmed(); // fonction pour block les button
+          newmain->show(); // affiche mainwindow
         }
         if(type=="buyer"){
 

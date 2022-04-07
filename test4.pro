@@ -1,5 +1,6 @@
-QT       += core gui multimedia multimediawidgets sql location \
-    quick
+QT       += core gui multimedia multimediawidgets sql location network  \
+
+quick
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quickwidgets network qml
 
