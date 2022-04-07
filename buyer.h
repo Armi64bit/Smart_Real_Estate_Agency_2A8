@@ -42,7 +42,7 @@ public:
    QSqlQueryModel * find_id(int);
    QSqlQueryModel * find_name(QString);
    QSqlQueryModel * find_request(QString);
-   QSqlQueryModel * recomondation();
+   QSqlQueryModel * recomondation(QTableView *table,QString);
    void cleartable (QTableView *table);
    void finda_id(QTableView *table, int x);
    void finda_name(QTableView *table, QString x);

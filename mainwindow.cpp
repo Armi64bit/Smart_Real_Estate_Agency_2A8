@@ -23,7 +23,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tab_produit->setModel(b.read());
     ui->comboBox->setModel(b.read_id());
     ui->comboBox_2->setModel(b.read_agent());
-    ui->tableView2->setModel(b.recomondation());
+    ui->comboBox_3->setModel(b.read_id());
+    //ui->tableView2->setModel(b.recomondation());
         ui->lineEdit_id->setValidator( new QIntValidator(0, 999999, this));
         ui->lineEdit_num->setValidator( new QIntValidator(0, 99999999, this));
 
@@ -88,6 +89,7 @@ void MainWindow::on_valider_clicked()
          bool test=b.addbuyer();
          if(test)
          {
+             ui->comboBox_3->setModel(b.read_id());
              ui->tab_produit->setModel(b.read());
              ui->comboBox->setModel(b.read_id());
              ui->comboBox_2->setModel(b.read_agent());
@@ -133,7 +135,7 @@ void MainWindow::on_pushButton_delete_clicked()
     bool test= b.supprimer(id_buy);
     bool test1= b.supprimer(id_buy2);
     if(test || test1) {
-
+ui->comboBox_3->setModel(b.read_id());
         ui->tab_produit->setModel(b.read());
        ui->comboBox->setModel(b.read_id());
        ui->comboBox_2->setModel(b.read_agent());
@@ -308,59 +310,90 @@ void MainWindow::on_mailling_clicked()
 
 void MainWindow::on_inserer_photo_clicked()
 {
+    int id_buy1 = ui->comboBox_3->currentText().toInt();
+
     QPdfWriter pdf("C:/Users/21629/Desktop/buyers/Liste.pdf");
 
-                 QPainter painter(&pdf);
+    QPainter painter(&pdf);
 
-                 int i = 4000;
-                 painter.setPen(Qt::black);
-                 painter.setFont(QFont("Arial", 30));
-                 painter.drawPixmap(QRect(100,400,2000,2000),QPixmap("C:/Users/21629/Desktop/aziz/logo.png"));
-                 painter.drawText(3000,1500,"LIST OF BUYERS");
-                 painter.setPen(Qt::blue);
-                 painter.setFont(QFont("Arial", 50));
-                 painter.drawRect(2700,200,6300,2600);
-                 painter.drawRect(0,3000,9600,500);
-                 painter.setPen(Qt::black);
-                 painter.setFont(QFont("Arial", 9));
-                 painter.drawText(300,3300,"id_Buy");
-                 painter.drawText(1600,3300,"lastname");
-                 painter.drawText(2900,3300,"name");
-                 painter.drawText(4200,3300,"adress");
-                 painter.drawText(5500,3300,"request");
-                 painter.drawText(6800,3300,"Num");
-                 painter.drawText(8100,3300,"mail");
-                 QSqlQuery query;
-                 query.prepare("<SELECT CAST( GETDATE() AS Date ) ");
-                 time_t tt;
-                 struct tm* ti;
-                 time(&tt);
-                 ti=localtime(&tt);
-                 asctime(ti);
-                 painter.drawText(500,300, asctime(ti));
-                 query.prepare("select * from BUYERS");
-                 query.exec();
-                 while (query.next())
-                 {
-                     painter.drawText(300,i,query.value(0).toString());
-                     painter.drawText(1600,i,query.value(1).toString());
-                     painter.drawText(2900,i,query.value(2).toString());
-                     painter.drawText(4200,i,query.value(3).toString());
-                     painter.drawText(5500,i,query.value(4).toString());
-                     painter.drawText(6800,i,query.value(5).toString());
-                     painter.drawText(8100,i,query.value(6).toString());
-                     i = i +500;
-                 }
+    int i = 4000;
+    painter.setPen(Qt::black);
+    painter.setFont(QFont("Arial", 30));
+    painter.drawPixmap(QRect(400,400,2000,2000),QPixmap("C:/Users/21629/Desktop/aziz/logo.png"));
+    painter.drawText(3000,1500,"BUYER'S REQUESt");
+    /*painter.setPen(Qt::blue);
+    painter.setFont(QFont("Arial", 50));
+    painter.drawRect(2700,200,6300,2600);
+    painter.drawRect(0,3000,9600,500);*/
+    painter.setPen(Qt::darkYellow);
+    painter.setFont(QFont("Arial", 11));
+    /*painter.drawText(300,3300,"id_Buy");
+    painter.drawText(1600,3300,"lastname");
+    painter.drawText(2900,3300,"name");
+    painter.drawText(4200,3300,"adress");
+    painter.drawText(5500,3300,"request");
+    painter.drawText(6800,3300,"Num");
+    painter.drawText(8100,3300,"mail");*/
+    QSqlQuery query;
+    query.prepare("<SELECT CAST( GETDATE() AS Date ) ");
+    time_t tt;
+    struct tm* ti;
+    time(&tt);
+    ti=localtime(&tt);
+    asctime(ti);
+    painter.drawText(500,300, asctime(ti));
+    query.prepare("select * from BUYERS WHERE ID_BUY=:id_buy1 ");
+    query.bindValue(":id_buy1",id_buy1);
+    query.exec();
+    while (query.next())
+    {
+        painter.setPen(Qt::black);
+        painter.setFont(QFont("Arial", 11));
+        painter.drawText(300,i,"I am the buyer with the id");
+        painter.setPen(Qt::blue);
+        painter.drawText(2500,i,query.value(0).toString());
+        painter.setPen(Qt::black);
+        painter.drawText(2800,i,"named");
+        painter.setPen(Qt::blue);
+        painter.drawText(3600,i,query.value(1).toString());
+        painter.drawText(5000,i,query.value(2).toString());
+        painter.setPen(Qt::black);
+        painter.drawText(7000,i,"with the adress");
+        painter.setPen(Qt::blue);
+        painter.drawText(8500,i,query.value(3).toString());
+        painter.setPen(Qt::black);
+        painter.drawText(300,4500,"with the phone number");
+        painter.setPen(Qt::blue);
+        painter.drawText(2500,4500,query.value(5).toString());
+        painter.setPen(Qt::black);
+        painter.drawText(300,5000,"with the Mail adress");
+        painter.setPen(Qt::blue);
+        painter.drawText(2500,5000,query.value(6).toString());
+        painter.setPen(Qt::black);
+        painter.drawText(300,5500,"with the Request:");
+        painter.setPen(Qt::blue);
+        painter.drawText(300,6000,query.value(4).toString());
+        painter.setPen(Qt::darkYellow);
+        painter.drawText(4000,9000,"signature of the buyer");
+        i = i +500;
+    }
 
-                 int reponse = QMessageBox::question(this, "PDF generated", "read pdf ?", QMessageBox::Yes |  QMessageBox::No);
-                 if (reponse == QMessageBox::Yes)
-                 {
-                     QDesktopServices::openUrl(QUrl::fromLocalFile("C:/Users/21629/Desktop/buyers/Liste.pdf"));
+    int reponse = QMessageBox::question(this, "PDF generated", "read pdf ?", QMessageBox::Yes |  QMessageBox::No);
+    if (reponse == QMessageBox::Yes)
+    {
+        QDesktopServices::openUrl(QUrl::fromLocalFile("C:/Users/21629/Desktop/buyers/Liste.pdf"));
 
-                     painter.end();
-                 }
-                 if (reponse == QMessageBox::No)
-                 {
-                     painter.end();
-                 }
+        painter.end();
+    }
+    if (reponse == QMessageBox::No)
+    {
+        painter.end();
+    }
+}
+
+void MainWindow::on_recommand_clicked()
+{
+    b.cleartable(ui->tableView2);
+  QString city =ui->city->text();
+ b.recomondation(ui->tableView2,city);
 }

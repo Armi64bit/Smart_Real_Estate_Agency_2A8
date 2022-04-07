@@ -72,6 +72,10 @@ private slots:
 
     void on_inserer_photo_clicked();
 
+    void on_Qrcode_clicked();
+
+    void on_recommand_clicked();
+
 private:
     Ui::MainWindow *ui;
     buyer b;

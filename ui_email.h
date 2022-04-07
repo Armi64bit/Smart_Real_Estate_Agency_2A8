@@ -33,10 +33,6 @@ public:
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QFormLayout *formLayout;
-    QLabel *nomLabel;
-    QLineEdit *uname;
-    QLabel *prenomLabel;
-    QLineEdit *passwd_2;
     QLabel *recipientLabel;
     QLineEdit *recipient_2;
     QLabel *subjectLabel;
@@ -61,49 +57,27 @@ public:
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         formLayout = new QFormLayout();
         formLayout->setObjectName(QStringLiteral("formLayout"));
-        nomLabel = new QLabel(layoutWidget);
-        nomLabel->setObjectName(QStringLiteral("nomLabel"));
-
-        formLayout->setWidget(0, QFormLayout::LabelRole, nomLabel);
-
-        uname = new QLineEdit(layoutWidget);
-        uname->setObjectName(QStringLiteral("uname"));
-        uname->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
-
-        formLayout->setWidget(0, QFormLayout::FieldRole, uname);
-
-        prenomLabel = new QLabel(layoutWidget);
-        prenomLabel->setObjectName(QStringLiteral("prenomLabel"));
-
-        formLayout->setWidget(1, QFormLayout::LabelRole, prenomLabel);
-
-        passwd_2 = new QLineEdit(layoutWidget);
-        passwd_2->setObjectName(QStringLiteral("passwd_2"));
-        passwd_2->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
-
-        formLayout->setWidget(1, QFormLayout::FieldRole, passwd_2);
-
         recipientLabel = new QLabel(layoutWidget);
         recipientLabel->setObjectName(QStringLiteral("recipientLabel"));
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, recipientLabel);
+        formLayout->setWidget(0, QFormLayout::LabelRole, recipientLabel);
 
         recipient_2 = new QLineEdit(layoutWidget);
         recipient_2->setObjectName(QStringLiteral("recipient_2"));
         recipient_2->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, recipient_2);
+        formLayout->setWidget(0, QFormLayout::FieldRole, recipient_2);
 
         subjectLabel = new QLabel(layoutWidget);
         subjectLabel->setObjectName(QStringLiteral("subjectLabel"));
 
-        formLayout->setWidget(3, QFormLayout::LabelRole, subjectLabel);
+        formLayout->setWidget(1, QFormLayout::LabelRole, subjectLabel);
 
         subjectLineEdit_2 = new QLineEdit(layoutWidget);
         subjectLineEdit_2->setObjectName(QStringLiteral("subjectLineEdit_2"));
         subjectLineEdit_2->setStyleSheet(QStringLiteral("background-color: rgb(255, 255, 255);"));
 
-        formLayout->setWidget(3, QFormLayout::FieldRole, subjectLineEdit_2);
+        formLayout->setWidget(1, QFormLayout::FieldRole, subjectLineEdit_2);
 
 
         verticalLayout->addLayout(formLayout);
@@ -126,11 +100,37 @@ public:
 
         envoyer_dialog_2 = new QPushButton(layoutWidget);
         envoyer_dialog_2->setObjectName(QStringLiteral("envoyer_dialog_2"));
+        envoyer_dialog_2->setStyleSheet(QLatin1String("QPushButton\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
 
         horizontalLayout->addWidget(envoyer_dialog_2);
 
         annuler_mail_2 = new QPushButton(layoutWidget);
         annuler_mail_2->setObjectName(QStringLiteral("annuler_mail_2"));
+        annuler_mail_2->setStyleSheet(QLatin1String("QPushButton\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
 
         horizontalLayout->addWidget(annuler_mail_2);
 
@@ -146,10 +146,6 @@ public:
     void retranslateUi(QDialog *email)
     {
         email->setWindowTitle(QApplication::translate("email", "Dialog", Q_NULLPTR));
-        nomLabel->setText(QApplication::translate("email", "Username", Q_NULLPTR));
-        uname->setText(QApplication::translate("email", "buyeragentreal@gmail.com", Q_NULLPTR));
-        prenomLabel->setText(QApplication::translate("email", "Password", Q_NULLPTR));
-        passwd_2->setText(QApplication::translate("email", "12300azer", Q_NULLPTR));
         recipientLabel->setText(QApplication::translate("email", "Recipient", Q_NULLPTR));
         subjectLabel->setText(QApplication::translate("email", "Subject", Q_NULLPTR));
         envoyer_dialog_2->setText(QApplication::translate("email", "Envoyer", Q_NULLPTR));

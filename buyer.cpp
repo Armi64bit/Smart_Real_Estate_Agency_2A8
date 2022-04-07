@@ -218,8 +218,15 @@ void buyer::finda_request(QTableView *table, QString x){
           table->show();
 
 }
-QSqlQueryModel * buyer::recomondation()
-{   QSqlQueryModel *model=new QSqlQueryModel();
-         model->setQuery("SELECT name_sel FROM sellers GROUP BY name_sel ORDER BY COUNT(name_sel) DESC ");
-return model;
+QSqlQueryModel * buyer::recomondation(QTableView *table ,QString x)
+{
+    QSqlQueryModel *model=new QSqlQueryModel();
+          QSqlQuery *query =new QSqlQuery;
+   query->prepare("SELECT name_sel FROM sellers INNER JOIN PROPERTIES ON sellers.id_sel=PROPERTIES.id_sel where PROPERTIES.DESCRIPTION_PROP=:prop GROUP BY sellers.name_sel ORDER BY COUNT(sellers.name_sel) DESC   ");
+    query->bindValue(":prop",x);
+    query->exec();
+    model->setQuery(*query);
+    table->setModel(model);
+    table->show();
 }
+

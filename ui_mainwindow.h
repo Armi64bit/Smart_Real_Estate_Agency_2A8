@@ -54,6 +54,7 @@ public:
     QLineEdit *lineEdit_id;
     QLabel *label_6;
     QComboBox *comboBox_2;
+    QComboBox *comboBox_3;
     QWidget *tab_2;
     QTableView *tab_produit;
     QPushButton *trier;
@@ -93,6 +94,8 @@ public:
     QPushButton *mailling;
     QTableView *tableView2;
     QLabel *label_7;
+    QLineEdit *city;
+    QPushButton *recommand;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -228,6 +231,9 @@ public:
         comboBox_2->setObjectName(QStringLiteral("comboBox_2"));
         comboBox_2->setGeometry(QRect(530, 220, 73, 22));
         comboBox_2->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
+        comboBox_3 = new QComboBox(tab);
+        comboBox_3->setObjectName(QStringLiteral("comboBox_3"));
+        comboBox_3->setGeometry(QRect(850, 390, 73, 22));
         tabWidget->addTab(tab, QString());
         label_14->raise();
         label->raise();
@@ -249,6 +255,7 @@ public:
         lineEdit_id->raise();
         label_6->raise();
         comboBox_2->raise();
+        comboBox_3->raise();
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
         tab_produit = new QTableView(tab_2);
@@ -761,6 +768,25 @@ public:
         label_7->setGeometry(QRect(1100, 10, 181, 16));
         label_7->setFont(font1);
         label_7->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
+        city = new QLineEdit(tab_2);
+        city->setObjectName(QStringLiteral("city"));
+        city->setGeometry(QRect(1180, 270, 113, 22));
+        recommand = new QPushButton(tab_2);
+        recommand->setObjectName(QStringLiteral("recommand"));
+        recommand->setGeometry(QRect(1060, 270, 93, 28));
+        recommand->setStyleSheet(QLatin1String("QPushButton\n"
+"{background-color: rgb(200,133,0);\n"
+"color : white;\n"
+"font: 10pt Arial;\n"
+"            border-radius: 4px;\n"
+"            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);\n"
+"border: 2px solid rgb(200,133,0);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border: 2px solid rgb(200,146,0);\n"
+"background-color : rgb(200,149,47);\n"
+"}"));
         tabWidget->addTab(tab_2, QString());
         label_13->raise();
         tab_produit->raise();
@@ -800,6 +826,8 @@ public:
         mailling->raise();
         tableView2->raise();
         label_7->raise();
+        city->raise();
+        recommand->raise();
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -860,6 +888,7 @@ public:
         pushButton_3->setText(QApplication::translate("MainWindow", "Read Info", Q_NULLPTR));
         mailling->setText(QApplication::translate("MainWindow", "Mailling", Q_NULLPTR));
         label_7->setText(QApplication::translate("MainWindow", "Recommandation", Q_NULLPTR));
+        recommand->setText(QApplication::translate("MainWindow", "recommand", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "Read", Q_NULLPTR));
     } // retranslateUi
 

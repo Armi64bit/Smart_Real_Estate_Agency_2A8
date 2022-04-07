@@ -397,6 +397,16 @@ background-color : rgb(200,149,47);
        <string notr="true">color: rgb(255, 255, 255);</string>
       </property>
      </widget>
+     <widget class="QComboBox" name="comboBox_3">
+      <property name="geometry">
+       <rect>
+        <x>850</x>
+        <y>390</y>
+        <width>73</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
      <zorder>label_14</zorder>
      <zorder>label</zorder>
      <zorder>valider</zorder>
@@ -417,6 +427,7 @@ background-color : rgb(200,149,47);
      <zorder>lineEdit_id</zorder>
      <zorder>label_6</zorder>
      <zorder>comboBox_2</zorder>
+     <zorder>comboBox_3</zorder>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -1388,6 +1399,44 @@ QTableView::item::selected
        <string>Recommandation</string>
       </property>
      </widget>
+     <widget class="QLineEdit" name="city">
+      <property name="geometry">
+       <rect>
+        <x>1180</x>
+        <y>270</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="recommand">
+      <property name="geometry">
+       <rect>
+        <x>1060</x>
+        <y>270</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+{background-color: rgb(200,133,0);
+color : white;
+font: 10pt Arial;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+border: 2px solid rgb(200,133,0);
+}
+
+QPushButton:hover {
+border: 2px solid rgb(200,146,0);
+background-color : rgb(200,149,47);
+}</string>
+      </property>
+      <property name="text">
+       <string>recommand</string>
+      </property>
+     </widget>
      <zorder>label_13</zorder>
      <zorder>tab_produit</zorder>
      <zorder>trier</zorder>
@@ -1426,6 +1475,8 @@ QTableView::item::selected
      <zorder>mailling</zorder>
      <zorder>tableView2</zorder>
      <zorder>label_7</zorder>
+     <zorder>city</zorder>
+     <zorder>recommand</zorder>
     </widget>
    </widget>
   </widget>
