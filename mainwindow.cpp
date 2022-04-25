@@ -10,12 +10,38 @@
 #include <QPdfWriter>
 #include <QDesktopServices>
 #include "excel.h"
+#include "parking.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    ui->setupUi(this);
+    int ret=A.connect_arduino(); // lancer la connexion à arduino
+    switch(ret){
+    case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+        break;
+    case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+       break;
+    case(-1):qDebug() << "arduino is not available";
+    }
+      data=A.read_from_arduino();
+    qDebug() << data;
+
+  int a= pr.dispo_place();
+  QByteArray abyte0;
+
+  abyte0.resize(4);
+
+  abyte0[0] = (uchar)
+(0x000000ff & a);
+
+A.write_to_arduino(abyte0);
+
+
+     QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
+     //le slot update_label suite à la reception du signal readyRead (reception des données).
     ui->setupUi(this);
     ui->tab_produit->setModel(p.read());
     ui->tab_produit->verticalHeader()->hide();
@@ -815,3 +841,27 @@ void MainWindow::on_linkedin_clicked()
      QDesktopServices::openUrl(QUrl("https://www.linkedin.com", QUrl::TolerantMode));
 
 }
+
+void MainWindow::update_label()
+{
+    data=A.read_from_arduino();
+
+    if(data!="0"){
+A.write_to_arduino("1");
+p.update(data.toInt());   // TAL3 ACEE
+
+QMessageBox msgBox;
+
+msgBox.setText("Spots left = " +QString::number(data.toInt()));
+msgBox.exec();
+ qDebug() << data;
+
+    }
+    else if(data=="0"){
+        QMessageBox::information(nullptr, QObject::tr("spots left"),
+                    QObject::tr("NO SPOTS LEFT.\n"), QMessageBox::Cancel);
+         A.write_to_arduino("3");  // mafamch blassa
+    }
+
+}
+

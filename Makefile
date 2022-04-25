@@ -219,6 +219,7 @@ Makefile: untitled.pro ../../Qt/Qt5.9.9/5.9.9/mingw53_32/mkspecs/win32-g++/qmake
 		../../Qt/Qt5.9.9/5.9.9/mingw53_32/lib/qtmaind.prl \
 		../../Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Widgets.prl \
 		../../Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Gui.prl \
+		../../Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5SerialPort.prl \
 		../../Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Sql.prl \
 		../../Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -o Makefile untitled.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -380,6 +381,7 @@ untitled.pro:
 ../../Qt/Qt5.9.9/5.9.9/mingw53_32/lib/qtmaind.prl:
 ../../Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Widgets.prl:
 ../../Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Gui.prl:
+../../Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5SerialPort.prl:
 ../../Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Sql.prl:
 ../../Qt/Qt5.9.9/5.9.9/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE

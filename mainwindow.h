@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include "arduino.h"
+#include "parking.h"
 #include <QMainWindow>
 #include "partners.h"
 QT_BEGIN_NAMESPACE
@@ -14,8 +15,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+ QByteArray  intToByte(int number);
 private slots:
+ void update_label();
     void on_pushButton_clicked();
 
     void on_pushButton_9_clicked();
@@ -123,5 +125,10 @@ private slots:
 private:
     Ui::MainWindow *ui;
     PARTNERS p;
+
+    QByteArray data; // variable contenant les données reçues
+
+    Arduino A; // objet temporaire
+    parking pr;
 };
 #endif // MAINWINDOW_H
