@@ -15,6 +15,10 @@ class login : public QDialog
 public:
     explicit login(QWidget *parent = nullptr);
     ~login();
+    QString get_login1(){
+
+        return  login1;
+    };
 
 private slots:
     void on_login_2_clicked();
@@ -24,6 +28,7 @@ private slots:
 private:
     Ui::login *ui;
     QSqlDatabase db;
+    QString login1;
 
 };
 

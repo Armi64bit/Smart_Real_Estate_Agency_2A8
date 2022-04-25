@@ -44,6 +44,16 @@ void login::on_login_2_clicked()
 
     QString  username,password,type;
     username= ui->lineEdit->text();
+     //MainWindow::login=username;
+    login1=username;
+    QFile file("Historique.txt");
+    if (file.open(QIODevice::Append | QIODevice::Text))
+    {
+        QTextStream ecriture(&file);
+        ecriture<< login1 <<endl;
+        file.close();
+    qDebug()<<"login est "<< login1;
+
     password=ui->lineEdit_2->text();
     type=ui->type->text();
 int c=0;
@@ -110,6 +120,7 @@ if(c<1)
     ui->label_3->setText("username and password is not correct  ");
 }
 
+}
 }
 
 

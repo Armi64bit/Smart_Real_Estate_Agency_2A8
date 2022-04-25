@@ -14,9 +14,10 @@ agent::agent()
     login_ag="";
     password_ag="";
 
+
 }
 
-agent::agent(int cin_ag,QString lastname_ag, QString name_ag, int num_ag,QString mail_ag   , QString adress_ag, QString function_ag ,QString login_ag ,QString password_ag )
+agent::agent(int cin_ag,QString lastname_ag, QString name_ag, int num_ag,QString mail_ag   , QString adress_ag, QString function_ag ,QString login_ag ,QString password_ag  )
 {
 
       this->cin_ag=cin_ag;
@@ -28,6 +29,7 @@ agent::agent(int cin_ag,QString lastname_ag, QString name_ag, int num_ag,QString
       this->function_ag=function_ag;
       this->login_ag=login_ag;
       this->password_ag=password_ag;
+
 }
 
 
@@ -215,3 +217,24 @@ void agent::rechercher_function(QTableView *table, QString x)
 
 
 }
+
+// afficher nom chat
+// QSqlQueryModel * agent::afficher_id()
+
+//QSqlQueryModel *model=new QSqlQueryModel();
+//model->setQuery("select cin_ag from agents");
+//model->setHeaderData(0,Qt::Horizontal,QObject::tr("cin_ag"));
+//return model;
+
+QSqlQueryModel * agent::afficherNom(int id){
+
+    QSqlQueryModel *model=new QSqlQueryModel();
+    QSqlQuery *query =new QSqlQuery;
+    query->prepare("select name_ag from agents where cin_ag=:id    ");
+    query->bindValue(":id",id);
+  query->exec();
+model->setQuery(*query);
+
+
+}
+

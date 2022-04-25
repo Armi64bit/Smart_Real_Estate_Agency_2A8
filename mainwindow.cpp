@@ -32,12 +32,14 @@
 #include <QQmlApplicationEngine>
 #include <QTcpSocket>
 #include <QQuickItem>
+#include <QFile>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     mSocket=new QTcpSocket(this);
         mSocket->connectToHost("localhost",2000);
         if (mSocket->waitForConnected(3000))
@@ -145,6 +147,7 @@ void MainWindow::on_pushButton_2_clicked()
 {
 
             int cin_ag=ui->lineEdit_cin->text().toInt();
+
              QString lastname_ag =ui->lineEdit_lastname->text();
             QString name_ag = ui->lineEdit_lastname->text();
            int num_ag = ui->lineEdit_number->text().toInt();
@@ -366,9 +369,9 @@ void MainWindow::on_pushButton_10_clicked()
 
 }
 
+// desactiver les bouton
 void MainWindow::closebutton()
 {
-
     ui->pushButton_7->setDisabled(true);
     ui->pushButton_19->setDisabled(true);
     ui->pushButton_18->setDisabled(true);
@@ -376,6 +379,7 @@ void MainWindow::closebutton()
     ui->pushButton_22->setDisabled(true);
     ui->pushButton_21->setDisabled(true);
 }
+
 
 
 
@@ -426,11 +430,65 @@ void MainWindow::on_photo_clicked()
       }
 }
 // chat button
+/*
+void MainWindow::on_comboBox_2_currentIndexChanged(int id)
+{
+    id= ui->comboBox_2->currentText().toInt();
+   QSqlQuery query ;
+   query.prepare("select  * from agents where cin_ag=:id ");
+   query.bindValue(":id",id);
+   if(query.exec()){
+    while (query.next())
+    {
+    ui->lineEdit->setText(query.value(2).toString());
+    }
+
+
+   }
+}
+*/
+
+
+
 void MainWindow::on_chat_clicked()
 {
+
+  // login l;
+ int  user =ui->comboBox_2->currentText().toInt();
     mSocket->write(ui->lineEdit->text().toLatin1().data(),ui->lineEdit->text().size());
+ QSqlQuery  query2;
+
+ //query2.prepare("select name_ag from agents where cin_ag=:login  ");
+ //query2.bindValue(":login",user);
+ //query2.exec();
 
        ui->plainTextEdit->appendPlainText(ui->lineEdit->text());
 
+       QString text = ui->lineEdit->text();
+
+
        ui->lineEdit->clear();
+       QSqlQuery  query;
+        qDebug()<<"login est " << user ;
+       query.prepare("update AGENTS set chat= concat(concat((select chat from AGENTS),' '),:chat ) WHERE cin_ag=:login ");
+       //creation des variables liées
+qDebug()<< "chat est"<< text;
+       query.bindValue(":chat",text);
+       query.bindValue(":login",user);
+ qDebug()<<"login est " << user ;
+       query.exec();
 }
+
+void MainWindow::on_pushButton_24_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+
+}
+
+// combo
+void MainWindow::on_combo_clicked()
+{
+ ui->comboBox_2->setModel(a.afficher_id());
+}
+
+

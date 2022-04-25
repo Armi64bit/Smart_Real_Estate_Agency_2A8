@@ -18,6 +18,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 Ui::MainWindow *Myui;
+   //QString login;
 
 void closebutton();
 
@@ -80,9 +81,18 @@ private slots:
 
     void on_chat_clicked();
 
+    void on_pushButton_24_clicked();
+
+    void on_comboBox_2_activated(const QString &arg1);
+
+    void on_combo_clicked();
+
+    void on_comboBox_2_currentIndexChanged(int index);
+
 private:
  Ui::MainWindow *ui;
     agent a;
     QTcpSocket*mSocket;
+
 };
 #endif // MAINWINDOW_H
