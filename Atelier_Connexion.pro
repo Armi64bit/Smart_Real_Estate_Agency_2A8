@@ -12,6 +12,7 @@ QT += printsupport
 QT       += core gui network
 QT += core
         QT += network
+QT       += core gui  serialport
 greaterThan(QT_MAJOR_VERSION, 4): QT +=  widgets
 
 
@@ -32,18 +33,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    arduino.cpp \
     buyer.cpp \
     connection.cpp \
     email.cpp \
         main.cpp \
         mainwindow.cpp \
+    notification.cpp \
     smtp.cpp
 
 HEADERS += \
+    arduino.h \
     buyer.h \
     connection.h \
     email.h \
         mainwindow.h \
+    notification.h \
     smtp.h
 
 FORMS += \

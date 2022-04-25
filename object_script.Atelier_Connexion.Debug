@@ -1,0 +1,12 @@
+INPUT(
+./debug\arduino.o
+./debug\buyer.o
+./debug\email.o
+./debug\main.o
+./debug\mainwindow.o
+./debug\notification.o
+./debug\smtp.o
+./debug\moc_email.o
+./debug\moc_mainwindow.o
+./debug\moc_smtp.o
+);

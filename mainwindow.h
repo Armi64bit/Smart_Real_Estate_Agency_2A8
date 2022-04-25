@@ -2,7 +2,8 @@
 #define MAINWINDOW_H
 #include "buyer.h"
 #include <QMainWindow>
-
+#include "arduino.h"
+#include "notification.h"
 namespace Ui {
 class MainWindow;
 }
@@ -75,10 +76,15 @@ private slots:
     void on_Qrcode_clicked();
 
     void on_recommand_clicked();
+ void read_serial();
 
 private:
     Ui::MainWindow *ui;
     buyer b;
+    QByteArray data; // variable contenant les données reçues
+arduino A;
+    //Arduino A;
+    Notification n;
 };
 
 #endif // MAINWINDOW_H

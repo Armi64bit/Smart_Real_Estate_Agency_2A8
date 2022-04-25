@@ -13,10 +13,27 @@
 #include <QtPrintSupport/QPrinter>
 #include <QtWidgets>
 #include<QFileDialog>
+#include <QDebug>
+#include "notification.h"
+#include "arduino.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
+
     ui(new Ui::MainWindow)
 {
+
+
+    int ret=A.connect_arduino(); // lancer la connexion à arduino
+    switch(ret){
+    case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+        break;
+    case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+       break;
+    case(-1):qDebug() << "arduino is not available";
+    }
+     QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(read_serial())); // permet de lancer
+     //le slot update_label suite à la reception du signal readyRead (reception des données).
+
   buyer b ;
 
     ui->setupUi(this);
@@ -57,6 +74,29 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+void MainWindow::read_serial()
+{
+    arduino A;
+    data=A.read_from_arduino();
+
+    QSqlQuery query;
+    query.prepare("select password_ag from agents where password_ag=:pass");
+    query.bindValue(":pass",data);
+
+qDebug() << data;
+    if( query.exec()){
+         A.write_to_arduino("1");
+        n.notification_ajoutab();
+   }
+//qDebug() << "open";
+
+    else{
+//qDebug() << "close";
+        n.notification_modifierab();
+        A.write_to_arduino("0");}
+    // si les données reçues de arduino via la liaison série sont égales à 0
+     //alors afficher ON
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -397,3 +437,4 @@ void MainWindow::on_recommand_clicked()
   QString city =ui->city->text();
  b.recomondation(ui->tableView2,city);
 }
+
