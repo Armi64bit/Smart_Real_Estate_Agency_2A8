@@ -4,7 +4,7 @@
 #include "property.h"
 #include "dialog.h"
 #include <QApplication>
-
+#include "camera.h"
 #include <QMediaPlayer>
 #include <QVideoWidget>
 #include <QFileDialog>
@@ -19,7 +19,18 @@ MainWindow::MainWindow(QWidget *parent)
     Property p;
     ui->setupUi(this);
     //arduino:
+    QSqlDatabase db=QSqlDatabase::addDatabase("QODBC");
+    db.setDatabaseName("test");
+    db.setUserName("dhafer");
+    db.setPassword("dhafer");
 
+    if(db.open()){
+        QMessageBox::information(this,"Connection","Database Connected Successfully");
+
+    }
+    else {
+        QMessageBox::information(this,"Not Connected","Database Not connected");
+    }
     int ret=A.connect_arduino(); // lancer la connexion à arduino
        switch(ret){
        case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
@@ -31,21 +42,13 @@ MainWindow::MainWindow(QWidget *parent)
         QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
         //le slot update_label suite à la reception du signal readyRead (reception des données).
     //data base connection :
-    QSqlDatabase db=QSqlDatabase::addDatabase("QODBC");
-    db.setDatabaseName("test");
-    db.setUserName("dhafer");
-    db.setPassword("dhafer");
 
 
 
 
-    if(db.open()){
-        QMessageBox::information(this,"Connection","Database Connected Successfully");
 
-    }
-    else {
-        QMessageBox::information(this,"Not Connected","Database Not connected");
-    }
+
+
     //
     //showing tables and comboboxes :
 
@@ -53,12 +56,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->comboBox->setModel(p.read());
     ui->comboBox_2->setModel(p.read_buyer());
     ui->comboBox_3->setModel(p.read_seller());
+     ui->comboBox_4->setModel(p.read());
     //
     ui->lineEdit_Id_prop->setValidator(new QIntValidator(0,99999999,this));
     QPixmap pixmap("C:/Users/Souid/Desktop/projetQT/ressourcesgraphiques/button.jpg");
     QIcon ButtonIcon(pixmap);
-    ui->pushButton_3->setIcon(ButtonIcon);
-    ui->pushButton_3->setIconSize(pixmap.rect().size());
+    //ui->pushButton_3->setIcon(ButtonIcon);
+   // ui->pushButton_3->setIconSize(pixmap.rect().size());
 
 
     QPixmap pixmap_play("C:/Users/Souid/Desktop/projetQT/ressourcesgraphiques/audio_02.jpg");
@@ -185,16 +189,17 @@ void MainWindow::on_pushButton_4_databaseprop_clicked()
 
 void MainWindow::on_pushButton_database_insert_clicked()
 {
-Property P(ui->lineEdit_Id_prop->text(),ui->lineEdit_Type_prop->text(),ui->lineEdit_longitude_prop->text(),ui->lineEdit_latitude_prop->text(),ui->lineEdit_price_pro->text(),ui->comboBox_2->currentText().toInt(),ui->comboBox_3->currentText().toInt(),ui->lineEdit->text(),ui->plainTextEdit->toPlainText()) ;
+Property P(ui->lineEdit_Id_prop->text(),ui->lineEdit_Type_prop->text(),ui->lineEdit_longitude_prop->text(),ui->lineEdit_latitude_prop->text(),ui->lineEdit_price_pro->text(),ui->comboBox_2->currentText().toInt(),ui->comboBox_3->currentText().toInt(),ui->lineEdit->text(),ui->plainTextEdit->toPlainText(),ui->lineEdit_2->text()) ;
 
 qDebug()<<"hello" ;
-if(P.addProperty(P))
+if(P.addProperty())
 {
         QMessageBox::information(this,"inserted","house inserted Successfully");
         ui->tableView_2->setModel(P.read());
         ui->comboBox->setModel(P.read());
         ui->comboBox_2->setModel(P.read_buyer());
         ui->comboBox_3->setModel(P.read_seller());
+        ui->comboBox_4->setModel(P.read());
 }
         else {
        QMessageBox::information(this,"not inserted","house not inserted Successfully");
@@ -215,7 +220,7 @@ void MainWindow::on_pushButton_5_clicked()
 ui->lineEdit_Id_prop->setText("");
 ui->lineEdit_Type_prop->setText("");
 ui->lineEdit_price_pro->setText("");
-ui->lineEdit_delete_prop->setText("");
+
 ui->lineEdit_find_id_prop->setText("");
 ui->lineEdit_latitude_prop->setText("");
 ui->lineEdit_longitude_prop->setText("");
@@ -226,17 +231,19 @@ ui->lineEdit_find_price_prop->setText("");
 void MainWindow::on_pushButton_6_clicked()
 {
     Property P ;
-    int id=ui->lineEdit_delete_prop->text().toInt();
+    int id=ui->comboBox_4->currentText().toInt();
 
  if( P.delete_Property(id)) {
 
         ui->tableView_2->setModel(P.read());
+        ui->comboBox_4->setModel(P.read());
                QMessageBox::information(nullptr,QObject::tr("OK"),
                                       QObject::tr("delete done.\n"
                                                   "clic cancel to exit."),QMessageBox::Cancel);
     }
     else
         {ui->tableView_2->setModel(P.read());
+      ui->comboBox_4->setModel(P.read());
     QMessageBox::critical(nullptr,QObject::tr("NOT OK"),
                                QObject::tr("delete not done .\n"
                                            "clic cancel to exit."),QMessageBox::Cancel);}
@@ -269,8 +276,8 @@ void MainWindow::on_comboBox_currentIndexChanged(const QString &arg1)
 
 void MainWindow::on_pushButton_7_clicked()
 {
-Property P(ui->lineEdit_Id_prop->text(),ui->lineEdit_Type_prop->text(),ui->lineEdit_longitude_prop->text(),ui->lineEdit_latitude_prop->text(),ui->lineEdit_price_pro->text(),ui->comboBox_2->currentText().toInt(),ui->comboBox_3->currentText().toInt(),ui->lineEdit->text(),ui->plainTextEdit->toPlainText()) ;
-if(P.update(P))
+Property P(ui->lineEdit_Id_prop->text(),ui->lineEdit_Type_prop->text(),ui->lineEdit_longitude_prop->text(),ui->lineEdit_latitude_prop->text(),ui->lineEdit_price_pro->text(),ui->comboBox_2->currentText().toInt(),ui->comboBox_3->currentText().toInt(),ui->lineEdit->text(),ui->plainTextEdit->toPlainText(),ui->lineEdit_2->text()) ;
+if(P.update())
 {
         QMessageBox::information(this,"inserted","house inserted Successfully");
 
@@ -278,6 +285,8 @@ if(P.update(P))
         ui->comboBox->setModel(P.read());
         ui->comboBox_2->setModel(P.read_buyer());
         ui->comboBox_3->setModel(P.read_seller());
+        ui->comboBox_4->setModel(P.read());
+
 }
         else {
        QMessageBox::information(this,"not inserted","house not inserted Successfully");
@@ -286,6 +295,7 @@ if(P.update(P))
        ui->comboBox->setModel(P.read());
        ui->comboBox_2->setModel(P.read_buyer());
        ui->comboBox_3->setModel(P.read_seller());
+        ui->comboBox_4->setModel(P.read());
 }
 
 }
@@ -331,6 +341,13 @@ void MainWindow::on_pushButton_10_clicked()
 void MainWindow::on_pushButton_14_clicked()
 {
     Property p ;
+    QString home = "Image";
+       QString path = QFileDialog::getOpenFileName(this, "Select Image", home + "/Images",
+                                                   "Images(*.jpg);;All Files(*.*)");
+       QFileInfo relativePath(path);
+             QString localisation=relativePath.filePath();
+             qDebug()<<"localisation est :"<<localisation ;
+             ui->lineEdit_2->setText(localisation);
 }
 void MainWindow::MapButton()
 {
@@ -386,28 +403,38 @@ void MainWindow::on_tableView_2_clicked(const QModelIndex &index)
       if (index.isValid() && index.column()==8) {
      QString localisation=ui->tableView_2->model()->data(ui->tableView_2->model()->index(index.row(),8)).toString();
           player=new QMediaPlayer(this);
-          QMainWindow *window1 = new QMainWindow();
+         // QMainWindow *window1 = new QMainWindow();
           QVideoWidget *vw = new QVideoWidget ;
-          player->setVideoOutput(vw);
-          player->setMedia(QUrl::fromLocalFile(localisation));
-          window1->setCentralWidget(vw);
-          vw->setGeometry(100,100,300,400);
+          video_player.setVideoOutput(vw);
+          video_player.setMedia(QUrl::fromLocalFile(localisation));
+         // window1->setCentralWidget(vw);
+          vw->setGeometry(100,100,1200,1200);
+
          /* QPushButton *close_button = new QPushButton(window1);
           close_button->setText(tr("something"));
           close_button->move(0, 0);
           close_button->show();*/
-          player->play();
-          window1->show();
+
+
+         // window1->show();
           vw->show();
+          video_player.play();
       }
       if (index.isValid() && index.column()==9) {
      QString description=ui->tableView_2->model()->data(ui->tableView_2->model()->index(index.row(),9)).toString();
+     QString localisation_image=ui->tableView_2->model()->data(ui->tableView_2->model()->index(index.row(),10)).toString();
 
      QPdfWriter pdf("C:/Users/Souid/Desktop/projetQT/ressourcesgraphiques/pdfgenere.pdf");
      QPainter painter(&pdf);
-     painter.setPen(Qt::red);
-     painter.drawText(100,0,description);
+     painter.setFont(QFont("Arial Bold", 15));
+     painter.setPen(Qt::blue);
+     painter.drawText(200,200,description);
+     painter.drawPixmap(QRect(0,2600,5000,5000),QPixmap(localisation_image));
      QDesktopServices::openUrl(QUrl::fromLocalFile("C:/Users/Souid/Desktop/projetQT/ressourcesgraphiques/pdfgenere.pdf"));
+      }
+      if (index.isValid() && index.column()==10) {
+    QString localisation=ui->tableView_2->model()->data(ui->tableView_2->model()->index(index.row(),10)).toString();
+     QDesktopServices::openUrl(QUrl::fromLocalFile(localisation));
       }
 }
 //arduino:
@@ -415,25 +442,43 @@ void MainWindow::update_label()
 {
     data=A.read_from_arduino();
 
-    if(data=="1")
 
-        ui->label_3->setText("ON"); // si les données reçues de arduino via la liaison série sont égales à 1
-    // alors afficher ON
 
-    else if (data=="0")
 
-        ui->label_3->setText("OFF");   // si les données reçues de arduino via la liaison série sont égales à 0
-     //alors afficher ON
+     if (data=="0")
+     {
+qDebug()<<"data est: "<< data ;
+ui->label_13->setText("no one is detected !");
+ ui->label_14->setText("no one is detected to launch alarm ?");
+     }
+       else if(data=="2")
+    {
+            qDebug()<<"2 est envoyé";
+ ui->label_13->setText("SOMEONE IS DETECTED !");
+  ui->label_14->setText("LAUNCH ALARM ?");
+            camera.show();
+          camera.takeImage();
+          camera.add_image_todatabase();
+          //QThread::msleep(5000);
+          camera.applicationExiting=true;
+
+
+        }
 }
 
 void MainWindow::on_pushButton_18_clicked()
 {
     A.write_to_arduino("1"); //envoyer 1 à arduino
+    qDebug()<<"sent to arduino 1 " ;
+
 }
 
 void MainWindow::on_pushButton_19_clicked()
 {
      A.write_to_arduino("0");
+      qDebug()<<"sent to arduino  0" ;
+      ui->label_13->setText("No one Is Detected");
+       ui->label_14->setText("No One is Detected to launch alarm");
 }
 
 void MainWindow::on_pushButton_22_clicked()
@@ -448,3 +493,30 @@ void MainWindow::on_pushButton_22_clicked()
 
 
 }
+
+void MainWindow::on_pushButton_15_clicked()
+{
+    video_player.pause();
+}
+
+void MainWindow::on_pushButton_23_clicked()
+{
+    video_player.play();
+}
+
+void MainWindow::on_lineEdit_delete_prop_cursorPositionChanged(int arg1, int arg2)
+{
+
+}
+
+void MainWindow::on_lineEdit_find_id_prop_textChanged(const QString &arg1)
+{
+
+}
+
+void MainWindow::on_pushButton_20_clicked()
+{
+     QDesktopServices::openUrl(QUrl::fromLocalFile(camera.localisation));
+}
+
+

@@ -18,6 +18,7 @@
 #include "map.h"
 #include "markermodel.h"
 #include "arduino.h"
+#include "camera.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -32,8 +33,7 @@ public:
     QMediaPlayer  * player= new QMediaPlayer ;
     QVideoWidget* vw=new QVideoWidget ;
    void showmap();
-   void update_label();   // slot permettant la mise à jour du label état de la lampe 1,
-   // ce slot est lancé à chaque réception d'un message de Arduino
+
 private slots:
     void on_pushButton_clicked();
 
@@ -87,15 +87,33 @@ private slots:
 
     void on_pushButton_22_clicked();
 
+    void on_pushButton_15_clicked();
+
+    void on_pushButton_23_clicked();
+
+    void on_lineEdit_delete_prop_cursorPositionChanged(int arg1, int arg2);
+
+    void on_lineEdit_find_id_prop_textChanged(const QString &arg1);
+
+    void update_label();   // slot permettant la mise à jour du label état de la lampe 1,
+    // ce slot est lancé à chaque réception d'un message de Arduino
+    void on_pushButton_20_clicked();
+
+    void on_pushButton_21_clicked();
+
+    void on_pushButton_24_clicked();
+
 private:
     Ui::MainWindow *ui;
     QPushButton *m_button;
     QPushButton *player_button;
     QVideoWidget videoWidget ;
+    QMediaPlayer  video_player;
 
     QByteArray data; // variable contenant les données reçues
 
     Arduino A; // objet temporaire
+     Camera camera;
 };
 
 

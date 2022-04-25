@@ -12,7 +12,7 @@ longitude=0;
 latitude=0;
 
 }
-Property::Property(QString ID,QString type,QVariant longitude,QVariant latitude,QVariant Price,QVariant ID_BUY,QVariant ID_SEL,QString Video,QString Description)
+Property::Property(QString ID,QString type,QVariant longitude,QVariant latitude,QVariant Price,QVariant ID_BUY,QVariant ID_SEL,QString Video,QString Description,QString Image)
 {
     this->ID=ID;
     this->Type=type;
@@ -24,6 +24,7 @@ Property::Property(QString ID,QString type,QVariant longitude,QVariant latitude,
     this->ID_SEL=ID_SEL;
     this->Video=Video ;
     this->Description=Description;
+    this->Image=Image;
 }
 void Property::setID(QString n){ID=n;}
 void Property::setType(QString n){Type=n;}
@@ -31,7 +32,7 @@ void Property::setPrice(QVariant n){Price=n;}
 void Property::setDescription(QString n){Price=n;}
 void Property::setLng(QVariant n){longitude=n;}
 void Property::setLat(QVariant n){latitude=n;}
-bool Property::addProperty(Property P)
+bool Property::addProperty()
 {
 
 
@@ -43,19 +44,20 @@ bool Property::addProperty(Property P)
 
 
 
-     query.prepare("INSERT INTO PROPERTIES (ID_PROP,TYPE_PROP,LOCALISATION_LNG,LOCALISATION_LAT,PRICE_PROP,ID_BUY,ID_SEL,MAP,VIDEO,DESCRIPTION) VALUES (?,?,?,?,?,?,?,?,?,?)");
-     query.addBindValue(P.ID);
-     query.addBindValue(P.Type);
+     query.prepare("INSERT INTO PROPERTIES (ID_PROP,TYPE_PROP,LOCALISATION_LNG,LOCALISATION_LAT,PRICE_PROP,ID_BUY,ID_SEL,MAP,VIDEO,DESCRIPTION,IMAGE) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+     query.addBindValue(ID);
+     query.addBindValue(Type);
     // query.addBindValue(Description);
-     query.addBindValue(P.longitude);
-     query.addBindValue(P.latitude);
+     query.addBindValue(longitude);
+     query.addBindValue(latitude);
 
-       query.addBindValue(P.Price);
-      query.addBindValue(P.ID_BUY);
-      query.addBindValue(P.ID_SEL);
+       query.addBindValue(Price);
+      query.addBindValue(ID_BUY);
+      query.addBindValue(ID_SEL);
       query.addBindValue(map);
-      query.addBindValue(P.Video);
-      query.addBindValue(P.Description);
+      query.addBindValue(Video);
+      query.addBindValue(Description);
+      query.addBindValue(Image);
 
      if(!query.exec())
      {
@@ -63,19 +65,22 @@ bool Property::addProperty(Property P)
      }
   return true ;
 }
-bool Property::update(Property P)
+bool Property::update()
 {
 
     QSqlQuery  query;
 
-query.prepare("UPDATE PROPERTIES SET TYPE_PROP=:type,LOCALISATION_LNG=:lng,LOCALISATION_LAT=:lat,PRICE_PROP=:price,ID_BUY=:id_buy,ID_SEL=:id_sel WHERE ID_PROP=:id");
-query.bindValue(":id",P.ID);
-query.bindValue(":type",P.Type);
-query.bindValue(":lng",P.longitude);
-query.bindValue(":lat",P.latitude);
-query.bindValue(":price",P.Price);
-query.bindValue(":id_buy",P.ID_BUY);
-query.bindValue(":id_sel",P.ID_SEL);
+query.prepare("UPDATE PROPERTIES SET TYPE_PROP=:type,LOCALISATION_LNG=:lng,LOCALISATION_LAT=:lat,PRICE_PROP=:price,ID_BUY=:id_buy,ID_SEL=:id_sel,VIDEO=:video,DESCRIPTION=:description,IMAGE=:image WHERE ID_PROP=:id");
+query.bindValue(":id",ID);
+query.bindValue(":type",Type);
+query.bindValue(":lng",longitude);
+query.bindValue(":lat",latitude);
+query.bindValue(":price",Price);
+query.bindValue(":id_buy",ID_BUY);
+query.bindValue(":id_sel",ID_SEL);
+query.bindValue(":video",Video);
+query.bindValue(":description",Description);
+query.bindValue(":image",Image);
 return query.exec();
 }
 QSqlQueryModel * Property::read()
@@ -90,6 +95,8 @@ QSqlQueryModel * Property::read()
          model->setHeaderData(6,Qt::Horizontal,QObject::tr("ID_SEL"));
           model->setHeaderData(7,Qt::Horizontal,QObject::tr("Map localisation"));
            model->setHeaderData(8,Qt::Horizontal,QObject::tr("Video"));
+           model->setHeaderData(9,Qt::Horizontal,QObject::tr("Description"));
+           model->setHeaderData(10,Qt::Horizontal,QObject::tr("Image"));
 
 return model;
 }

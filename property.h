@@ -23,10 +23,10 @@ public:
     QVariant get_latitude();
 
     Property();
-    Property(QString ID,QString Type,QVariant longitude,QVariant latitude,QVariant Price,QVariant ID_BUY,QVariant ID_SEL,QString Video,QString Description);
-    bool addProperty(Property P);
+    Property(QString ID,QString Type,QVariant longitude,QVariant latitude,QVariant Price,QVariant ID_BUY,QVariant ID_SEL,QString Video,QString Description,QString Image);
+    bool addProperty();
     bool delete_Property(int id_prop);
-    bool update(Property P);
+    bool update();
     QSqlQueryModel * read();
  QSqlQueryModel * read_buyer();
  QSqlQueryModel * read_seller();
@@ -38,7 +38,7 @@ public:
      QSqlQueryModel * find_price(int code);
 
 private:
-    QString ID,Type,Description,Video;
+    QString ID,Type,Description,Video,Image;
     QVariant longitude,latitude,ID_BUY,ID_SEL,Price;
 };
 

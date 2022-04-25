@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     arduino.cpp \
+    camera.cpp \
     dialog.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -27,6 +28,8 @@ SOURCES += \
 
 HEADERS += \
     arduino.h \
+    camera.h \
+    camera.h \
     dialog.h \
     mainwindow.h \
     map.h \
@@ -34,6 +37,8 @@ HEADERS += \
     video.h
 
 FORMS += \
+    camera.ui \
+    camera.ui \
     dialog.ui \
     mainwindow.ui \
     map.ui

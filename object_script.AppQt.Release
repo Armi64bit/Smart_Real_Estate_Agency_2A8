@@ -1,5 +1,6 @@
 INPUT(
 ./release\arduino.o
+./release\camera.o
 ./release\dialog.o
 ./release\main.o
 ./release\mainwindow.o
@@ -8,6 +9,7 @@ INPUT(
 ./release\video.o
 ./release\qrc_resource.o
 ./release\qrc_qml.o
+./release\moc_camera.o
 ./release\moc_dialog.o
 ./release\moc_mainwindow.o
 ./release\moc_map.o
